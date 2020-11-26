@@ -103,6 +103,19 @@
 <div class="line-block">
 <div class="line">&lt;dataset name&gt; : <a class="reference internal" href="s_ds_descr.html"><span class="doc">Dataset Descriptor structure</span></a></div>
 </div>
+<div class="line">“<strong>documentation</strong>”: <code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> documentation sets</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dict</em></div>
+<div class="line-block">
+<div class="line">“<strong>id</strong>”:    identifier of set, <em>string</em></div>
+<div class="line">“<strong>title</strong>”: title of set, <em>string</em></div>
+<div class="line">“<strong>id</strong>”: URL to top of set, <em>string</em></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code>, …</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
 </div>
@@ -114,6 +127,7 @@
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The request returns complete information for rendering directory page in User Interface. So it returns information about all <a class="reference internal" href="../glossary.html#term-dataset"><span class="xref std std-term">datasets</span></a> accessible in <a class="reference internal" href="../glossary.html#term-vault"><span class="xref std std-term">vault</span></a>.</p>
 <p>Sorting order in <strong>ds-list</strong> output value represents hierarchical connections between datasets.</p>
+<p>Details of <strong>documentation</strong> properties see description of <a class="reference internal" href="../adm/configuration.html#sphinx-doc-sets"><span class="std std-ref">sphinx-doc-sets</span></a> option in service configuration.</p>
 </div>
 </div>
 

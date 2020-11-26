@@ -196,6 +196,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;dir-files&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">[</span><span class="s2">&quot;/ui/images&quot;</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/int_ui/images&quot;</span><span class="p">],</span>
     <span class="p">[</span><span class="s2">&quot;/ui&quot;</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/int_ui/files&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;--/doc/&quot;</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{WORK}</span><span class="s2">/doc/&quot;</span><span class="p">],</span>
     <span class="p">[</span><span class="s2">&quot;--/ui&quot;</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{WORK}</span><span class="s2">/ui&quot;</span><span class="p">],</span>
     <span class="p">[</span><span class="s2">&quot;/excel&quot;</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{WORK}</span><span class="s2">/export/work&quot;</span><span class="p">]],</span>
 </pre></div>
@@ -231,7 +232,54 @@
 </div></blockquote>
 </li>
 </ul>
-<ul id="index-16">
+<span class="target" id="sphinx-doc-sets"></span><ul id="index-16">
+<li><p class="first"><strong>sphinx-doc-sets</strong>, <em>list</em></p>
+<blockquote>
+<div><p>Here is list of documentation sets available for the instance. Each set is defined as <em>dictionary</em> with properties:</p>
+<ul class="simple">
+<li><strong>id</strong>: short identifier of documentation sets</li>
+<li><strong>title</strong>: title of the sets</li>
+<li><strong>url</strong>: external URL to documentation set</li>
+</ul>
+<p>By default current documentation sets are already built and available on Intenet, so the option <strong>url</strong> should define correct link to this set.</p>
+<p>It is correct to comment this option, and then the documentation set will be built locally on  start of the service. In this case the following additional options are required in the document set descriptor (in case of <strong>url</strong> option set they do not have effect):</p>
+<ul class="simple">
+<li><strong>source</strong>: path to source of documentation</li>
+<li><strong>build</strong>: path to building place</li>
+<li><strong>path</strong>: locally defined URL to the documentation set built</li>
+</ul>
+<p><em>Note</em> In case of local building of documentation sets:</p>
+<blockquote>
+<div><ul class="simple">
+<li>uncomment <code class="docutils literal notranslate"><span class="pre">&quot;/doc&quot;</span></code> instruction in <strong>dir-files</strong></li>
+<li>make sure if <a class="reference external" href="https://www.sphinx-doc.org/">sphinx</a> is installed on machine</li>
+</ul>
+</div></blockquote>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;sphinx-doc-sets&quot;</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Anfisa Installation&amp;Administration Documentation&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://foromeplatform.github.io/documentation/anfisa-dev.v0.6/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/doc/dev/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;build&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{WORK}</span><span class="s2">/doc/dev/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;doc/dev/&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Anfisa User Documentation&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://foromeplatform.github.io/documentation/anfisa-user.v0.6/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/doc/user/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;build&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{WORK}</span><span class="s2">/doc/user/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;doc/user/&quot;</span>
+   <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<ul id="index-17">
 <li><p class="first"><strong>logging</strong>, <em>dictionary</em></p>
 <blockquote>
 <div><p>Some standard Python way to configure the logging of a service. Please pay attention to one specific line of this stuff:</p>
@@ -245,7 +293,7 @@
 </div></blockquote>
 </li>
 </ul>
-<span id="index-17"></span><ul id="docs-cfg">
+<span id="index-18"></span><ul id="docs-cfg">
 <li><p class="first"><strong>doc-report-css</strong>, <em>string</em></p>
 </li>
 <li><p class="first"><strong>doc-pygments-css</strong>, <em>string</em></p>
