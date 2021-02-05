@@ -52,6 +52,7 @@
 <li><a class="reference internal" href="#atomic-numeric-condition">Atomic numeric condition</a></li>
 <li><a class="reference internal" href="#atomic-enumerated-condition">Atomic enumerated condition</a></li>
 <li><a class="reference internal" href="#atomic-function-conditions">Atomic function conditions</a></li>
+<li><a class="reference internal" href="#property-and-function-identifiers">Property and function identifiers</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#decision-tree-system-support">Decision Tree system support</a></li>
@@ -249,6 +250,11 @@
 <div><em>function_name</em> (<em>parameters</em>)</div></blockquote>
 <p>Syntax for parameters is Python standard. Since all values of the parameters must be JSON objects (however, with a change of JS constants <code class="docutils literal notranslate"><span class="pre">true/false/null</span></code> to Python counterparts <code class="docutils literal notranslate"><span class="pre">True/False/None</span></code>), there should be no problems in setting parameters up. (“Simplifications” are also acceptable for parameters).</p>
 <p>See <a class="reference internal" href="../rest/func_ref.html"><span class="doc">Filtering functions</span></a> for reference of available functions and their parameters.</p>
+</div>
+<div class="section" id="property-and-function-identifiers">
+<h3>Property and function identifiers<a class="headerlink" href="#property-and-function-identifiers" title="Permalink to this headline">¶</a></h3>
+<p>Each identifier used as property or function (<em>property_id</em> or <em>function_name</em> above) corresponds to only one property or function available in evaluation space. So each available identifier can be used in only one type of atomic conditions.</p>
+<p>However, identifier of an atomic condition can be absent in evaluation space, and the corespondent atomic condition is considered as correct but inactive: it is interpeted as always negative (and positive in <strong>NOT</strong> mode of enumerated and function conditions).</p>
 </div>
 </div>
 <div class="section" id="decision-tree-system-support">

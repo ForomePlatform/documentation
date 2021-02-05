@@ -44,10 +44,12 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Inventory (*.CFG) file format</a><ul>
-<li><a class="reference internal" href="#example-of-inventory-file">Example of inventory file</a><ul>
-<li><a class="reference internal" href="#see-also">See also</a></li>
+<li><a class="reference internal" href="#example-of-inventory-file">Example of inventory file</a></li>
+<li><a class="reference internal" href="#documentation-block-of-inventory-file">Documentation block of inventory file</a><ul>
+<li><a class="reference internal" href="#kinds-of-documentation-items">Kinds of documentation items</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 </ul>
@@ -158,10 +160,60 @@ project, so here is a short description covering details important for Anfisa pr
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="see-also">
-<h3>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="a_adm_formats.html"><span class="doc">Administration file formats reference</span></a></p>
 </div>
+<div class="section" id="documentation-block-of-inventory-file">
+<h2>Documentation block of inventory file<a class="headerlink" href="#documentation-block-of-inventory-file" title="Permalink to this headline">¶</a></h2>
+<p>Property <strong>docs</strong> of inventory descriptor is list of objects that represent documentation items.</p>
+<p>Common properties of documentation items:</p>
+<ul class="simple">
+<li><strong>“kind”</strong> - kind of item, see details below</li>
+<li><strong>“title”</strong> - title of item visible for the user</li>
+<li><strong>“source”</strong> - path to location of file/files corresponding to the item, can contain template control symbols <code class="docutils literal notranslate"><span class="pre">*</span></code>, for some item kinds should match only one file</li>
+<li><strong>“dest”</strong> - destination filename, for some item kinds is optional, in these cases base filename of <strong>source</strong> is used</li>
+</ul>
+<p><em>Common rule</em>: if there is no file / directory that is defined by <strong>“source”</strong> property, the documentation item is just ignored.</p>
+<div class="section" id="kinds-of-documentation-items">
+<h3>Kinds of documentation items<a class="headerlink" href="#kinds-of-documentation-items" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">kind = <strong>“group”</strong></p>
+<blockquote>
+<div><p>Represents group (folder) of documentation items located in subdirectory. Descriptor should contain property <strong>“docs”</strong> with recursive list of sub-items of variour kinds. It is not recommended to define <strong>“dest”</strong> property explicitly.</p>
+</div></blockquote>
+</li>
+<li><p class="first">kind = <strong>“html”</strong></p>
+<blockquote>
+<div><p>Represents document in HTML format. (Use “support” documentation item to use images inside document, see below).
+<strong>“source”</strong> should define a single document with <code class="docutils literal notranslate"><span class="pre">.html</span></code> extension.
+It is not recommended to define <strong>“dest”</strong> property explicitly.</p>
+</div></blockquote>
+</li>
+<li><p class="first">kind = <strong>“txt”</strong>, kind = <strong>“png”</strong>, kind = <strong>“jpg”</strong></p>
+<blockquote>
+<div><p>Represents HTML document visible for the user with contents of file of text or image format.
+<strong>“source”</strong> should define a single document with corresponding extension.
+<strong>“dest”</strong> property should be explicitly defined as a filename with <code class="docutils literal notranslate"><span class="pre">.html</span></code> extension</p>
+<p>For image files the additional property <strong>“tooltip”</strong> can be used, with text description of the image</p>
+</div></blockquote>
+</li>
+<li><p class="first">kind = <strong>“*.txt”</strong>, kind = <strong>“*.png”</strong>, kind = <strong>“*.jpg”</strong></p>
+<blockquote>
+<div><p>Represents single HTML document with contents of serie of files.
+<strong>“source”</strong> should define this serie.
+<strong>“dest”</strong> property should be explicitly defined as a filename with <code class="docutils literal notranslate"><span class="pre">.html</span></code> extension</p>
+</div></blockquote>
+</li>
+<li><p class="first">kind = <strong>“support”</strong></p>
+<blockquote>
+<div><p>Represents subdirectory with supplementaty images. These images can be referenced inside HTML-documents and are invisible for the user on documentation tree.
+For this special kind of documentation item only <strong>“kind”</strong> and <strong>“source</strong>” properties should be defined, and <strong>“source”</strong> should be path to a subdirectory</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="a_adm_formats.html"><span class="doc">Administration file formats reference</span></a></p>
 </div>
 </div>
 

@@ -92,7 +92,7 @@
 <h2>Solution Pack API<a class="headerlink" href="#solution-pack-api" title="Permalink to this headline">¶</a></h2>
 <p>Solution pack is a named collection of named <a class="reference internal" href="../glossary.html#term-solution-item"><span class="xref std std-term">solution items</span></a> of various kinds. Solution items are being registered in solution pack with option <strong>requires</strong>: what <em>modes</em> should be hold on dataset to make this item available.</p>
 <p><em>Note</em>: to prevent mistakes in usage of solution items of different types, name of any solution item must be unique between all names of solution items.</p>
-<p>Solution packs should be defined in process before work with any dataset. Creation of dataset is simple:</p>
+<p>Solution packs should be defined in process before work with any dataset. Solution pack object should be created, filled with solutions and then registered:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base_pack</span> <span class="o">=</span> <span class="n">SolutionPack</span><span class="p">(</span><span class="s2">&quot;CASE&quot;</span><span class="p">)</span>
 
 <span class="c1"># ...</span>
@@ -237,6 +237,17 @@
 </div></blockquote>
 </li>
 </ul>
+<p>Second optional argument of SolutionPack creation call is function reference:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base_pack</span> <span class="o">=</span> <span class="n">SolutionPack</span><span class="p">(</span><span class="s2">&quot;CASE&quot;</span><span class="p">,</span> <span class="n">checkSolutionUnits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The purpose of the function is to check if requirements are sufficient for usage of specific <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">units</span></a> inside <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision tree</span></a> and <a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filter</span></a> <a class="reference internal" href="../glossary.html#term-solution-item"><span class="xref std std-term">solution items</span></a>. The current code uses <code class="docutils literal notranslate"><span class="pre">checkSolutionUnits()</span></code> function for two variants of check:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> <code class="docutils literal notranslate"><span class="pre">Rules</span></code> is applicable only in context of <a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">WS</span></a> datasets</li>
+<li>the <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a> <code class="docutils literal notranslate"><span class="pre">Compound_Het</span></code> is applicable only if dataset contains information for <a class="reference internal" href="../glossary.html#term-trio"><span class="xref std std-term">trio</span></a> of <a class="reference internal" href="../glossary.html#term-sample"><span class="xref std std-term">samples</span></a></li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="logic-of-solution-item-requirements-for-dataset">
 <h2>Logic of solution item requirements for dataset<a class="headerlink" href="#logic-of-solution-item-requirements-for-dataset" title="Permalink to this headline">¶</a></h2>
