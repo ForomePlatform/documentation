@@ -142,12 +142,12 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list</em> of attribute descriptors, to represent main content of the table</div>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code></div>
 <div class="line-block">
 <div class="line-block">
-<div class="line"><strong>[0]</strong>: attribute name (out of use), <em>string</em></div>
-<div class="line"><strong>[1]</strong>: attribute title</div>
-<div class="line"><strong>[2]</strong>:</div>
+<div class="line">“<strong>name</strong>”: attribute name (technical), <em>string</em></div>
+<div class="line">“<strong>title</strong>”: attribute title</div>
+<div class="line">“<strong>cells</strong>”:</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code>  <em>list</em> of cell descriptors</div>
 <div class="line-block">
@@ -160,13 +160,21 @@
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
 </div>
-<div class="line"><strong>[3]</strong>: (if present) tooltip. <strong>string</strong> or <code class="docutils literal notranslate"><span class="pre">undefined`</span></code></div>
+<div class="line">“<strong>tooltip</strong>”: tooltip, <strong>string</strong> or <code class="docutils literal notranslate"><span class="pre">undefined</span></code></div>
+<div class="line">“<strong>render</strong>”: render mode, <strong>string</strong> or <code class="docutils literal notranslate"><span class="pre">undefined</span></code></div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
 </div>
 </div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>
-“<strong>parcontrol</strong>”:  <em>optional string</em>, to represent control &lt;div&gt; before the table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
+<div class="line">“<strong>parcontrol</strong>”:  to represent control &lt;div&gt; before the table,</div>
+<div class="line-block">
+<div class="line"><strong>string</strong> or <code class="docutils literal notranslate"><span class="pre">undefined</span></code></div>
+</div>
+<div class="line">“<strong>parmodes</strong>”: technical json information on parcontrol modes,</div>
+<div class="line-block">
+<div class="line"><strong>list of JSON objects</strong> or <code class="docutils literal notranslate"><span class="pre">undefined</span></code></div>
 <div class="line"><br /></div>
 </div>
 <div class="line"><em>in case of</em> <code class="docutils literal notranslate"><span class="pre">type=&quot;pre&quot;</span></code>:</div>
