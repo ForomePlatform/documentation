@@ -107,7 +107,19 @@
 <div class="line">“<strong>tooltip</strong>”: <em>optional</em> tooltip, <em>string</em></div>
 <div class="line">“<strong>incomplete</strong>”: <em>optional</em> status is incomplete, <code class="docutils literal notranslate"><span class="pre">true</span></code></div>
 <div class="line">“<strong>detailed</strong>”: <em>optional</em> transcript are in counts, <code class="docutils literal notranslate"><span class="pre">true</span></code></div>
+<div class="line">“<strong>classes</strong>: facet classification of the property,</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list</em> of facet descriptors</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> indexes of items in facet classification list</div>
+<div class="line-block">
+<div class="line">(usually with one element) <em>list of integers</em></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 <div class="line"><br /></div>
+</div>
 <div class="line"><em>in case of</em> <strong>kind</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;numeric&quot;</span></code></div>
 <div class="line">———————————–</div>
 <div class="line">“<strong>min</strong>”: <em>optional</em> minimum value, <em>int or float</em></div>
@@ -165,6 +177,7 @@
 <p>In complete state details of status are always set. If status reports for filtering properties (of numeric or enum type) is incomplete, use request <a class="reference internal" href="statunits.html"><span class="doc">statunits</span></a> to get them in complete state.</p>
 <p>In <strong>detailed</strong> case (<a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">workspace</span></a> context) the main items for counting are <a class="reference internal" href="../glossary.html#term-transcript"><span class="xref std std-term">transcripts</span></a>, so count values form pair of values in list, first one is for transcripts, second for <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a>.
 Otherwise only single variant count is provided in lists.</p>
+<p>The field <strong>classes</strong> provides property classification information, see <a class="reference internal" href="../concepts/restrict_flt.html"><span class="doc">Filtering properties restriction</span></a>.</p>
 <p>Property <strong>sub-kind</strong> can have the following values (transcipt-based subkinds are provided only in <a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">workspace</span></a> context):</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -232,6 +245,7 @@ Otherwise only single variant count is provided in lists.</p>
 <p><a class="reference internal" href="dtree_stat.html"><span class="doc">dtree_stat</span></a></p>
 <p><a class="reference internal" href="statunits.html"><span class="doc">statunits</span></a></p>
 <p><a class="reference internal" href="statfunc.html"><span class="doc">statfunc</span></a></p>
+<p><a class="reference internal" href="../concepts/restrict_flt.html"><span class="doc">Filtering properties restriction</span></a></p>
 </div>
 </div>
 
