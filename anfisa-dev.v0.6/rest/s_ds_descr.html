@@ -92,24 +92,24 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em>,</div>
 <div class="line-block">
-<div class="line">“<strong>name</strong>”:         dataset name, <em>string</em></div>
-<div class="line">“<strong>kind</strong>”:         dataset kind, <em>either</em> <code class="docutils literal notranslate"><span class="pre">&quot;ws&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;xl&quot;</span></code></div>
-<div class="line">“<strong>create-time</strong>:   time of dataset installation,</div>
+<div class="line">“<strong>name</strong>”:             dataset name, <em>string</em></div>
+<div class="line">“<strong>kind</strong>”:             dataset kind, <em>either</em> <code class="docutils literal notranslate"><span class="pre">&quot;ws&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;xl&quot;</span></code></div>
+<div class="line">“<strong>create-time</strong>:       time of dataset installation,</div>
 <div class="line-block">
 <div class="line"><em>string, time time in ISO format</em></div>
 </div>
-<div class="line">“<strong>upd-time</strong>:      time of last dataset configuration update,</div>
+<div class="line">“<strong>upd-time</strong>:          time of last dataset configuration update,</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">null</span></code> or <em>string, time in ISO format</em></div>
 </div>
-<div class="line">“<strong>note</strong>”:         user note to dataset, <code class="docutils literal notranslate"><span class="pre">null</span></code> or <em>string</em></div>
-<div class="line">“<strong>date-note</strong>:     time of last note update,</div>
+<div class="line">“<strong>note</strong>”:             user note to dataset, <code class="docutils literal notranslate"><span class="pre">null</span></code> or <em>string</em></div>
+<div class="line">“<strong>date-note</strong>:         time of last note update,</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">null</span></code> or <em>string, time in ISO format</em></div>
 </div>
-<div class="line">“<strong>total</strong>”:        total number of variants, <em>int</em></div>
-<div class="line">“<strong>doc</strong>”:          dataset documentation, <a class="reference internal" href="s_doc_descr.html"><span class="doc">Dataset document descriptor</span></a></div>
-<div class="line">“<strong>ancestors</strong>”:    information on base datasets</div>
+<div class="line">“<strong>total</strong>”:            total number of variants, <em>int</em></div>
+<div class="line">“<strong>doc</strong>”:              dataset documentation, <a class="reference internal" href="s_doc_descr.html"><span class="doc">Dataset document descriptor</span></a></div>
+<div class="line">“<strong>ancestors</strong>”:        information on base datasets</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> base datasets, root is the last</div>
 <div class="line-block">
@@ -153,6 +153,10 @@
 <div class="line">“<strong>cohorts</strong>”: <em>optional</em> list of cohort names</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of strings</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
+<div class="line">“<strong>export-max-count</strong>:  maximum record count available for</div>
+<div class="line-block">
+<div class="line">export operations (<a class="reference internal" href="csv_export.html"><span class="doc">csv_export</span></a>, <a class="reference internal" href="export.html"><span class="doc">export</span></a>), <em>int</em></div>
 </div>
 </div>
 </div>
