@@ -49,7 +49,7 @@
 <li><a class="reference internal" href="#markup-details">Markup details</a></li>
 <li><a class="reference internal" href="#dynamic-features-in-aspects">Dynamic features in aspects</a><ul>
 <li><a class="reference internal" href="#aspect-general">Aspect General</a></li>
-<li><a class="reference internal" href="#aspect-vep-transcripts">Aspect VEP Transcripts</a></li>
+<li><a class="reference internal" href="#aspect-transcripts">Aspect Transcripts</a></li>
 <li><a class="reference internal" href="#aspect-cohorts">Aspect Cohorts</a></li>
 <li><a class="reference internal" href="#aspect-quality">Aspect Quality</a></li>
 </ul>
@@ -202,7 +202,7 @@
 </li>
 <li><p class="first">Most part of aspects represent data by <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code> with two columns with title and value of property. Only <strong>columns</strong> and <strong>rows</strong> in aspect descriptor properties are sufficient to support this kind of aspects.</p>
 </li>
-<li><p class="first">Some aspect (currently VEP Transcripts, Quality,Colocated Variants and Cohorts) represent data in a multi-column form, so the following additional properties are supported (see more details about concrete aspects below):</p>
+<li><p class="first">Some aspect (currently Transcripts, Quality,Colocated Variants, Cohorts and VEP Transcripts) represent data in a multi-column form, so the following additional properties are supported (see more details about concrete aspects below):</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>colhead</strong> is used when columns are logically grouped; the property represents header row with joined cells, each cell corresponds to a group of columns. Content of cell consists of title of group, column counter and possibly additional blocks (&lt;span&gt;) for UI controls placement</li>
@@ -248,8 +248,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="aspect-vep-transcripts">
-<h3>Aspect VEP Transcripts<a class="headerlink" href="#aspect-vep-transcripts" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="aspect-transcripts">
+<h3>Aspect Transcripts<a class="headerlink" href="#aspect-transcripts" title="Permalink to this headline">¶</a></h3>
 <p>The aspect visualizes <a class="reference internal" href="../glossary.html#term-transcript"><span class="xref std std-term">transcripts</span></a> data, and transcripts are subjects of filtering, so rendering of this aspect actively interacts with the user interface in  context of <a class="reference internal" href="../glossary.html#term-ws-dataset"><span class="xref std std-term">WS-dataset</span></a>.</p>
 <p>Transcript columns are grouped, so <strong>colhead</strong> property is used in the aspect descriptor. Only transcripts of the first group can be selected in context of <a class="reference internal" href="../glossary.html#term-ws-dataset"><span class="xref std std-term">WS-dataset</span></a>.</p>
 <p>In practice the users often need to hide unselected (non hit) columns to have more informative
