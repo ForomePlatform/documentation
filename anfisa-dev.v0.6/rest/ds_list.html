@@ -104,6 +104,7 @@
 <p><strong>dtree</strong>: <em>optional</em> name of applying decision tree</p>
 <p><strong>code</strong>: <em>optional</em> code of applying decision tree</p>
 <p><strong>no</strong>: <em>optional</em> position on tree, <em>int as string</em></p>
+<p><strong>smpcnt</strong>: <em>optional</em> count of samples <em>int as string</em></p>
 </div></blockquote>
 <p><strong>Return value</strong>:</p>
 <div class="line-block">
@@ -155,6 +156,7 @@
 </li>
 </ul>
 <p>Some samples can be  <a class="reference internal" href="reccnt.html#active-samples"><span class="std std-ref">active</span></a> in context of current filter or decision tree condition, and this information forms property <strong>active-samples</strong> of descriptor. The string has form of list of integers separated by ‘,’  and can be used as argument of <a class="reference internal" href="reccnt.html"><span class="doc">reccnt</span></a> call.</p>
+<p>Default value for <strong>smpcnt</strong>, length of sample list, is 25. Possible values are between 10 and 150, values out of bounds are interpeted as bound values 10 or 150.</p>
 </div>
 <div class="section" id="comment">
 <h2>Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>

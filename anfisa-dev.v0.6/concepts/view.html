@@ -99,11 +99,12 @@
 <li><p class="first">Auxiliary viewing regime</p>
 <blockquote>
 <div><p>REST API request: <a class="reference internal" href="../rest/ds_list.html"><span class="doc">ds_list</span></a></p>
-<p>In contexts of <a class="reference internal" href="../glossary.html#term-xl-dataset"><span class="xref std std-term">XL-dataset</span></a> or <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision tree</span></a> viewing regime looks simpler - no integration with tagging and zones. But in these contexts there is no guarantee that selection is small enough, so the system makes special preparations to restrict list of visible variants:</p>
+<p>In contexts of <a class="reference internal" href="../glossary.html#term-xl-dataset"><span class="xref std std-term">XL-dataset</span></a> or <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision tree</span></a> viewing regime looks simpler - no integration with tagging and zones. But in these contexts there is no guarantee that selection is small enough, so the system makes special preparations to restrict list of visible variants.</p>
 <ul class="simple">
 <li>If list is comparatively small (less than 300 variants), visible list if full one (property <strong>records</strong> is used in request <a class="reference internal" href="../rest/ds_list.html"><span class="doc">ds_list</span></a>)</li>
-<li>If list is comparatively large (more than 50 variants), only 25 randomly selected samples are visible (property <strong>samples</strong> is used in request <a class="reference internal" href="../rest/ds_list.html"><span class="doc">ds_list</span></a>)</li>
+<li>If list is comparatively large (more than <code class="docutils literal notranslate"><span class="pre">2*SMP_COUNT</span></code> variants), only <code class="docutils literal notranslate"><span class="pre">SMP_COUNT</span></code> randomly selected samples are visible (property <strong>samples</strong> is used in request <a class="reference internal" href="../rest/ds_list.html"><span class="doc">ds_list</span></a>)</li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">SMP_COUNT</span></code> is a parameter defined by Front End. By default it is set to 25, possible values are between 10 and 150.</p>
 </div></blockquote>
 </li>
 </ul>
