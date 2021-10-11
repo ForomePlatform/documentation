@@ -108,34 +108,27 @@
 </pre></div>
 </div>
 <ul class="simple" id="index-3">
-<li><strong>html-ws-url</strong>, <em>string</em></li>
-</ul>
-<p>Address of the NextGen UI base page if the NextGen UI is set up, else keep the default value ​”ws”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;html-ws-url&quot;</span><span class="p">:</span> <span class="s2">&quot;ws&quot;</span><span class="p">,</span>
-</pre></div>
-</div>
-<ul class="simple" id="index-4">
 <li><strong>html-title</strong>, <em>string</em></li>
 </ul>
 <p>Title prefix used in the pages of the Legacy UI:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;html-title&quot;: &quot;Anfisa&quot;,`
 </pre></div>
 </div>
-<ul class="simple" id="index-5">
+<ul class="simple" id="index-4">
 <li><strong>mongo-db</strong>, <em>string</em></li>
 </ul>
 <p>The database in MongoDB used by the system:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mongo-db&quot;</span><span class="p">:</span> <span class="s2">&quot;Anfisa&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
-<ul class="simple" id="index-6">
+<ul class="simple" id="index-5">
 <li><strong>data-vault</strong>, <em>string</em></li>
 </ul>
 <p>The location of the vault directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;data-vault&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{WORK}</span><span class="s2">/vault&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
-<ul id="index-7">
+<ul id="index-6">
 <li><p class="first"><strong>run-options</strong>, <em>list</em></p>
 <blockquote>
 <div><p>Some additional option to configure Anfisa service. Currently out of use:</p>
@@ -145,7 +138,7 @@
 </div></blockquote>
 </li>
 </ul>
-<span class="target" id="job-vault-check-period"></span><ul id="index-8">
+<span class="target" id="job-vault-check-period"></span><ul id="index-7">
 <li><p class="first"><strong>job-vault-check-period</strong>, <em>int</em></p>
 <blockquote>
 <div><p>Period between checks of vault data consistence, in seconds:</p>
@@ -155,21 +148,21 @@
 </div></blockquote>
 </li>
 </ul>
-<ul class="simple" id="index-9">
+<ul class="simple" id="index-8">
 <li><strong>http-bam-base</strong>, <em>string</em></li>
 </ul>
 <p>HTTP base directory for access to BAM-files, used in IGV-links. Uncomment this option and set it up correctly if the server provides access to BAM-files, otherwise keep it commented:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;http-bam-base&quot;: “http://&lt;server&gt;/anfisa/links/&quot;`
 </pre></div>
 </div>
-<span id="index-10"></span><ul id="export-cfg">
+<span id="index-9"></span><ul id="export-cfg">
 <li><p class="first"><strong>export</strong>, <em>dictionary</em></p>
 <blockquote>
 <div><p>Configuration of export functionality</p>
 </div></blockquote>
 </li>
 </ul>
-<ul id="index-11">
+<ul id="index-10">
 <li><p class="first"><strong>excel-template</strong>, <em>string</em></p>
 <blockquote>
 <div><p>The template used to configure the Excel export styles. During evaluation of the script deploy.sh the file is being downloaded by URL:</p>
@@ -177,7 +170,7 @@
 </div></blockquote>
 </li>
 </ul>
-<ul id="index-12">
+<ul id="index-11">
 <li><p class="first"><strong>work-dir</strong>, <em>string</em></p>
 <blockquote>
 <div><p>The directory where the service stores exported files</p>
@@ -190,7 +183,7 @@
 }
 </pre></div>
 </div>
-<ul id="index-13">
+<ul id="index-12">
 <li><p class="first"><strong>dir-files</strong>, <em>list</em></p>
 <p>Setup of the mechanism of forwarding files as request results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;dir-files&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -215,7 +208,7 @@
 </ul>
 </li>
 </ul>
-<span class="target" id="mirror-ui"></span><ul id="index-14">
+<span class="target" id="mirror-ui"></span><ul id="index-13">
 <li><p class="first"><strong>mirror-ui</strong>, <em>list</em></p>
 <blockquote>
 <div><p>This instruction turns the <a class="reference internal" href="../glossary.html#term-anti-cache-mechanism"><span class="xref std std-term">anti-cache mechanism</span></a> on; it consists of the paths to the source and target directories for mirroring (drop two leading ‘-’ to make it working):</p>
@@ -225,14 +218,14 @@
 </div></blockquote>
 </li>
 </ul>
-<ul id="index-15">
+<ul id="index-14">
 <li><p class="first"><strong>druid</strong>, <em>dictionary</em></p>
 <blockquote>
 <div><p>See the section about Druid in installation documentation</p>
 </div></blockquote>
 </li>
 </ul>
-<span class="target" id="sphinx-doc-sets"></span><ul id="index-16">
+<span class="target" id="sphinx-doc-sets"></span><ul id="index-15">
 <li><p class="first"><strong>sphinx-doc-sets</strong>, <em>list</em></p>
 <blockquote>
 <div><p>Here is list of documentation sets available for the instance. Each set is defined as <em>dictionary</em> with properties:</p>
@@ -279,7 +272,7 @@
 </div></blockquote>
 </li>
 </ul>
-<ul id="index-17">
+<ul id="index-16">
 <li><p class="first"><strong>logging</strong>, <em>dictionary</em></p>
 <blockquote>
 <div><p>Some standard Python way to configure the logging of a service. Please pay attention to one specific line of this stuff:</p>
@@ -293,7 +286,7 @@
 </div></blockquote>
 </li>
 </ul>
-<span id="index-18"></span><ul id="docs-cfg">
+<span id="index-17"></span><ul id="docs-cfg">
 <li><p class="first"><strong>doc-report-css</strong>, <em>string</em></p>
 </li>
 <li><p class="first"><strong>doc-pygments-css</strong>, <em>string</em></p>

@@ -99,9 +99,23 @@
 <dl class="docutils">
 <dt><strong>conditions</strong>: <em>optional</em> list of applying <a class="reference internal" href="s_condition.html"><span class="doc">condition descriptors</span></a></dt>
 <dd><em>in JSON string representation</em></dd>
-<dt><strong>zone</strong>: <em>optional</em> <a class="reference internal" href="s_zone.html"><span class="doc">zone descriptor</span></a></dt>
-<dd><em>in JSON string representation</em></dd>
 </dl>
+<p><strong>zone</strong>: <em>optional</em> :</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> list of zone settings</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line"><strong>[0]</strong>:  zone name, <em>string</em></div>
+<div class="line"><strong>[1]</strong>:  <code class="docutils literal notranslate"><span class="pre">[</span></code> variants <code class="docutils literal notranslate"><span class="pre">]</span></code>, <em>list of strings</em></div>
+<div class="line"><strong>[2]</strong>:  false, <em>add it if negation of condition is required</em></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
+</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>  <em>in JSON string representation</em></div>
+</div>
 <p><strong>schema</strong>: name of data schema</p>
 </div></blockquote>
 <p id="index-1"><strong>Returns</strong>:</p>
@@ -116,7 +130,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filter</span></a> applies if either <strong>filter</strong> or <strong>conditions</strong> is set (see discussion <a class="reference internal" href="../concepts/sol_work.html#fiter-conditions"><span class="std std-ref">here</span></a>)</li>
-<li><a class="reference internal" href="../glossary.html#term-zone"><span class="xref std std-term">zone</span></a> applies if <strong>zone</strong> is set - actual for <a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">workspaces</span></a> only. (Nonempty <strong>zone</strong> list can contain special pair of strings <code class="docutils literal notranslate"><span class="pre">[&quot;NOT&quot;,</span> <span class="pre">true]</span></code>. In this case <strong>zone</strong> option works in reverse context: records satisfying condition on zones are filtered out.)</li>
+<li><a class="reference internal" href="../glossary.html#term-zone"><span class="xref std std-term">zone</span></a> applies if <strong>zone</strong> is set - actual for <a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">workspaces</span></a> only (see <a class="reference internal" href="ws_list.html"><span class="doc">ws_list</span></a> for details).</li>
 </ul>
 </div></blockquote>
 <p>In current version of the system schemes are defined in source code of the server as <a class="reference internal" href="../glossary.html#term-solution-item"><span class="xref std std-term">solution items</span></a>, so the list of it is fixed. The schema <cite>csv</cite> is supported for simple variant of export.</p>
