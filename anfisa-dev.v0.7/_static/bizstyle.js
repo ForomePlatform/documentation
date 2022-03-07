@@ -36,6 +36,6 @@ $(window).resize(function(){
         $("li.nav-item-0 a").text("Top");
     }
     else {
-        $("li.nav-item-0 a").text("Anfisa Development&amp;Installation Documentation v.0.6 documentation");
+        $("li.nav-item-0 a").text("Anfisa Development&amp;Installation Documentation v.0.7 documentation");
     }
 });
