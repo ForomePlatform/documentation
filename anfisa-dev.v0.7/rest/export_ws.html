@@ -1,0 +1,153 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>export_ws &#8212; Anfisa Development&amp;Installation Documentation v.0.6 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ws_list" href="ws_list.html" />
+    <link rel="prev" title="import_ws" href="import_ws.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ws_list.html" title="ws_list"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="import_ws.html" title="import_ws"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.6 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa REST API</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">export_ws</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="import_ws.html"
+                        title="previous chapter">import_ws</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ws_list.html"
+                        title="next chapter">ws_list</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rest/export_ws.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="export-ws">
+<h1>export_ws<a class="headerlink" href="#export-ws" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><strong>Export workspace as archive</strong></div></blockquote>
+<div class="section" id="synopsis">
+<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p><strong>export_ws</strong></p>
+<blockquote>
+<div><p><strong>Arguments</strong>:</p>
+<blockquote>
+<div><p><strong>ds</strong>: dataset name</p>
+<p id="index-1"><strong>support</strong>: <em>optional</em> with support information</p>
+<p id="index-2"><strong>doc</strong>: <em>optional</em> with full documentation</p>
+</div></blockquote>
+<p><strong>Return value</strong>:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em></div>
+<div class="line-block">
+<div class="line">“<strong>kind</strong>”: kind of archive, <em>string</em> <code class="docutils literal notranslate"><span class="pre">&quot;tar.gz&quot;</span></code></div>
+<div class="line">“<strong>url</strong>”: path to archive for download, <em>string</em></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The functionality of <a class="reference internal" href="import_ws.html"><span class="doc">import</span></a> and export <a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">workspaces</span></a> serves for collaboraton purposes. Same workspace can be distributed between different instances of Anfisa to focus attention of various specialists to a difficult case represented in a short form.</p>
+<p>The request affects only <a class="reference internal" href="../glossary.html#term-workspace"><span class="xref std std-term">workspace</span></a> kind of datasets, and produces archive in <code class="docutils literal notranslate"><span class="pre">*.tgz</span></code> form ready for download. This file can be used in another Anfisa instance to create dataset duplicate by using <a class="reference internal" href="import_ws.html"><span class="doc">import_ws</span></a> operation.</p>
+<p>By default both options <strong>support</strong> and <strong>doc</strong> are on, use values <code class="docutils literal notranslate"><span class="pre">no</span></code>, <code class="docutils literal notranslate"><span class="pre">off</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code> to turn them off.</p>
+<p>Option <strong>support</strong> controls if <a class="reference internal" href="../concepts/sol_pack.html"><span class="doc">solution items</span></a> (tags, filters, decision trees) are stored in archive or not. If yes, all of them will be restored on export dataset archive on another Anfisa instance.</p>
+<p>Option <strong>doc</strong> controls if full dataset documentation is stored in archive. It is actual if the workspace is a derived one, and full documentation refers to the base full dataset. By default this full documentation will be attached to archive.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="import_ws.html"><span class="doc">import_ws</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ws_list.html" title="ws_list"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="import_ws.html" title="import_ws"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.6 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa REST API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (c) 2019, 2020. Partners HealthCare and other members of Forome Association.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
