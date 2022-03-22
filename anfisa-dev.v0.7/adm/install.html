@@ -536,12 +536,18 @@ If the file exists, it should be a file in JSON format with list of instructions
 <div><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code></div>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;:</span></code> “<em>dataset name</em>”, <code class="docutils literal notranslate"><span class="pre">url</span></code>: “<em>reference to BAM-files</em>” <code class="docutils literal notranslate"><span class="pre">}</span></code>,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;:</span></code> “<em>dataset name</em>”, <code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code>: “<em>reference to BAM-file</em>” <code class="docutils literal notranslate"><span class="pre">}</span></code>,</div>
 <div class="line-block">
 <div class="line">…</div>
 </div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
+</div></blockquote>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code> is subject of format operation to insert data specific for each sample, either <code class="docutils literal notranslate"><span class="pre">{id}</span></code> or <code class="docutils literal notranslate"><span class="pre">{name}</span></code>. As an example:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{&quot;dataset&quot;:</span> <span class="pre">&quot;PGP3140_panel_hl&quot;,</span> <span class="pre">&quot;url&quot;:</span> <span class="pre">&quot;https://nowhere/{name}.bam&quot;}</span></code></div>
 </div>
 </div></blockquote>
 <p>The file controls references to base datasets, IGV-links in derived datasets are evaluated in automatic way.</p>
