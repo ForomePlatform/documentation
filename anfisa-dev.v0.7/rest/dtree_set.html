@@ -137,6 +137,17 @@
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
 </div>
+<div class="line">“<strong>err-atoms</strong>”: <em>optional</em> atomic errors</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em></div>
+<div class="line-block">
+<div class="line">point no <em>int</em>:</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> atom idx <em>int</em>: <em>string</em> <code class="docutils literal notranslate"><span class="pre">}</span></code></div>
+</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
+</div>
 <div class="line">“<strong>labels</strong>”: <code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of string</em> <code class="docutils literal notranslate"><span class="pre">]</span></code> - defined state labels</div>
 <div class="line"><br /></div>
 <div class="line">“<strong>error</strong>”: <em>optional</em> diagnostics for first error, <em>string</em></div>
@@ -176,6 +187,7 @@ delete item with given name.</p>
 <p><strong>cond-atoms</strong>: Point of kind <code class="docutils literal notranslate"><span class="pre">&quot;If&quot;</span></code> contains one or many <a class="reference internal" href="../glossary.html#term-decision-tree-atomic-condition"><span class="xref std std-term">decision tree atomic conditions</span></a>, or in short form “atoms”. Atoms are active zones in user interface: the user can change atomic condition and it causes modification of decision tree of kind <code class="docutils literal notranslate"><span class="pre">&quot;ATOM&quot;</span></code></p>
 <blockquote>
 <div>Atoms are indexed by pair of integers: index of point and index in list of point atoms, so property <strong>cond-atoms</strong> is organized as dictionary with integer keys(indexes of points of type <code class="docutils literal notranslate"><span class="pre">&quot;If&quot;</span></code>) and values as list of <a class="reference internal" href="s_condition.html"><span class="doc">Condition descriptor</span></a> structures.</div></blockquote>
+<p><strong>err-atoms</strong>: Presents only if some atomic conditions in the tree are broken. Only essential indexes are filled with error messages.</p>
 <p><strong>labels</strong>: The property contains all <a class="reference internal" href="../glossary.html#term-decision-tree-state-label"><span class="xref std std-term">state labels</span></a> defined on decision tree, it might be used for rendering purposes.</p>
 <p><strong>error</strong>, <strong>line</strong>, <strong>pos</strong>: in case of errors in code of decision tree, these tree properties refer first error in the code, it might be used in rendering or work with code of decision tree</p>
 <p><strong>eval-status</strong>: property is either <code class="docutils literal notranslate"><span class="pre">&quot;ok&quot;</span></code> or evaluation error report</p>
