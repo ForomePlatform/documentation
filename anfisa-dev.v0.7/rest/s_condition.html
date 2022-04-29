@@ -44,6 +44,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Condition descriptor</a><ul>
+<li><a class="reference internal" href="#atomic-conditions">Atomic conditions</a><ul>
 <li><a class="reference internal" href="#format-for-numeric-property">Format for numeric property</a><ul>
 <li><a class="reference internal" href="#comments">Comments</a></li>
 </ul>
@@ -56,6 +57,9 @@
 <li><a class="reference internal" href="#id2">Comments</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complex-condition-constructions">Complex condition constructions</a></li>
 </ul>
 </li>
 </ul>
@@ -98,8 +102,10 @@
 <p id="index-0"><a class="reference internal" href="../glossary.html#term-conditions"><span class="xref std std-term">Conditions</span></a> are the kernel objects of the system, since they are atomic objects that are used in <a class="reference internal" href="../concepts/filtration.html"><span class="doc">Filtration procedures</span></a>.</p>
 <p><a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">Filters</span></a> are just list of conditions, conjunction of them. So it is important functionality for user to define and modify conditions interactively in <a class="reference internal" href="../concepts/filters_reg.html"><span class="doc">Filtering regime</span></a>.</p>
 <p>In context of <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision tree</span></a> conditions have form of <a class="reference internal" href="../glossary.html#term-decision-tree-atomic-condition"><span class="xref std std-term">decision tree atomic condition</span></a>, and the user can modify them in interactive way in <a class="reference internal" href="../concepts/dtree_pg.html"><span class="doc">Decision tree work page</span></a>.</p>
+<div class="section" id="atomic-conditions">
+<h2>Atomic conditions<a class="headerlink" href="#atomic-conditions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="format-for-numeric-property">
-<h2>Format for numeric property<a class="headerlink" href="#format-for-numeric-property" title="Permalink to this headline">¶</a></h2>
+<h3>Format for numeric property<a class="headerlink" href="#format-for-numeric-property" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list</em></div>
 <div class="line-block">
@@ -120,7 +126,7 @@
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 <div class="section" id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><dl class="first docutils">
@@ -150,7 +156,7 @@ correct but never true for any variant, please take care of it</dd>
 </div>
 </div>
 <div class="section" id="format-for-enumerated-property">
-<h2>Format for enumerated property<a class="headerlink" href="#format-for-enumerated-property" title="Permalink to this headline">¶</a></h2>
+<h3>Format for enumerated property<a class="headerlink" href="#format-for-enumerated-property" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list</em></div>
 <div class="line-block">
@@ -165,7 +171,7 @@ correct but never true for any variant, please take care of it</dd>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 <div class="section" id="id1">
-<h3>Comments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h4>Comments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>Format of condition allows to define conditions for both <a class="reference internal" href="../glossary.html#term-status-property"><span class="xref std std-term">status</span></a> and <a class="reference internal" href="../glossary.html#term-multiset-property"><span class="xref std std-term">multiset properties</span></a> with some remarks</p>
 <ul class="simple">
 <li><dl class="first docutils">
@@ -179,7 +185,7 @@ correct but never true for any variant, please take care of it</dd>
 </div>
 </div>
 <div class="section" id="format-for-function-condition">
-<h2>Format for function condition<a class="headerlink" href="#format-for-function-condition" title="Permalink to this headline">¶</a></h2>
+<h3>Format for function condition<a class="headerlink" href="#format-for-function-condition" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list</em></div>
 <div class="line-block">
@@ -195,12 +201,46 @@ correct but never true for any variant, please take care of it</dd>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 <div class="section" id="id2">
-<h3>Comments<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h4>Comments<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>See <a class="reference internal" href="func_ref.html"><span class="doc">Filtering functions</span></a> for functions definition and reference.</p>
 <p>All notes to condition for enumerated property are actual in this case too.</p>
 <p>Different functions have different format of function arguments (position <strong>[4]</strong>) and their own specific check if condition is good for this function.</p>
 <p>Available functions and their arguments are documented in <a class="reference internal" href="func_ref.html"><span class="doc">Filtering functions</span></a></p>
 </div>
+</div>
+</div>
+<div class="section" id="complex-condition-constructions">
+<h2>Complex condition constructions<a class="headerlink" href="#complex-condition-constructions" title="Permalink to this headline">¶</a></h2>
+<p>In context of <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision tree</span></a> conditions can have complex structure, with support of full set of constructive logical combinations. Here is the list of supported constructions:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[]</span></code></div>
+<div class="line-block">
+<div class="line">- condition designates any variant, all</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[null]</span></code></div>
+<div class="line-block">
+<div class="line">- condition designates empty set of variants, none</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[&quot;or&quot;</span></code>, <em>list of sub-conditions</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+<div class="line-block">
+<div class="line">- union of conditions, operation <code class="docutils literal notranslate"><span class="pre">&quot;or&quot;</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[&quot;and&quot;</span></code>, <em>list of sub-conditions</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+<div class="line-block">
+<div class="line">- intersection of conditions, operation <code class="docutils literal notranslate"><span class="pre">&quot;and&quot;</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[&quot;not&quot;</span></code>, <em>condition</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+<div class="line-block">
+<div class="line">- negation of condition</div>
+<div class="line"><br /></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[&quot;error&quot;</span></code>, <em>none or all condition</em>, <em>source condition</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
+<p id="error-condition"><em>Comment</em>. Instruction <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> is used for internal purposes in case when condition is not proper, so a simpler condition, either none or all is used on evaluation. But this artificial construction allows us to keep “original meaning” of instruction, so it allows us to modify complex conditions even when they are not proper.</p>
 </div>
 </div>
 

@@ -197,6 +197,8 @@ delete item with given name.</p>
 <div class="section" id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <p>The request is partial analogue to <a class="reference internal" href="ds_stat.html"><span class="doc">ds_stat</span></a>. Both methods are principal for support main <a class="reference internal" href="../intro.html#work-pages"><span class="std std-ref">work pages</span></a> for two mechanisms of <a class="reference internal" href="../glossary.html#term-filtration"><span class="xref std std-term">filtration</span></a> in the system.</p>
+<p>Inside instruction atom can be in an improper state, and there is error message in <strong>err-atoms</strong> for this case, and the Front End needs to show them. In some cases (usually if property name is not supported in dataset, or has improper type) the atom can be blocked. Only deletion of such atom is a proper operation. For blocked atoms the correspondent coindition in <strong>cond-atoms</strong> starts (leading element of top list) with <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> instruction, see
+details <a class="reference internal" href="s_condition.html#error-condition"><span class="std std-ref">here</span></a>.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
