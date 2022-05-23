@@ -148,7 +148,11 @@ Decision trees are <a class="reference internal" href="#term-solution-item"><spa
 <dt id="term-status-property">Status property</dt>
 <dd><a class="reference internal" href="#term-enumerated-property"><span class="xref std std-term">Enumerated property</span></a> with single value</dd>
 <dt id="term-multiset-property">Multiset property</dt>
-<dd><a class="reference internal" href="#term-enumerated-property"><span class="xref std std-term">Enumerated property</span></a> with single value</dd>
+<dd><a class="reference internal" href="#term-enumerated-property"><span class="xref std std-term">Enumerated property</span></a> with multiple value</dd>
+<dt id="term-variety-property">Variety property</dt>
+<dd><a class="reference internal" href="#term-enumerated-property"><span class="xref std std-term">Enumerated property</span></a> with wide spectrum of values (or symbols). Dual to correspondent <a class="reference internal" href="#term-panel-property"><span class="xref std std-term">panel property</span></a>, see <a class="reference internal" href="concepts/variety.html"><span class="doc">Variety and panel filtering complex</span></a>.</dd>
+<dt id="term-panel-property">Panel property</dt>
+<dd><a class="reference internal" href="#term-enumerated-property"><span class="xref std std-term">Enumerated property</span></a> represents presence of the dual <a class="reference internal" href="#term-variety-property"><span class="xref std std-term">variety property</span></a> symbols in <a class="reference internal" href="#term-symbol-panel"><span class="xref std std-term">symbol panels</span></a>, see <a class="reference internal" href="concepts/variety.html"><span class="doc">Variety and panel filtering complex</span></a>.</dd>
 <dt id="term-functions">Functions<dt id="term-filtering-function">Filtering function</dt>
 <dd>Aggregated information items that can be used in <a class="reference internal" href="concepts/filtration.html"><span class="doc">Filtration procedures</span></a> as well as <a class="reference internal" href="#term-filtering-property"><span class="xref std std-term">filtering properties</span></a>, in case if parameter data is defined. See <a class="reference internal" href="rest/func_ref.html"><span class="doc">Filtering functions</span></a>.</dd>
 <dt id="term-filtering-properties-classification">Filtering properties classification</dt>
@@ -161,12 +165,16 @@ Decision trees are <a class="reference internal" href="#term-solution-item"><spa
 <dd>Item representing some application solution useful for the user. Generalization name for <a class="reference internal" href="#term-filter"><span class="xref std std-term">filter</span></a>, <a class="reference internal" href="#term-decision-tree"><span class="xref std std-term">decision tree</span></a> and some others. See the discussions <a class="reference internal" href="concepts/sol_pack.html"><span class="doc">Solution items</span></a> and <a class="reference internal" href="concepts/sol_work.html"><span class="doc">Solution items in work</span></a>.</dd>
 <dt id="term-rules">Rules</dt>
 <dd>Aggregated <a class="reference internal" href="#term-multiset-property"><span class="xref std std-term">multiset property</span></a> that detects what <a class="reference internal" href="#term-decision-tree"><span class="xref std std-term">decision trees</span></a> are positive on the variant. Available only in <a class="reference internal" href="#term-filtering-regime"><span class="xref std std-term">filtering regime</span></a> in <a class="reference internal" href="concepts/ws_pg.html"><span class="doc">Workspace page</span></a>.</dd>
-<dt id="term-gene-list">Gene list</dt>
-<dd>List of genes registered in the system as <a class="reference internal" href="#term-solution-item"><span class="xref std std-term">solution item</span></a></dd>
+<dt id="term-symbol-panel">Symbol panel</dt>
+<dd>List of symbols prepared for special purposes. Used in <a class="reference internal" href="concepts/variety.html"><span class="doc">Variety and panel filtering complex</span></a>. Symbol panels are <a class="reference internal" href="#term-solution-item"><span class="xref std std-term">solution items</span></a></dd>
+<dt id="term-gene-panel">Gene panel</dt>
+<dd>List of gene symbols. Gene panels are <a class="reference internal" href="#term-solution-item"><span class="xref std std-term">solution items</span></a></dd>
+<dt id="term-active-symbols">Active symbols</dt>
+<dd>Symbols that are reported in <a class="reference internal" href="#term-variety-property"><span class="xref std std-term">variety properties</span></a> in complete form. Implemented as persistent hidden <a class="reference internal" href="#term-symbol-panel"><span class="xref std std-term">symbol panel</span></a>, see details <a class="reference internal" href="concepts/sol_work.html#panels-as-sol-items"><span class="std std-ref">here</span></a></dd>
 <dt id="term-export">Export</dt>
 <dd>Operation of creation (external) Excel document for selected variants. Document is stored on server side, see <a class="reference internal" href="adm/configuration.html#export-cfg"><span class="std std-ref">configuration settings</span></a>.</dd>
 <dt id="term-delayed-request">Delayed request</dt>
-<dd>A request that needs to be complete only if the main request has returned incomplete information. Forms series. See details in <a class="reference internal" href="concepts/status_report.html"><span class="doc">Status report mechanism with delays</span></a></dd>
+<dd>A request that needs to be complete only if the main request has returned incomplete information. Forms series. See details in <a class="reference internal" href="concepts/status_report.html"><span class="doc">Status report mechanism (with delays)</span></a></dd>
 <dt id="term-background-task">Background task</dt>
 <dd>The system cannot perform immediately some of tasks, so it evaluate them with some delay. Once such a tasks initiates, the client periodically call the server request <a class="reference internal" href="rest/job_status.html"><span class="doc">job_status</span></a> whether the task is done.</dd>
 <dt id="term-internal-ui">Internal UI</dt>

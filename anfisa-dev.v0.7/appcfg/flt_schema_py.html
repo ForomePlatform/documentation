@@ -46,8 +46,9 @@
 <li><a class="reference internal" href="#">Configuration of filtration schema API</a><ul>
 <li><a class="reference internal" href="#class-filterprepareseth">class FilterPrepareSetH</a></li>
 <li><a class="reference internal" href="#unit-definition">Unit definition</a><ul>
+<li><a class="reference internal" href="#variable-registry">Variable registry</a></li>
 <li><a class="reference internal" href="#ordinary-unit-types">Ordinary unit types</a></li>
-<li><a class="reference internal" href="#constrained-unit-types">Constrained unit types</a></li>
+<li><a class="reference internal" href="#constrained-and-complex-unit-types">Constrained and complex unit types</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#transcript-unit-types">Transcript unit types</a></li>
@@ -93,6 +94,7 @@
 <h1>Configuration of filtration schema API<a class="headerlink" href="#configuration-of-filtration-schema-api" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">This is description of part of API of code configuration layer dealing with configuration of data of <a class="reference internal" href="../glossary.html#term-filtration"><span class="xref std std-term">filtration</span></a> mechanism, see <a class="reference internal" href="../concepts/filtration.html"><span class="doc">Filtration procedures</span></a> for details. Here we explain application of this API in the source file</p>
 <p><code class="docutils literal notranslate"><span class="pre">app/config/flt_schema.py</span></code></p>
+<p>Here is fragment of the source file <code class="docutils literal notranslate"><span class="pre">app/prepare/prep_filters.py</span></code> with API used in configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">defineFilterSchema</span><span class="p">(</span><span class="n">metadata_record</span><span class="p">):</span>
     <span class="o">...</span>
 
@@ -107,48 +109,43 @@
     <span class="k">def</span> <span class="nf">viewGroup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view_group_title</span><span class="p">):</span>
         <span class="o">...</span>
 
-    <span class="k">def</span> <span class="nf">intValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">diap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">intValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">diap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">floatValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">diap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">floatValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">diap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">statusUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
-            <span class="n">accept_other_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">value_map</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">statusUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span>
+        <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+        <span class="n">accept_other_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">value_map</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dim_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">multiStatusUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">compact_mode</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-            <span class="n">accept_other_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">value_map</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">multiStatusUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span>
+            <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">compact_mode</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">accept_other_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">value_map</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">conversion</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">dim_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">presenceUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">var_info_seq</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">presenceUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">var_info_seq</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">panelsUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit_base</span><span class="p">,</span> <span class="n">panel_type</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">view_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">varietyUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">variety_name</span><span class="p">,</span> <span class="n">panel_name</span><span class="p">,</span> <span class="n">vpath</span><span class="p">,</span> <span class="n">panel_type</span><span class="p">,</span>
+        <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">transcriptIntValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transcriptIntValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span>
+        <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">transcriptFloatValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transcriptFloatValueUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span>
+        <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dim_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">transcriptStatusUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
-            <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bool_check_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transcriptStatusUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span>
+        <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+        <span class="n">bool_check_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">transcript_id_mode</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">dim_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">transcriptMultisetUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transcriptMultisetUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span> <span class="n">variants</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dim_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">transcriptPanelsUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">unit_base</span><span class="p">,</span> <span class="n">panel_type</span><span class="p">,</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">view_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="n">render_mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">transcriptVarietyUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">panel_name</span><span class="p">,</span> <span class="n">trans_name</span><span class="p">,</span> <span class="n">panel_type</span><span class="p">,</span>
+        <span class="n">default_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
 </pre></div>
 </div>
@@ -180,15 +177,9 @@
 </li>
 <li><p class="first"><strong>vpath</strong>, <em>string</em> - for most kinds of units it is <a class="reference internal" href="ajson.html#json-path-loc"><span class="std std-ref">path</span></a> to data in annotated JSON record</p>
 </li>
-<li><p class="first"><strong>title</strong>, <em>optional string</em> - human readable description of unit, can be not defined if <strong>name</strong> is sufficient</p>
-</li>
 <li><p class="first"><strong>default_value</strong> - default value of unit if data is not defined in annotated JSON record, it is good practice to set this option always</p>
 </li>
 <li><p class="first"><strong>conversion</strong> - <em>optional list</em>; representation of conversion method applied to data got from <strong>vpath</strong> to form value of unit for variant, see <a class="reference internal" href="list_conv.html"><span class="doc">List conversion mechanism</span></a></p>
-</li>
-<li><p class="first"><strong>render_mode</strong> - <em>optional string</em>; used in UI to represent values of unit (see <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a> for details)</p>
-</li>
-<li><p class="first"><strong>tooltip</strong> - <em>optional string</em>; explanation of unit meaning to render in UI as tooltip (title in HTML terms)</p>
 </li>
 <li><p class="first">for status/multi-status units:</p>
 <blockquote>
@@ -196,10 +187,22 @@
 <li><strong>variants</strong> - <em>optional list of strings</em>, if presents full list of variants in prepared order (otherwise list of variants is sorted in alphabetical order)</li>
 <li><strong>accept_other_values</strong> - <em>optional boolean</em>, if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the full list of variants can be completed by other values, if any found in data</li>
 <li><strong>value_map</strong> - <em>optional dictionary</em>, if presents it is a translation map of values (usually in use for technical values <code class="docutils literal notranslate"><span class="pre">&quot;True&quot;/&quot;False&quot;</span></code> in cases when their meanings are not clear for the user)</li>
+<li><strong>dim_name</strong> - <em>optional string</em>; for future usage, the purpose of this option is to define multiple units as ones that refer to the same “dimension”: list of values for these units could be interpeted as elements of the single list of values; in the current version this mechanism is used for <a class="reference internal" href="../concepts/variety.html"><span class="doc">variety/panel support</span></a> in an automatical way, but up to now there is no need to set this option directly</li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
+<div class="section" id="variable-registry">
+<h3>Variable registry<a class="headerlink" href="#variable-registry" title="Permalink to this headline">¶</a></h3>
+<p>For different datasets units with the same meaning might have different presentation: status or multiset, integer or float. It may disorient the user if these units have different visualisation properties for different datasets. The solution of this problem is to organize long-term registery of variables, or unit names, independent of stucture of concrete dataset. All unit names should be registered, and there there can be outdated names in registery. The following properties that affect visualisaton can be set in this registery for units:</p>
+<ul class="simple">
+<li><strong>title</strong>, <em>optional string</em> - human readable description of unit, can be not defined if <strong>name</strong> is sufficient</li>
+<li><strong>render_mode</strong> - <em>optional string</em>; used in UI to represent values of unit (see <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a> for details)</li>
+<li><strong>tooltip</strong> - <em>optional string</em>; explanation of unit meaning to render in UI as tooltip (title in HTML terms)</li>
+</ul>
+<p>The registery is located in the file</p>
+<p><code class="docutils literal notranslate"><span class="pre">app/config/variables.py</span></code></p>
+</div>
 <div class="section" id="ordinary-unit-types">
 <h3>Ordinary unit types<a class="headerlink" href="#ordinary-unit-types" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -227,8 +230,8 @@ For multi-status units natural default value is empty list, to it is not necessa
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="constrained-unit-types">
-<h3>Constrained unit types<a class="headerlink" href="#constrained-unit-types" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="constrained-and-complex-unit-types">
+<h3>Constrained and complex unit types<a class="headerlink" href="#constrained-and-complex-unit-types" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first"><strong>presenceUnit()</strong></p>
@@ -237,10 +240,17 @@ For multi-status units natural default value is empty list, to it is not necessa
 <p><strong>var_info_seq</strong> - <em>list of pairs</em>: <code class="docutils literal notranslate"><span class="pre">[&lt;key&gt;,</span> <span class="pre">&lt;path&gt;]</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> is set as one of unit values if data in annotated JSON record that <a class="reference internal" href="ajson.html#json-path-loc"><span class="std std-ref">corresponds</span></a> to <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> is defined and not empty</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>panelsUnit()</strong></p>
+<li><p class="first"><strong>varietyUnit()</strong></p>
 <blockquote>
-<div><p><strong>unit_base</strong>, <em>string</em>: Panels unit is a transformation of another unit with name <strong>unit_base</strong>. The base unit usually have large list of variants (in the current version of system we work with <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> unit which variant list contains whole gene symbols nomenclature, it is tens of thousands variants…</p>
-<p><strong>panel_type</strong>, <em>string</em>: …Then there are <a class="reference internal" href="../glossary.html#term-gene-list"><span class="xref std std-term">gene lists</span></a> registered as <a class="reference internal" href="../glossary.html#term-solution-item"><span class="xref std std-term">solution items</span></a> in <a class="reference internal" href="solution_py.html"><span class="doc">solution pack</span></a>. In the current version of the system they are registered with panel_type <code class="docutils literal notranslate"><span class="pre">Symbol</span></code>. Thus it is automatic procedure to detect panels that correspond to the given variant, and Panels unit is implementation for this procedure.</p>
+<div><p>The call initiates complex of units, see detailed explanation <a class="reference internal" href="../concepts/variety.html"><span class="doc">here</span></a></p>
+<p><strong>variety_name / panel_name</strong>, <em>strings</em>: Implementation of this unit assumes in real creation of three units:</p>
+<blockquote>
+<div><ul class="simple">
+<li>internal hidden unit with name <strong>name</strong> of status type, the hidden values of this unit are joint values  of symbols</li>
+<li>variety unit with name <strong>variety_name</strong> and panel unit with name <strong>panel_name</strong>, see explanation</li>
+</ul>
+</div></blockquote>
+<p><strong>panel_type</strong>, <em>string</em>; only <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> type is supported in the current version</p>
 <p id="flt-unit-view"><strong>view_path</strong> - <em>optional string</em>: Evaluation of panels applied to a variant is an nontrivial procedure, so there might be a need to show its result to the user. If this option is set, result of evaluation of panel list is put to annotated JSON record by the given  <a class="reference internal" href="ajson.html#json-path-loc"><span class="std std-ref">path</span></a></p>
 </div></blockquote>
 </li>
@@ -267,16 +277,12 @@ For multi-status units natural default value is empty list, to it is not necessa
 </li>
 <li><p class="first"><strong>transcriptMultisetUnit()</strong></p>
 </li>
-<li><p class="first"><strong>transcriptPanelsUnit()</strong></p>
+<li><p class="first"><strong>transcriptVarietyUnit()</strong></p>
 </li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-<blockquote id="post-unit-view">
-<div><p><strong>view_name</strong>, <em>optional string*</em>: is used instead of <strong>view_path</strong> for ordinary panels units. Since evaluation of transcript panels unit value is an nontrivial procedure, there might be a need to show its result to the user. If this option is set, result of evaluation of panel list is put to annotated JSON record by the path <code class="docutils literal notranslate"><span class="pre">/_view/transcripts</span></code> extended by <strong>view_name</strong>.</p>
-<p>The correspondent viewing attribute in <a class="reference internal" href="view_schema_py.html"><span class="doc">Configuration of viewing schema API</span></a> must be signed by special <a class="reference internal" href="view_schema_py.html#attribute-kinds"><span class="std std-ref">attribute kind</span></a> <code class="docutils literal notranslate"><span class="pre">&quot;posted&quot;</span></code></p>
-</div></blockquote>
 </div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -285,6 +291,7 @@ For multi-status units natural default value is empty list, to it is not necessa
 <p><a class="reference internal" href="flt_tune_py.html"><span class="doc">Tuning filtration schema API</span></a></p>
 <p><a class="reference internal" href="list_conv.html"><span class="doc">List conversion mechanism</span></a></p>
 <p><a class="reference internal" href="ajson.html"><span class="doc">Annotated JSON file format overview</span></a></p>
+<p><a class="reference internal" href="../concepts/variety.html"><span class="doc">Variety and panel filtering complex</span></a></p>
 </div>
 </div>
 

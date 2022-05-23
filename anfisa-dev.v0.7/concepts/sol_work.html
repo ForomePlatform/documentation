@@ -44,6 +44,9 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Solution items in work</a><ul>
+<li><a class="reference internal" href="#filters-and-decision-trees">Filters and decision trees</a></li>
+<li><a class="reference internal" href="#panels">Panels</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
 <li><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
@@ -84,13 +87,15 @@
             
   <div class="section" id="solution-items-in-work">
 <h1>Solution items in work<a class="headerlink" href="#solution-items-in-work" title="Permalink to this headline">¶</a></h1>
-<p>Here we discuss usage of two kinds of items: <a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filters</span></a> and <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision trees</span></a></p>
+<p>Here we discuss usage of three kinds of items: <a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filters</span></a>, <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision trees</span></a> and <a class="reference internal" href="../glossary.html#term-symbol-panel"><span class="xref std std-term">symbol panel</span></a>.</p>
+<div class="section" id="filters-and-decision-trees">
+<h2>Filters and decision trees<a class="headerlink" href="#filters-and-decision-trees" title="Permalink to this headline">¶</a></h2>
 <p>Item of such kinds is some complex object, and in practice it has one of three status states (note that the user can use item always):</p>
 <blockquote>
 <div><ul class="simple">
 <li><dl class="first docutils">
 <dt>preset solution, see <a class="reference internal" href="sol_pack.html"><span class="doc">Solution items</span></a></dt>
-<dd>The user can not modify it, names of such solutions have preffix symbol <cite>⏚</cite></dd>
+<dd>The user can not modify it, Names of such solutions are marked by preffix symbol <cite>⏚</cite></dd>
 </dl>
 </li>
 <li><dl class="first docutils">
@@ -126,15 +131,41 @@
 <li><strong>code</strong> <em>or</em> as <a class="reference internal" href="../glossary.html#term-decision-tree-code"><span class="xref std std-term">decision tree code</span></a>, as working copy of item</li>
 </ul>
 </div></blockquote>
-<p>Names of filters and decision trees must start with any letter (“alpha”) symbol (any alphabet) and must not contain spaces; in terms of js the criterium is as follows:</p>
+</div>
+<div class="section" id="panels">
+<span id="panels-as-sol-items"></span><h2>Panels<a class="headerlink" href="#panels" title="Permalink to this headline">¶</a></h2>
+<p>Panels are lists of names (symbols), and their usage as solution items is slightly different from one for filters and decision trees:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Panels are split onto groups by panel type. The full name of solution item type for panels has prefix <code class="docutils literal notranslate"><span class="pre">panel.</span></code>, the current version of the system supports only one type “Symbol”, so the full name of this type is <code class="docutils literal notranslate"><span class="pre">panel.Symbol</span></code></li>
+<li>Preset and dynamical panels are supported as well as for filter and decision tree types. The difference is: dynamical panel names are marked by prefix symbol ⚒, and vice versa preset panel names are not marked</li>
+</ul>
+</div></blockquote>
+<blockquote id="active-symbols">
+<div><ul class="simple">
+<li>Instead of working solution, each panel type has single one special hidden panel that is stored persistently. The symbols in this panel are interpreted as <a class="reference internal" href="../glossary.html#term-active-symbols"><span class="xref std std-term">active</span></a>. So this special panel is used as default panel in symbol/panel filtration complex, see details <a class="reference internal" href="variety.html"><span class="doc">here</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<ul id="sol-version-indicators">
+<li><p class="first">For each type of solution items the system provides version integer indicators of the type common state: indicator increases if any solution item of this type created, updated or deleted. Indicators are reset on restart of the system. Indicators can be used in the Front-End logics for detection when the correspondent information on solution items should be reloaded from Back-End.</p>
+</li>
+<li><p class="first">Names for dynamical solution items must start with any letter (“alpha”) symbol (any alphabet) and must not contain spaces; in terms of js the criterium is as follows:</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/^\S+$/u.test(name) &amp;&amp; (name[0].toLowerCase() != name[0].toUpperCase())
 </pre></div>
 </div>
+<p>Length of name for dynamical solution must not exceed 255 symbols.</p>
 </div></blockquote>
+</li>
+</ul>
+</div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="sol_pack.html"><span class="doc">Solution items</span></a></p>
+<p><a class="reference internal" href="sol_pack.html"><span class="doc">Solution items</span></a>
+<a class="reference internal" href="variety.html"><span class="doc">Variety and panel filtering complex</span></a></p>
 </div>
 </div>
 

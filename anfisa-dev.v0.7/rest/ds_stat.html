@@ -104,6 +104,10 @@
 <dl class="docutils">
 <dt><strong>conditions</strong>: <em>optional</em> list of applying <a class="reference internal" href="s_condition.html"><span class="doc">condition descriptors</span></a></dt>
 <dd><em>in JSON string representation</em></dd>
+<dt><strong>ctx</strong>: <em>optional</em>, <a class="reference internal" href="s_stat_ctx.html"><span class="doc">context descriptor</span></a></dt>
+<dd><em>in JSON string representation</em></dd>
+<dt><strong>actsym</strong>: <em>optional</em>, add gene symbols from filter to <a class="reference internal" href="../concepts/variety.html#actsym-purpose"><span class="std std-ref">active symbols</span></a></dt>
+<dd><em>recommended in form</em> <code class="docutils literal notranslate"><span class="pre">actsym=1</span></code></dd>
 </dl>
 <p><strong>instr</strong>: <em>optional modifier</em></p>
 </div></blockquote>
@@ -142,6 +146,7 @@
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 <div class="line">“<strong>stat-list</strong>”: <code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> <a class="reference internal" href="s_prop_stat.html"><span class="doc">Property Status structure</span></a> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+<div class="line">“<strong>functions</strong>”: <code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> <a class="reference internal" href="s_prop_stat.html"><span class="doc">Property Status structure</span></a> for functions <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 <div class="line">“<strong>cur-filter</strong>: <em>optional</em> name of current filter, <em>string</em></div>
 <div class="line">“<strong>conditions</strong>:  <code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> <a class="reference internal" href="s_condition.html"><span class="doc">Condition descriptor</span></a> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 <div class="line">“<strong>cond-seq</strong>: render information for conditions</div>
@@ -167,6 +172,7 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> <a class="reference internal" href="s_sol_entry.html"><span class="doc">Soluton Entry descriptor</span></a> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
+<div class="line"><strong>filter-sol-version</strong>: <a class="reference internal" href="../concepts/sol_work.html#sol-version-indicators"><span class="std std-ref">indicator of state</span></a> for filters</div>
 <div class="line"><strong>rq_id</strong>”: unique request id, for use in secondary requests, <em>string</em></div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
@@ -177,7 +183,7 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The request is the principal one for organizing <a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filtering regime</span></a> for <a class="reference internal" href="../glossary.html#term-dataset"><span class="xref std std-term">datasets</span></a>.</p>
-<p>The most important functionality initiated by this method is <a class="reference internal" href="../concepts/status_report.html"><span class="doc">Status report mechanism with delays</span></a>, see there explanations of input argument <strong>tm</strong> and returning properties <strong>stat-list</strong>, <strong>rq-id</strong></p>
+<p>The most important functionality initiated by this method is <a class="reference internal" href="../concepts/status_report.html"><span class="doc">Status report mechanism (with delays)</span></a>, see there explanations of input argument <strong>tm</strong> and returning properties <strong>stat-list</strong>, <strong>functions</strong>, <strong>rq-id</strong></p>
 <p>The rest of information returning by the request concerns filters as <a class="reference internal" href="../concepts/sol_work.html"><span class="doc">Solution items in work</span></a>.</p>
 <p>Current conditions/filter define <a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filter</span></a> if either <strong>filter</strong> or <strong>conditions</strong> is set (see discussion <a class="reference internal" href="../concepts/sol_work.html#fiter-conditions"><span class="std std-ref">here</span></a>).
 Otherwise (and also if <strong>conditions</strong> is set as empty list) the full dataset is subject of request.</p>
@@ -199,14 +205,14 @@ Otherwise (and also if <strong>conditions</strong> is set as empty list) the ful
 </div>
 <div class="section" id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
-<p>The request has simple analogue <a class="reference internal" href="dtree_stat.html"><span class="doc">dtree_stat</span></a>: both methods initiate <a class="reference internal" href="../concepts/status_report.html"><span class="doc">Status report mechanism with delays</span></a>.</p>
+<p>The request has simple analogue <a class="reference internal" href="dtree_stat.html"><span class="doc">dtree_stat</span></a>: both methods initiate <a class="reference internal" href="../concepts/status_report.html"><span class="doc">Status report mechanism (with delays)</span></a>.</p>
 <p>Also the request has analogue <a class="reference internal" href="dtree_set.html"><span class="doc">dtree_set</span></a>: both methods support its main objects as <a class="reference internal" href="../concepts/sol_work.html"><span class="doc">Solution items in work</span></a>, this request does it for <a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filters</span></a>, decision tree request for <a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision trees</span></a>.</p>
 </div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="statunits.html"><span class="doc">statunits</span></a></p>
 <p><a class="reference internal" href="statfunc.html"><span class="doc">statfunc</span></a></p>
-<p><a class="reference internal" href="../concepts/status_report.html"><span class="doc">Status report mechanism with delays</span></a></p>
+<p><a class="reference internal" href="../concepts/status_report.html"><span class="doc">Status report mechanism (with delays)</span></a></p>
 <p><a class="reference internal" href="../concepts/sol_work.html"><span class="doc">Solution items in work</span></a></p>
 </div>
 </div>

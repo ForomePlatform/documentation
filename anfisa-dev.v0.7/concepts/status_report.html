@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Status report mechanism with delays &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
+    <title>Status report mechanism (with delays) &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
@@ -43,7 +43,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Status report mechanism with delays</a><ul>
+<li><a class="reference internal" href="#">Status report mechanism (with delays)</a><ul>
 <li><a class="reference internal" href="#decision-tree-points-report-with-delays">Decision tree points report with delays</a></li>
 </ul>
 </li>
@@ -83,11 +83,12 @@
           <div class="body" role="main">
             
   <div class="section" id="status-report-mechanism-with-delays">
-<h1>Status report mechanism with delays<a class="headerlink" href="#status-report-mechanism-with-delays" title="Permalink to this headline">¶</a></h1>
+<h1>Status report mechanism (with delays)<a class="headerlink" href="#status-report-mechanism-with-delays" title="Permalink to this headline">¶</a></h1>
 <p>If a set of <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a> is selected in process of  <a class="reference internal" href="filtration.html"><span class="doc">Filtration procedures</span></a>, it is actual to prepare and render a report for all filtering properties status applied to this set.</p>
 <p>Status report for a filtering property is information about distribution of values of this property on selected <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a>.</p>
-<p>For numeric property it is diapason of values, for enumerated one it is list of actual values with counts of variants having it.</p>
-<p>In practice this mechanism appears to be effective and very helpful. It is intuitively clear for the user and might be used in (informal as well as formal) understanding of objects and their properties.</p>
+<p>For <a class="reference internal" href="../glossary.html#term-numeric-property"><span class="xref std std-term">numeric property</span></a> it is diapason of values, for <a class="reference internal" href="../glossary.html#term-enumerated-property"><span class="xref std std-term">enumerated one</span></a> it is list of actual values with counts of variants having it. In practice this mechanism appears to be effective and very helpful. It is intuitively clear for the user and might be used in (informal as well as formal) understanding of objects and their properties.</p>
+<p>Information on numeric and enumerated proper contains in <strong>stat-list</strong> returning property in form of list of <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a>. If delay happens (see below, <strong>tm</strong> argument), the structures might have incomplete state.</p>
+<p>The returning property <strong>functions</strong> contains information about available <a class="reference internal" href="../glossary.html#term-functions"><span class="xref std std-term">functions</span></a> and has form of list of <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a>, always in incomplete state (see details <a class="reference internal" href="../rest/s_prop_stat.html#functions-support"><span class="std std-ref">here</span></a>).</p>
 <p>Status report mechanism uses two options:</p>
 <ul class="simple">
 <li>argument of requests <strong>tm</strong> (it is float value in seconds, recommended value: 1) controls time period of evaluation of request; in case of timeout requests return incomplete result</li>

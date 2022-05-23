@@ -100,7 +100,7 @@
 <span class="n">SolutionPack</span><span class="o">.</span><span class="n">regPack</span><span class="p">(</span><span class="n">base_pack</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Instance of class SolutionPack provides the following methods for registering various solution items:</p>
+<p>Instance of class SolutionPack provides the following methods for registering various solution items (from source file <code class="docutils literal notranslate"><span class="pre">app/model/sol_pack.py</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SolutionPack</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">regFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flt_name</span><span class="p">,</span> <span class="n">cond_seq</span><span class="p">,</span> <span class="n">requires</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
@@ -191,7 +191,7 @@
 </li>
 <li><p class="first"><strong>regPanel</strong> (self, panel_name, panel_type, fname = None, items = None, requires = None)</p>
 <blockquote>
-<div><p>Registration of panels, in other words <a class="reference internal" href="../glossary.html#term-gene-list"><span class="xref std std-term">gene lists</span></a>. Most panels are used for preparation of panel <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">units</span></a> (see details in <a class="reference internal" href="flt_schema_py.html"><span class="doc">Configuration of filtration schema API</span></a> the discussion of <strong>panelsUnit()</strong> function).</p>
+<div><p>Registration of a preset panel.</p>
 <p>Items in panel can be defined either via file name or items directly.</p>
 <p><em>Example</em>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base_pack</span><span class="o">.</span><span class="n">regPanel</span><span class="p">(</span><span class="s2">&quot;ACMG59&quot;</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">,</span>
@@ -209,7 +209,7 @@
 </li>
 </ul>
 <blockquote id="panels-in-instance-context">
-<div>In the current version of the system additional gene/Symbol pannels can be added in context of instance of the application. Use <a class="reference internal" href="../adm/configuration.html#solutions"><span class="std std-ref">solutions</span></a> option in <a class="reference internal" href="../adm/configuration.html"><span class="doc">Configuration service: anfisa.json</span></a> to open usage of directory from where the system loads additional panels. Panels are expexted to be represented as files in <code class="docutils literal notranslate"><span class="pre">.lst</span></code> format, and names of these files are interpreted as names of gene/Symbol panels. These panels work only in context of the instance of the application.</div></blockquote>
+<div>In the current version of the system additional preset gene/Symbol pannels can be added in context of instance of the application. Use <a class="reference internal" href="../adm/configuration.html#solutions"><span class="std std-ref">solutions</span></a> option in <a class="reference internal" href="../adm/configuration.html"><span class="doc">Configuration service: anfisa.json</span></a> to open usage of directory from where the system loads additional panels. Panels are expected to be represented as files in <code class="docutils literal notranslate"><span class="pre">.lst</span></code> format, and names of these files are interpreted as names of gene/Symbol panels. These panels work only in context of the instance of the application.</div></blockquote>
 <ul>
 <li><p class="first"><strong>regItemDict</strong> (self, name, the_dict, requires = None)</p>
 <blockquote>

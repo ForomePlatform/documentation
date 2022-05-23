@@ -88,6 +88,7 @@
 <h1>Configuration of viewing schema API<a class="headerlink" href="#configuration-of-viewing-schema-api" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">This is description of part of API of code configuration layer dealing with configuration of data of <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a> for full viewing regime, see <a class="reference internal" href="../concepts/view.html"><span class="doc">Viewing regimes</span></a> for details. Here we explain application of this API in the source file</p>
 <p><code class="docutils literal notranslate"><span class="pre">app/config/view_schema.py</span></code></p>
+<p>Here is fragment of the source file <code class="docutils literal notranslate"><span class="pre">app/view/asp_set.py</span></code> with API used in configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AspectSetH</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aspects</span><span class="p">):</span>
         <span class="o">...</span>
@@ -196,11 +197,7 @@ For this case of aspect top data handler must be a dictionary, and each name/val
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">&quot;null&quot;,</span> <span class="pre">&quot;list&quot;,</span> <span class="pre">&quot;dict&quot;,</span> <span class="pre">&quot;empty&quot;,</span> <span class="pre">&quot;link&quot;,</span> <span class="pre">&quot;string&quot;,</span> <span class="pre">&quot;int&quot;,</span> <span class="pre">&quot;numeric&quot;,</span> <span class="pre">&quot;json&quot;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code> is recommended for all complex types of JSON objects</p>
-<p>There are two exceptional kinds also: they mean not real attributes but placeholders:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> - this attribute placeholder should be replaced but another attribute with runtime evaluation, see <a class="reference internal" href="view_tune_py.html"><span class="doc">Tuning viewing schema API</span></a> for details</li>
-<li><code class="docutils literal notranslate"><span class="pre">&quot;posted&quot;</span></code> - this attribute placeholder is going to be controlled by dynamical state of filter <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a>, see <a class="reference internal" href="flt_schema_py.html#post-unit-view"><span class="std std-ref">details here</span></a></li>
-</ul>
+<p>There is also an exceptional kind: <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> - this attribute placeholder should be replaced but another attribute with runtime evaluation, see <a class="reference internal" href="view_tune_py.html"><span class="doc">Tuning viewing schema API</span></a> for details</p>
 </div></blockquote>
 </li>
 <li><p class="first"><strong>title</strong> is <em>optional</em> visible (in left column of table) name of attribute, by default equals to <strong>name</strong></p>
