@@ -45,7 +45,9 @@
   <ul>
 <li><a class="reference internal" href="#">Administration aspects overview</a><ul>
 <li><a class="reference internal" href="#table-of-conventional-names">Table of conventional names</a></li>
+<li><a class="reference internal" href="#preparation-of-the-service">Preparation of the service</a></li>
 <li><a class="reference internal" href="#running-the-service">Running the service</a></li>
+<li><a class="reference internal" href="#administrator-competence">Administrator competence</a></li>
 <li><a class="reference internal" href="#sharing-data-between-multiple-users">Sharing data between multiple users</a></li>
 <li><a class="reference internal" href="#using-server-configuration-anfisa-json">Using server configuration (anfisa.json)</a></li>
 <li><a class="reference internal" href="#rest-api">REST API</a></li>
@@ -162,6 +164,10 @@
 </table>
 </div></blockquote>
 </div>
+<div class="section" id="preparation-of-the-service">
+<h2>Preparation of the service<a class="headerlink" href="#preparation-of-the-service" title="Permalink to this headline">¶</a></h2>
+<p>Before start service it is necessary to <a class="reference internal" href="adm_mongo.html#mongo-gene-db"><span class="std std-ref">load gene database to Mongo</span></a>.</p>
+</div>
 <div class="section" id="running-the-service">
 <h2>Running the service<a class="headerlink" href="#running-the-service" title="Permalink to this headline">¶</a></h2>
 <p>The service itself and the utilities (see below) should be run under the same user <code class="docutils literal notranslate"><span class="pre">ANFISA_ADMIN</span></code>.</p>
@@ -182,6 +188,26 @@ $ python -m app.run [path to configuration file]
 $ sudo systemctl stop anfisa
 </pre></div>
 </div>
+</div>
+<div class="section" id="administrator-competence">
+<h2>Administrator competence<a class="headerlink" href="#administrator-competence" title="Permalink to this headline">¶</a></h2>
+<p>Administrator of Anfisa instance is responsible for:</p>
+<blockquote>
+<div><blockquote>
+<div><em>with use of</em> <a class="reference internal" href="storage.html"><span class="doc">app.storage - Dataset creation and upload</span></a> utility</div></blockquote>
+<ul>
+<li><p class="first">create and update primary datasets, keep dataset naming policy</p>
+</li>
+<li><p class="first">drop primary and derived datasets, when they become out of use</p>
+<blockquote>
+<div><p><em>with use of</em> <a class="reference internal" href="adm_mongo.html"><span class="doc">app.adm_mongo - MongoDB storage administration</span></a> utility</p>
+</div></blockquote>
+</li>
+<li><p class="first">backup solution and tagging information accumulated in Mongo storage</p>
+</li>
+</ul>
+</div></blockquote>
+<p>mongo_gene_db</p>
 </div>
 <div class="section" id="sharing-data-between-multiple-users">
 <h2>Sharing data between multiple users<a class="headerlink" href="#sharing-data-between-multiple-users" title="Permalink to this headline">¶</a></h2>

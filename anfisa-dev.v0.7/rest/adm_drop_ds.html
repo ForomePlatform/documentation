@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>adm_reload_ds &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
+    <title>adm_drop_ds &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="adm_drop_ds" href="adm_drop_ds.html" />
-    <link rel="prev" title="adm_update" href="adm_update.html" />
+    <link rel="next" title="dsinfo" href="dsinfo.html" />
+    <link rel="prev" title="adm_reload_ds" href="adm_reload_ds.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -30,10 +30,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="adm_drop_ds.html" title="adm_drop_ds"
+          <a href="dsinfo.html" title="dsinfo"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="adm_update.html" title="adm_update"
+          <a href="adm_reload_ds.html" title="adm_reload_ds"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa REST API</a> &#187;</li> 
@@ -43,7 +43,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">adm_reload_ds</a><ul>
+<li><a class="reference internal" href="#">adm_drop_ds</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#comment">Comment</a></li>
@@ -52,15 +52,15 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="adm_update.html"
-                        title="previous chapter">adm_update</a></p>
+  <p class="topless"><a href="adm_reload_ds.html"
+                        title="previous chapter">adm_reload_ds</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="adm_drop_ds.html"
-                        title="next chapter">adm_drop_ds</a></p>
+  <p class="topless"><a href="dsinfo.html"
+                        title="next chapter">dsinfo</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/rest/adm_reload_ds.rst.txt"
+      <li><a href="../_sources/rest/adm_drop_ds.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -84,27 +84,28 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="adm-reload-ds">
-<h1>adm_reload_ds<a class="headerlink" href="#adm-reload-ds" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="adm-drop-ds">
+<h1>adm_drop_ds<a class="headerlink" href="#adm-drop-ds" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><strong>Force dataset reload</strong></div></blockquote>
+<div><strong>Drop of dataset</strong></div></blockquote>
 <div class="section" id="synopsis">
 <span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p><strong>adm_update</strong></p>
+<p><strong>adm_drop_ds</strong></p>
 <blockquote>
 <div><p><strong>Arguments</strong>:</p>
 <blockquote>
 <div><strong>ds</strong>: dataset name</div></blockquote>
-<p><strong>Return value</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;Reloaded</span> <span class="pre">&lt;dataset</span> <span class="pre">name&gt;&quot;</span></code> <em>as plain string</em></p>
+<p><strong>Return value</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;Dropped</span> <span class="pre">&lt;dataset</span> <span class="pre">name&gt;&quot;</span></code> <em>as plain string or</em> <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
 </div></blockquote>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The method reloads dataset in memory.</p>
+<p>Some <a class="reference internal" href="../glossary.html#term-ws-dataset"><span class="xref std std-term">WS-datasets</span></a> can be dropped (i.e. removed) in automatical way via this request.
+The configuration option <a class="reference internal" href="../adm/configuration.html#adm-drop-datasets"><span class="std std-ref">adm-drop-datasets</span></a> determines for what dataset names this operation is allowed on the instance of the system.</p>
 </div>
 <div class="section" id="comment">
 <h2>Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
-<p>The method can be used in administrative work, especially if dataset set of <a class="reference internal" href="../concepts/sol_work.html"><span class="doc">solutions</span></a> is changed by <a class="reference internal" href="../adm/adm_mongo.html"><span class="doc">app.adm_mongo - MongoDB storage administration</span></a> utility.</p>
+<p>Usually it is the system administrator competence to decide where it is time to drop a dataset. This method was added for testing purposes. But there can be other possibilities to use this functionality in concrete environments.</p>
 </div>
 </div>
 
@@ -121,10 +122,10 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="adm_drop_ds.html" title="adm_drop_ds"
+          <a href="dsinfo.html" title="dsinfo"
              >next</a> |</li>
         <li class="right" >
-          <a href="adm_update.html" title="adm_update"
+          <a href="adm_reload_ds.html" title="adm_reload_ds"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Anfisa REST API</a> &#187;</li> 

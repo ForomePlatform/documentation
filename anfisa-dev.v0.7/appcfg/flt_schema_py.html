@@ -193,15 +193,10 @@
 </li>
 </ul>
 <div class="section" id="variable-registry">
-<h3>Variable registry<a class="headerlink" href="#variable-registry" title="Permalink to this headline">¶</a></h3>
-<p>For different datasets units with the same meaning might have different presentation: status or multiset, integer or float. It may disorient the user if these units have different visualisation properties for different datasets. The solution of this problem is to organize long-term registery of variables, or unit names, independent of stucture of concrete dataset. All unit names should be registered, and there there can be outdated names in registery. The following properties that affect visualisaton can be set in this registery for units:</p>
-<ul class="simple">
-<li><strong>title</strong>, <em>optional string</em> - human readable description of unit, can be not defined if <strong>name</strong> is sufficient</li>
-<li><strong>render_mode</strong> - <em>optional string</em>; used in UI to represent values of unit (see <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a> for details)</li>
-<li><strong>tooltip</strong> - <em>optional string</em>; explanation of unit meaning to render in UI as tooltip (title in HTML terms)</li>
-</ul>
-<p>The registery is located in the file</p>
-<p><code class="docutils literal notranslate"><span class="pre">app/config/variables.py</span></code></p>
+<span id="id2"></span><h3>Variable registry<a class="headerlink" href="#variable-registry" title="Permalink to this headline">¶</a></h3>
+<p>For different datasets units with the same meaning might have different presentation: status or multiset, integer or float. It may disorient the user if these units have different visualisation properties for different datasets. The solution of this problem is to organize long-term registery of variables, or unit names, independent of stucture of concrete dataset. All unit names should be registered, and there there can be outdated names in registery.</p>
+<p>Variable registry registers variables with their <a class="reference internal" href="../concepts/prop_ux.html"><span class="doc">UX settings</span></a>.</p>
+<p>The registry configuration is located in the file <code class="docutils literal notranslate"><span class="pre">app/config/variables.py</span></code></p>
 </div>
 <div class="section" id="ordinary-unit-types">
 <h3>Ordinary unit types<a class="headerlink" href="#ordinary-unit-types" title="Permalink to this headline">¶</a></h3>
