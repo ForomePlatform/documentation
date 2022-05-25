@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Filtering properties restriction" href="restrict_flt.html" />
+    <link rel="next" title="Status report mechanism (with delays)" href="status_report.html" />
     <link rel="prev" title="Variety and panel filtering complex" href="variety.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="restrict_flt.html" title="Filtering properties restriction"
+          <a href="status_report.html" title="Status report mechanism (with delays)"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="variety.html" title="Variety and panel filtering complex"
@@ -44,6 +44,8 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">UX settings of filtration properties</a><ul>
+<li><a class="reference internal" href="#properties-classification">Properties classification</a></li>
+<li><a class="reference internal" href="#render-modes">Render modes</a></li>
 <li><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
@@ -53,8 +55,8 @@
   <p class="topless"><a href="variety.html"
                         title="previous chapter">Variety and panel filtering complex</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="restrict_flt.html"
-                        title="next chapter">Filtering properties restriction</a></p>
+  <p class="topless"><a href="status_report.html"
+                        title="next chapter">Status report mechanism (with delays)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -84,19 +86,26 @@
             
   <div class="section" id="ux-settings-of-filtration-properties">
 <h1>UX settings of filtration properties<a class="headerlink" href="#ux-settings-of-filtration-properties" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../glossary.html#term-filtering-property"><span class="xref std std-term">Filtering properties</span></a> are very important objects of the system, so the handling of this objects in the Front-End UX logic requires wide spectrum of settings. They form essential part of <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a>, their congiguration is discussed in <a class="reference internal" href="../appcfg/flt_schema_py.html"><span class="doc">Configuration of filtration schema API</span></a>. Here is description of these settings.</p>
+<p><a class="reference internal" href="../glossary.html#term-filtering-property"><span class="xref std std-term">Filtering properties</span></a> are very important objects of the system, so the handling of this objects in the Front-End UX logic requires wide spectrum of settings. They form essential part of <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a>, their congiguration is discussed in <a class="reference internal" href="../appcfg/flt_schema_py.html"><span class="doc">Configuration of filtration schema API</span></a>.</p>
+<p>The settings are:</p>
 <ul>
 <li><p class="first"><strong>title</strong>, <em>optional string</em> - human readable description of unit, can be not defined if <strong>name</strong> is sufficient</p>
 </li>
-<li><p class="first"><strong>render_mode</strong> - <em>optional string</em>; used in UI to represent values of unit (see <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a> for details)</p>
+<li><p class="first"><strong>render_mode</strong> - <em>optional string</em>; used in UI to represent values of unit, see details below</p>
 </li>
 <li><p class="first"><strong>tooltip</strong> - <em>optional string</em>; explanation of unit meaning to render in UI as tooltip (title in HTML terms)</p>
 </li>
-<li><dl class="first docutils">
-<dt><strong>classes</strong> - <em>list of strings</em></dt>
-<dd><p class="first">(in terms of <a class="reference internal" href="../appcfg/flt_schema_py.html#variable-registry"><span class="std std-ref">Variable registry</span></a>: <strong>facet1, facet2, facet3</strong> - <em>optional strings</em>)</p>
-<p>This setting requires an extended explanation.</p>
-<p>Since there are too many various filtering properties in the system, we make an attempt to classify properties by their “universal meanings”. The classification is not so clear and distinct, however it is possible to use it to separate properties for use them in different contexts.</p>
+<li><p class="first"><strong>classes</strong> - <em>list of integers</em></p>
+<blockquote>
+<div><p>Integers in the list are index values in descriptor structurr <strong>unit-classes</strong> from <a class="reference internal" href="../rest/s_ds_descr.html"><span class="doc">Dataset Descriptor structure</span></a>.</p>
+<p>The last setting requires an extended explanation.</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="properties-classification">
+<span id="id1"></span><h2>Properties classification<a class="headerlink" href="#properties-classification" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Since there are too many various filtering properties in the system, we make an attempt to classify properties by their “universal meanings”. The classification is not so clear and distinct, however it is possible to use it to separate properties for use them in different contexts.</p>
 <p>The classification has two layers:</p>
 <blockquote>
 <div><ul class="simple">
@@ -104,9 +113,12 @@
 <li>low layer: in context of each domain there is list of of types</li>
 </ul>
 </div></blockquote>
-<p>The Front End can use this classification to help the user to filter out unneccessary properties in the <a class="reference internal" href="../glossary.html#term-filtration"><span class="xref std std-term">filtration</span></a> process.</p>
+<p>The classification applied to the dataset forms <strong>unit-classes</strong> field of <a class="reference internal" href="../rest/s_ds_descr.html"><span class="doc">Dataset Descriptor structure</span></a> that is return value of <a class="reference internal" href="../rest/dsinfo.html"><span class="doc">dsinfo</span></a>.</p>
+<p>The facet indexes of concrete filtering property form <strong>classes</strong> field of <a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a>.</p>
+<p>In terms of <a class="reference internal" href="../appcfg/flt_schema_py.html#variable-registry"><span class="std std-ref">Variable registry</span></a> facet classification is defined in terms of parameters <strong>facet1, facet2, facet3</strong> - <em>optional strings</em>.</p>
+<p>The Front End can use this classification to help the user to keep unneccessary properties hidden in the <a class="reference internal" href="../glossary.html#term-filtration"><span class="xref std std-term">filtration</span></a> process.</p>
 <p>The current version of the system provides the following classification:</p>
-<table border="1" class="last docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
 <col width="47%" />
@@ -202,13 +214,53 @@
 </tr>
 </tbody>
 </table>
+</div></blockquote>
+</div>
+<div class="section" id="render-modes">
+<h2>Render modes<a class="headerlink" href="#render-modes" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Render modes for <a class="reference internal" href="../glossary.html#term-numeric-property"><span class="xref std std-term">numeric properties</span></a></p>
+<blockquote>
+<div><ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">&quot;</span></code> <em>scale</em>, <em>bounds</em> <code class="docutils literal notranslate"><span class="pre">&quot;</span></code></p>
+<blockquote>
+<div><p><em>scale</em>:  <code class="docutils literal notranslate"><span class="pre">linear</span></code>/<code class="docutils literal notranslate"><span class="pre">log</span></code> - linear <em>or</em> logariphmic scale</p>
+<dl class="docutils">
+<dt><em>bounds</em>:  <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">=</span></code> - meaningful bounds:</dt>
+<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> only upper/ <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> only lower / <code class="docutils literal notranslate"><span class="pre">=</span></code> both</p>
 </dd>
 </dl>
+</div></blockquote>
+<p>Examples:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&quot;linear,&lt;&quot;</span></code> linear scale, only upper bound is meaningful</li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;log,&gt;&quot;</span></code> logariphmic scale, only lower bound is meaningful</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">&quot;neighborhood&quot;</span></code> needs center/radius to determine diapason (linear scale assumed)</p>
 </li>
 </ul>
+</div></blockquote>
+</li>
+<li><p class="first">Render modes for <a class="reference internal" href="../glossary.html#term-enumerated-property"><span class="xref std std-term">enumerated properties</span></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&quot;pie&quot;</span></code> used for <a class="reference internal" href="../glossary.html#term-status-property"><span class="xref std std-term">status properties</span></a></li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;bar&quot;</span></code> used for <a class="reference internal" href="../glossary.html#term-multiset-property"><span class="xref std std-term">multiset properties</span></a>, with not too wide spectrum of values</li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;tree-map&quot;</span></code> used for <a class="reference internal" href="../glossary.html#term-variety-property"><span class="xref std std-term">variety properties</span></a>, or for properties with wide spectrum of values</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../rest/s_prop_stat.html"><span class="doc">Property Status structure</span></a></p>
+<p><a class="reference internal" href="../rest/dsinfo.html"><span class="doc">dsinfo</span></a></p>
 <p><a class="reference internal" href="../appcfg/flt_schema_py.html"><span class="doc">Configuration of filtration schema API</span></a></p>
 </div>
 </div>
@@ -226,7 +278,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="restrict_flt.html" title="Filtering properties restriction"
+          <a href="status_report.html" title="Status report mechanism (with delays)"
              >next</a> |</li>
         <li class="right" >
           <a href="variety.html" title="Variety and panel filtering complex"
