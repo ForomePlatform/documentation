@@ -103,7 +103,6 @@
 <p>The descriptor contains information about zones state. It is used in request <a class="reference internal" href="zone_list.html"><span class="doc">zone_list</span></a> as return value, either in single or serial form;</p>
 <p>In serial form <strong>variants</strong> is dropped.</p>
 <p>Property <strong>title</strong> is used for rendering.</p>
-<p>Property <strong>zone</strong> is hidden for the user, and is base technical identifier of zone.</p>
 <p>In current version the following zones are provided:</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -123,8 +122,8 @@
 <td><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td>Gene_List</td>
-<td><code class="docutils literal notranslate"><span class="pre">Panels</span></code></td>
+<tr class="row-odd"><td>Gene List</td>
+<td><code class="docutils literal notranslate"><span class="pre">Gene_Lists</span></code></td>
 <td>&#160;</td>
 </tr>
 <tr class="row-even"><td>Sample</td>
@@ -142,11 +141,14 @@
 </tbody>
 </table>
 </div></blockquote>
+<p>Property <strong>zone</strong> is hidden for the user, usually it corresponds to name of <a class="reference internal" href="../glossary.html#term-unit"><span class="xref std std-term">unit</span></a>, filtering property. So the extended Front-End application logic can collect information about zones not only by <a class="reference internal" href="zone_list.html"><span class="doc">zone_list</span></a> but by <a class="reference internal" href="statunits.html"><span class="doc">statunits</span></a> al well, using <strong>zone</strong> attribute as unit name.</p>
+<p>The exceptional zone is tags, <code class="docutils literal notranslate"><span class="pre">&quot;_tags&quot;</span></code>: tags must not be filtering property, but request <a class="reference internal" href="statunits.html"><span class="doc">statunits</span></a> provides special support for this name and this logic.</p>
 </div>
 <div class="section" id="used-in-requests">
 <h2>Used in requests<a class="headerlink" href="#used-in-requests" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="zone_list.html"><span class="doc">zone_list</span></a></p>
 <p><a class="reference internal" href="ws_list.html"><span class="doc">ws_list</span></a></p>
+<p><a class="reference internal" href="statunits.html"><span class="doc">statunits</span></a></p>
 </div>
 </div>
 

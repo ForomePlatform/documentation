@@ -117,6 +117,7 @@
 <div class="line-block">
 <div class="line">[<strong>0</strong>]: name of ancestor dataset, <em>string</em></div>
 <div class="line">[<strong>1</strong>]: <em>optional</em> dataset documentation, <a class="reference internal" href="s_doc_descr.html"><span class="doc">Dataset document descriptor</span></a></div>
+<div class="line">[<strong>2</strong>]: <em>optional</em> time of dataset installation, <em>string, time time in ISO format</em></div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
 </div>
@@ -158,6 +159,45 @@
 <div class="line-block">
 <div class="line">export operations (<a class="reference internal" href="csv_export.html"><span class="doc">csv_export</span></a>, <a class="reference internal" href="export.html"><span class="doc">export</span></a>), <em>int</em></div>
 </div>
+<div class="line">“<strong>receipts</strong>: <em>optional</em> list of specifications for dataset derivations</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>dictionary</em></div>
+<div class="line-block">
+<div class="line">“<strong>kind</strong>”: kind of derivation: <code class="docutils literal notranslate"><span class="pre">&quot;filter&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;dtree&quot;</span></code>, <em>string</em></div>
+<div class="line">“<strong>eval-update-info</strong>: <em>list</em></div>
+<div class="line-block">
+<div class="line">[<strong>0</strong>]: creation time, <em>string in ISO format</em></div>
+<div class="line">[<strong>1</strong>]: base dataset name, <em>string</em></div>
+</div>
+<div class="line">“<strong>panels-supply</strong>: dynamic panels used in receipt <em>optional dictionary</em></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code></div>
+<div class="line-block">
+<div class="line">panel kind: <em>list of strings</em></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
+</div>
+<div class="line"><em>for kind</em> <code class="docutils literal notranslate"><span class="pre">filter</span></code>:</div>
+</div>
+<div class="line">“<strong>f-presentation</strong>”: <em>list of strings*</em></div>
+<div class="line-block">
+<div class="line">list of filter criteria in form of Python code</div>
+</div>
+<div class="line">“<strong>filter-name</strong>”: <em>optional</em> name of filter, if filter is named</div>
+<div class="line-block">
+<div class="line"><em>for kind</em> <code class="docutils literal notranslate"><span class="pre">dtree</span></code>:</div>
+</div>
+<div class="line">“<strong>p-presentation</strong>: <em>list</em> of point presentations</div>
+<div class="line-block">
+<div class="line">[<strong>0</strong>]: presentation in form of Python code with HTML markup, <em>string</em></div>
+<div class="line">[<strong>1</strong>]: count of variants selected, <em>optional int</em></div>
+<div class="line">[<strong>2</strong>]: mode of selection, <em>optional boolean</em></div>
+</div>
+<div class="line">“<strong>dtree-name</strong>”: <em>optional</em> name of decision tree, if tree is named</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
 </div>
 </div>
 </div>
@@ -192,6 +232,8 @@ In this case descriptor contains details about metadata.</dd>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
 </div>
 </div>
+<p>Property <strong>receipts</strong> is actual for derived datasets and contains complete information how the dataset was derived, i.e. produced from root dataset. Information is given in human readable form for render purposes. Receipts are sorted in stack order: the first receipt in array corresponds to the latest derivation filtration.</p>
+<p>Receipts might use <a class="reference internal" href="../concepts/variety.html"><span class="doc">panels</span></a> as dynamical <a class="reference internal" href="../concepts/sol_work.html"><span class="doc">solutions</span></a>, so the internal property <strong>panels-supply</strong> fixes actual state of used panels at moment of derivation.</p>
 </div>
 <div class="section" id="used-in-requests">
 <h2>Used in requests<a class="headerlink" href="#used-in-requests" title="Permalink to this headline">¶</a></h2>
