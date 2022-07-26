@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Soluton Entry descriptor &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
+    <title>Solution Entry descriptor &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
@@ -43,7 +43,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Soluton Entry descriptor</a><ul>
+<li><a class="reference internal" href="#">Solution Entry descriptor</a><ul>
 <li><a class="reference internal" href="#format">Format</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#see-also">See also</a></li>
@@ -84,15 +84,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="soluton-entry-descriptor">
-<h1>Soluton Entry descriptor<a class="headerlink" href="#soluton-entry-descriptor" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="solution-entry-descriptor">
+<h1>Solution Entry descriptor<a class="headerlink" href="#solution-entry-descriptor" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="format">
 <span id="index-0"></span><h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em>,</div>
 <div class="line-block">
 <div class="line">“<strong>name</strong>”: entry name, <em>string</em></div>
-<div class="line">“<strong>standard</strong>”: intry is standard (pre-set), <em>boolean</em></div>
+<div class="line">“<strong>rubric</strong>”: <em>optional</em> entry rubric, <em>string</em></div>
+<div class="line">“<strong>standard</strong>”: entry is standard (pre-set), <em>boolean</em></div>
 <div class="line">“<strong>eval-status</strong>”: evaluation status of entry,</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;ok&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;runtime&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code></div>
@@ -120,6 +121,7 @@
 <li><a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filters</span></a>: <a class="reference internal" href="ds_stat.html"><span class="doc">ds_stat</span></a></li>
 <li><a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision trees</span></a>: <a class="reference internal" href="dtree_set.html"><span class="doc">dtree_set</span></a></li>
 </ul>
+<p><strong>eval-status</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> corresponds to fully incorrect entry state (syntax errors for example), <code class="docutils literal notranslate"><span class="pre">&quot;runtime&quot;</span></code> corresponds to problems on entry evaluaton</p>
 </div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
