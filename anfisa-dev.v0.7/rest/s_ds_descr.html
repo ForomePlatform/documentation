@@ -151,6 +151,10 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of strings</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
+<div class="line">“<strong>igv-urls</strong>”: <em>optional</em> url-addresses of BAM files,</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of strings</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
+</div>
 <div class="line">“<strong>cohorts</strong>”: <em>optional</em> list of cohort names</div>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of strings</em> <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
@@ -234,6 +238,7 @@ In this case descriptor contains details about metadata.</dd>
 </div>
 <p>Property <strong>receipts</strong> is actual for derived datasets and contains complete information how the dataset was derived, i.e. produced from root dataset. Information is given in human readable form for render purposes. Receipts are sorted in stack order: the first receipt in array corresponds to the latest derivation filtration.</p>
 <p>Receipts might use <a class="reference internal" href="../concepts/variety.html"><span class="doc">panels</span></a> as dynamical <a class="reference internal" href="../concepts/sol_work.html"><span class="doc">solutions</span></a>, so the internal property <strong>panels-supply</strong> fixes actual state of used panels at moment of derivation.</p>
+<p>Property <strong>igv-urls</strong> is present if the dataset provides <a class="reference internal" href="../adm/install.html#igv-direct-support"><span class="std std-ref">IGV direct support</span></a> functionality.</p>
 </div>
 <div class="section" id="used-in-requests">
 <h2>Used in requests<a class="headerlink" href="#used-in-requests" title="Permalink to this headline">¶</a></h2>
