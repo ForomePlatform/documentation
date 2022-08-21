@@ -121,7 +121,10 @@
 <div class="line"><strong>[0]</strong>: action type, <code class="docutils literal notranslate"><span class="pre">&quot;DTREE&quot;</span></code></div>
 <div class="line"><strong>[1]</strong>: action name (from list below), <em>string</em></div>
 <div class="line"><strong>[2]</strong>: decision tree name, <em>string</em></div>
-<div class="line"><strong>[3]</strong>: rubric, in case of <code class="docutils literal notranslate"><span class="pre">&quot;UPDATE&quot;</span></code> option,  <em>optional string, optional position</em></div>
+<div class="line"><strong>[3]</strong>: rubric, in case of <code class="docutils literal notranslate"><span class="pre">&quot;UPDATE&quot;</span></code> option,  <em>optional string</em></div>
+<div class="line-block">
+<div class="line"><em>position [3] is optional and can be omited</em></div>
+</div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
@@ -129,13 +132,11 @@
 <div class="section" id="actions">
 <h3>Actions:<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><strong>UPDATE</strong>: update (as well as create) decision tree with given name</div></blockquote>
-<div class="line-block">
-<div class="line">(Note:<code class="docutils literal notranslate"><span class="pre">null</span></code> as <code class="docutils literal notranslate"><span class="pre">&lt;rubric&gt;</span></code> means rubric drop for existing tree; do not put this item in list
-    if no change of rubric is expected)</div>
-</div>
+<div><p><strong>UPDATE</strong>: update (as well as create) decision tree with given name</p>
 <blockquote>
-<div><strong>DELETE</strong>: delete decision tree with given name</div></blockquote>
+<div>(Note: if position <strong>[3]</strong> is omited, no change of rubric is expected on update)</div></blockquote>
+<p><strong>DELETE</strong>: delete decision tree with given name</p>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="instr-modifying-actions">

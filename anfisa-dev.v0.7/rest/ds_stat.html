@@ -116,7 +116,10 @@
 <div class="line-block">
 <div class="line"><strong>[0]</strong>: option, <code class="docutils literal notranslate"><span class="pre">&quot;UPDATE&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;DELETE&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;JOIN&quot;</span></code></div>
 <div class="line"><strong>[1]</strong>: filter name, <em>string</em></div>
-<div class="line"><strong>[2]</strong>: rubric, in case of <code class="docutils literal notranslate"><span class="pre">&quot;UPDATE&quot;</span></code> option,  <em>optional string, optional position*</em></div>
+<div class="line"><strong>[2]</strong>: rubric, in case of <code class="docutils literal notranslate"><span class="pre">&quot;UPDATE&quot;</span></code> option,  <em>optional string</em></div>
+<div class="line-block">
+<div class="line"><em>position [2] is optional and can be omited</em></div>
+</div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code> <em>in JSON string representation</em></div>
 </div>
@@ -196,16 +199,8 @@ Otherwise (and also if <strong>conditions</strong> is set as empty list) the ful
 <p>If argument <strong>instr</strong> is set, the request modifies filter on server side in the following cases:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">[&quot;UPDATE&quot;,</span> <span class="pre">&lt;filter_name&gt;,</span> <span class="pre">[&lt;rubric&gt;]]</span></code> the value of argument <strong>conditions</strong> are interpreted</li>
-</ul>
-<blockquote>
-<div><p>as new content of filter <code class="docutils literal notranslate"><span class="pre">filter_name</span></code>, use this option for both create or update filter</p>
-<dl class="docutils">
-<dt>(Note:<code class="docutils literal notranslate"><span class="pre">null</span></code> as <code class="docutils literal notranslate"><span class="pre">&lt;rubric&gt;</span></code> means rubric drop for existing filter; do not put this item in list</dt>
-<dd>if no change of rubric is expected)</dd>
-</dl>
-</div></blockquote>
-<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">[&quot;UPDATE&quot;,</span> <span class="pre">&lt;filter_name&gt;,</span> <span class="pre">&lt;rubric&gt;]</span></code> the value of argument <strong>conditions</strong> are interpreted as new content of filter <code class="docutils literal notranslate"><span class="pre">filter_name</span></code>, use this option for both create or update filter</li>
+<li><code class="docutils literal notranslate"><span class="pre">[&quot;UPDATE&quot;,</span> <span class="pre">&lt;filter_name&gt;]</span></code> the same as previous, with no rubric change</li>
 <li><code class="docutils literal notranslate"><span class="pre">[&quot;DELETE&quot;,</span> <span class="pre">&lt;filter_name&gt;]</span></code> the filter <code class="docutils literal notranslate"><span class="pre">filter_name</span></code> is subject to be deleted.</li>
 </ul>
 </div></blockquote>
