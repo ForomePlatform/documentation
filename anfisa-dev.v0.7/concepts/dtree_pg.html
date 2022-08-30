@@ -2,25 +2,28 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="English">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Decision tree work page &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Documentation work page" href="doc_pg.html" />
     <link rel="prev" title="XL-dataset work page" href="xl_pg.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,25 +39,122 @@
           <a href="xl_pg.html" title="XL-dataset work page"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa Interface concepts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa Interface concepts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Decision tree work page</a></li> 
       </ul>
-    </div>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="decision-tree-work-page">
+<h1>Decision tree work page<a class="headerlink" href="#decision-tree-work-page" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="../glossary.html#term-Decision-tree"><span class="xref std std-term">Decision tree</span></a> page looks very complex. However, essential part of its functionality has strong back-end support, so the the Front End complexity is not so hard as one can expect. Essential portion of real difficulties in Front End application support focuses on the same issue as in other work pages: :doc:&lt;status_report&gt;.</p>
+<p>The page provides the following functionality issues for work with with all <a class="reference internal" href="../glossary.html#term-Dataset"><span class="xref std std-term">datasets</span></a>, <a class="reference internal" href="../glossary.html#term-XL-dataset"><span class="xref std std-term">xl-</span></a> and <cite>ws-&lt;ws-dataset&gt;</cite> ones</p>
+<ul>
+<li><p><a class="reference internal" href="../glossary.html#term-Decision-tree"><span class="xref std std-term">Decision tree</span></a> complex representation with possibility to select any applicable <a class="reference internal" href="../glossary.html#term-Decision-tree-point"><span class="xref std std-term">point</span></a></p></li>
+<li><p><a class="reference internal" href="status_report.html#dtree-points-report"><span class="std std-ref">Delayed report of point counts</span></a>, actual for <a class="reference internal" href="../glossary.html#term-XL-dataset"><span class="xref std std-term">xl-datasets</span></a> where count evaluations might be heavy</p></li>
+<li><p>Complex of visualization of properties state, in context of current decision point selection, see <a class="reference internal" href="status_report.html"><span class="doc">Status report mechanism (with delays)</span></a></p></li>
+<li><p><a class="reference internal" href="view.html#auxiliary-viewing-regime"><span class="std std-ref">Auxiliary viewing regime</span></a>, in context of current decision point</p></li>
+<li><p>Interactive modification of decision tree, see full reference in <a class="reference internal" href="../rest/s_dtree_instr.html"><span class="doc">Decision Tree modifying actions</span></a>. Operations of this layer are split onto three categories of operations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>INSTR</strong>: manipulations with logical structure of the code</p></li>
+<li><p><strong>POINT</strong>: creation of new atomic conditions in context of available properties state, and placement of them into the code of decision tree</p></li>
+<li><p><strong>ATOM</strong>: tuning atomic conditions in decision tree code</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Operation support:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>manual edition of decision tree code</p></li>
+<li><p>support decision trees as <a class="reference internal" href="sol_work.html"><span class="doc">Solution items in work</span></a></p></li>
+<li><p>creation of <a class="reference internal" href="../glossary.html#term-Secondary-workspace"><span class="xref std std-term">secondary workspace</span></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>In case of <a class="reference internal" href="../glossary.html#term-WS-dataset"><span class="xref std std-term">ws-dataset</span></a> the page uses <a class="reference internal" href="../glossary.html#term-Transcript-variant"><span class="xref std std-term">transcript variants</span></a> as <a class="reference internal" href="../glossary.html#term-Filtration"><span class="xref std std-term">filtration</span></a> items, otherwise in case of <a class="reference internal" href="../glossary.html#term-XL-dataset"><span class="xref std std-term">xl-dataset</span></a> <a class="reference internal" href="../glossary.html#term-DNA-Variant"><span class="xref std std-term">DNA variants</span></a> are used.</p>
+<p>Decision trees are powerful tool of <a class="reference internal" href="filtration.html"><span class="doc">Filtration procedures</span></a>, they are integrated with other parts of the system by two ways:</p>
+<ul class="simple">
+<li><p>there is always a possibility to create <a class="reference internal" href="../glossary.html#term-Secondary-workspace"><span class="xref std std-term">secondary workspace</span></a> to save result of filtration workspace</p></li>
+<li><p>for <a class="reference internal" href="../glossary.html#term-WS-dataset"><span class="xref std std-term">ws-datasets</span></a> only: filtration results of all decision trees that are registered as <a class="reference internal" href="../glossary.html#term-Solution-item"><span class="xref std std-term">solution items</span></a> are available in <a class="reference internal" href="filters_reg.html"><span class="doc">Filtering regime</span></a> as values of special property <a class="reference internal" href="../glossary.html#term-Rules"><span class="xref std std-term">Rules</span></a>.</p></li>
+</ul>
+<p>Interactive modification level (see <a class="reference internal" href="../rest/s_dtree_instr.html"><span class="doc">Decision Tree modifying actions</span></a> for reference) forms complete functionality to make any meaningful change in decision tree. So there is no need for the user to direct change of <a class="reference internal" href="dtree_syntax.html"><span class="doc">Python code of decision tree</span></a>. It might be useful only for control complex cases of boolean operations.</p>
+<section id="rest-api-requests">
+<h2>REST API requests<a class="headerlink" href="#rest-api-requests" title="Permalink to this heading">¶</a></h2>
+<p>For support Decision Tree work page:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/dsinfo.html"><span class="doc">dsinfo</span></a></dt><dd><p>Dataset information</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/dtree_set.html"><span class="doc">dtree_set</span></a></dt><dd><p>Decision tree page setup</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/dtree_counts.html"><span class="doc">dtree_counts</span></a></dt><dd><p>Delayed evaluations of item counts for decision tree points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/dtree_stat.html"><span class="doc">dtree_stat</span></a></dt><dd><p>Filtering properties status report for decision tree page</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/dtree_check.html"><span class="doc">dtree_check</span></a></dt><dd><p>Decision tree code check (used for validation of manual code edition)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/dtree_cmp.html"><span class="doc">dtree_cmp</span></a></dt><dd><p>Comparison of decision trees</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../rest/ds2ws.html"><span class="doc">ds2ws</span></a></dt><dd><p>Creation of secondary workspace</p>
+</dd>
+</dl>
+</li>
+<li><p>see also <a class="reference internal" href="status_report.html"><span class="doc">Status report mechanism (with delays)</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Decision tree work page</a><ul>
 <li><a class="reference internal" href="#rest-api-requests">REST API requests</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="xl_pg.html"
-                        title="previous chapter">XL-dataset work page</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="doc_pg.html"
-                        title="next chapter">Documentation work page</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="xl_pg.html"
+                          title="previous chapter">XL-dataset work page</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="doc_pg.html"
+                          title="next chapter">Documentation work page</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -63,110 +163,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="decision-tree-work-page">
-<h1>Decision tree work page<a class="headerlink" href="#decision-tree-work-page" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">Decision tree</span></a> page looks very complex. However, essential part of its functionality has strong back-end support, so the the Front End complexity is not so hard as one can expect. Essential portion of real difficulties in Front End application support focuses on the same issue as in other work pages: :doc:&lt;status_report&gt;.</p>
-<p>The page provides the following functionality issues for work with with all <a class="reference internal" href="../glossary.html#term-dataset"><span class="xref std std-term">datasets</span></a>, <a class="reference internal" href="../glossary.html#term-xl-dataset"><span class="xref std std-term">xl-</span></a> and <cite>ws-&lt;ws-dataset&gt;</cite> ones</p>
-<ul>
-<li><p class="first"><a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">Decision tree</span></a> complex representation with possibility to select any applicable <a class="reference internal" href="../glossary.html#term-decision-tree-point"><span class="xref std std-term">point</span></a></p>
-</li>
-<li><p class="first"><a class="reference internal" href="status_report.html#dtree-points-report"><span class="std std-ref">Delayed report of point counts</span></a>, actual for <a class="reference internal" href="../glossary.html#term-xl-dataset"><span class="xref std std-term">xl-datasets</span></a> where count evaluations might be heavy</p>
-</li>
-<li><p class="first">Complex of visualization of properties state, in context of current decision point selection, see <a class="reference internal" href="status_report.html"><span class="doc">Status report mechanism (with delays)</span></a></p>
-</li>
-<li><p class="first"><a class="reference internal" href="view.html#auxiliary-viewing-regime"><span class="std std-ref">Auxiliary viewing regime</span></a>, in context of current decision point</p>
-</li>
-<li><p class="first">Interactive modification of decision tree, see full reference in <a class="reference internal" href="../rest/s_dtree_instr.html"><span class="doc">Decision Tree modifying actions</span></a>. Operations of this layer are split onto three categories of operations:</p>
-<blockquote>
-<div><ul class="simple">
-<li><strong>INSTR</strong>: manipulations with logical structure of the code</li>
-<li><strong>POINT</strong>: creation of new atomic conditions in context of available properties state, and placement of them into the code of decision tree</li>
-<li><strong>ATOM</strong>: tuning atomic conditions in decision tree code</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Operation support:</p>
-<blockquote>
-<div><ul class="simple">
-<li>manual edition of decision tree code</li>
-<li>support decision trees as <a class="reference internal" href="sol_work.html"><span class="doc">Solution items in work</span></a></li>
-<li>creation of <a class="reference internal" href="../glossary.html#term-secondary-workspace"><span class="xref std std-term">secondary workspace</span></a></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-<p>In case of <a class="reference internal" href="../glossary.html#term-ws-dataset"><span class="xref std std-term">ws-dataset</span></a> the page uses <a class="reference internal" href="../glossary.html#term-transcript-variant"><span class="xref std std-term">transcript variants</span></a> as <a class="reference internal" href="../glossary.html#term-filtration"><span class="xref std std-term">filtration</span></a> items, otherwise in case of <a class="reference internal" href="../glossary.html#term-xl-dataset"><span class="xref std std-term">xl-dataset</span></a> <a class="reference internal" href="../glossary.html#term-dna-variant"><span class="xref std std-term">DNA variants</span></a> are used.</p>
-<p>Decision trees are powerful tool of <a class="reference internal" href="filtration.html"><span class="doc">Filtration procedures</span></a>, they are integrated with other parts of the system by two ways:</p>
-<ul class="simple">
-<li>there is always a possibility to create <a class="reference internal" href="../glossary.html#term-secondary-workspace"><span class="xref std std-term">secondary workspace</span></a> to save result of filtration workspace</li>
-<li>for <a class="reference internal" href="../glossary.html#term-ws-dataset"><span class="xref std std-term">ws-datasets</span></a> only: filtration results of all decision trees that are registered as <a class="reference internal" href="../glossary.html#term-solution-item"><span class="xref std std-term">solution items</span></a> are available in <a class="reference internal" href="filters_reg.html"><span class="doc">Filtering regime</span></a> as values of special property <a class="reference internal" href="../glossary.html#term-rules"><span class="xref std std-term">Rules</span></a>.</li>
-</ul>
-<p>Interactive modification level (see <a class="reference internal" href="../rest/s_dtree_instr.html"><span class="doc">Decision Tree modifying actions</span></a> for reference) forms complete functionality to make any meaningful change in decision tree. So there is no need for the user to direct change of <a class="reference internal" href="dtree_syntax.html"><span class="doc">Python code of decision tree</span></a>. It might be useful only for control complex cases of boolean operations.</p>
-<div class="section" id="rest-api-requests">
-<h2>REST API requests<a class="headerlink" href="#rest-api-requests" title="Permalink to this headline">¶</a></h2>
-<p>For support Decision Tree work page:</p>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/dsinfo.html"><span class="doc">dsinfo</span></a></dt>
-<dd>Dataset information</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/dtree_set.html"><span class="doc">dtree_set</span></a></dt>
-<dd>Decision tree page setup</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/dtree_counts.html"><span class="doc">dtree_counts</span></a></dt>
-<dd>Delayed evaluations of item counts for decision tree points</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/dtree_stat.html"><span class="doc">dtree_stat</span></a></dt>
-<dd>Filtering properties status report for decision tree page</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/dtree_check.html"><span class="doc">dtree_check</span></a></dt>
-<dd>Decision tree code check (used for validation of manual code edition)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/dtree_cmp.html"><span class="doc">dtree_cmp</span></a></dt>
-<dd>Comparison of decision trees</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference internal" href="../rest/ds2ws.html"><span class="doc">ds2ws</span></a></dt>
-<dd>Creation of secondary workspace</dd>
-</dl>
-</li>
-<li>see also <a class="reference internal" href="status_report.html"><span class="doc">Status report mechanism (with delays)</span></a></li>
-</ul>
-</div>
-</div>
-
-
-          </div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -184,12 +189,13 @@
           <a href="xl_pg.html" title="XL-dataset work page"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa Interface concepts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa Interface concepts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Decision tree work page</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

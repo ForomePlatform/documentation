@@ -2,25 +2,28 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="English">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Configuration of viewing schema API &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tuning viewing schema API" href="view_tune_py.html" />
     <link rel="prev" title="Configuration of solution pack API" href="solution_py.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,67 +39,29 @@
           <a href="solution_py.html" title="Configuration of solution pack API"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">System configuration documentation</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">System configuration documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Configuration of viewing schema API</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Configuration of viewing schema API</a><ul>
-<li><a class="reference internal" href="#aspects-initialization">Aspects initialization</a></li>
-<li><a class="reference internal" href="#attribute-definition">Attribute definition</a></li>
-<li><a class="reference internal" href="#see-also">See also</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="solution_py.html"
-                        title="previous chapter">Configuration of solution pack API</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="view_tune_py.html"
-                        title="next chapter">Tuning viewing schema API</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/appcfg/view_schema_py.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="configuration-of-viewing-schema-api">
-<h1>Configuration of viewing schema API<a class="headerlink" href="#configuration-of-viewing-schema-api" title="Permalink to this headline">¶</a></h1>
-<p id="index-0">This is description of part of API of code configuration layer dealing with configuration of data of <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a> for full viewing regime, see <a class="reference internal" href="../concepts/view.html"><span class="doc">Viewing regimes</span></a> for details. Here we explain application of this API in the source file</p>
+  <section id="configuration-of-viewing-schema-api">
+<h1>Configuration of viewing schema API<a class="headerlink" href="#configuration-of-viewing-schema-api" title="Permalink to this heading">¶</a></h1>
+<p id="index-0">This is description of part of API of code configuration layer dealing with configuration of data of <a class="reference internal" href="../glossary.html#term-Variant"><span class="xref std std-term">variants</span></a> for full viewing regime, see <a class="reference internal" href="../concepts/view.html"><span class="doc">Viewing regimes</span></a> for details. Here we explain application of this API in the source file</p>
 <p><code class="docutils literal notranslate"><span class="pre">app/config/view_schema.py</span></code></p>
 <p>Here is fragment of the source file <code class="docutils literal notranslate"><span class="pre">app/view/asp_set.py</span></code> with API used in configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AspectSetH</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aspects</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aspects</span><span class="p">):</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="o">...</span>
 
 <span class="k">class</span> <span class="nc">AspectH</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">field</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">field</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">attrs</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ignored</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">col_groups</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;dict&quot;</span><span class="p">):</span>
         <span class="o">...</span>
@@ -104,12 +69,12 @@
         <span class="o">...</span>
 
 <span class="k">class</span> <span class="nc">AttrH</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">is_seq</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="o">...</span>
 
 <span class="k">class</span> <span class="nc">ColGroupsH</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr_title_pairs</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr_title_pairs</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">attr</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">single_group_col</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="o">...</span>
 
@@ -117,20 +82,16 @@
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Viewing schema is list of <a class="reference internal" href="../glossary.html#term-aspect"><span class="xref std std-term">aspects</span></a>, so we define each aspect one by one.</p>
-<p>The viewing schema is configured in <code class="docutils literal notranslate"><span class="pre">defineViewSchema()</span></code> function as instance of <code class="docutils literal notranslate"><span class="pre">AspectSetH</span></code> class, that represents list of <a class="reference internal" href="../glossary.html#term-aspect"><span class="xref std std-term">aspects</span></a>, as instances of <code class="docutils literal notranslate"><span class="pre">AspectH</span></code> class.</p>
-<div class="section" id="aspects-initialization">
-<h2>Aspects initialization<a class="headerlink" href="#aspects-initialization" title="Permalink to this headline">¶</a></h2>
+<p>Viewing schema is list of <a class="reference internal" href="../glossary.html#term-Aspect"><span class="xref std std-term">aspects</span></a>, so we define each aspect one by one.</p>
+<p>The viewing schema is configured in <code class="docutils literal notranslate"><span class="pre">defineViewSchema()</span></code> function as instance of <code class="docutils literal notranslate"><span class="pre">AspectSetH</span></code> class, that represents list of <a class="reference internal" href="../glossary.html#term-Aspect"><span class="xref std std-term">aspects</span></a>, as instances of <code class="docutils literal notranslate"><span class="pre">AspectH</span></code> class.</p>
+<section id="aspects-initialization">
+<h2>Aspects initialization<a class="headerlink" href="#aspects-initialization" title="Permalink to this heading">¶</a></h2>
 <ul>
-<li><p class="first"><strong>name</strong> of aspect is technical identifier not visible for the user</p>
-</li>
-<li><p class="first"><strong>title</strong> is visible title of aspect</p>
-</li>
-<li><p class="first"><strong>source</strong> is name of the top dictionary of aspect data in annotated JSON <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variant</span></a> record</p>
-</li>
-<li><p class="first"><strong>field</strong> is <em>optional</em>, if presents it is sub-field of top data dictionary that contains aspect data</p>
-</li>
-<li><p class="first"><strong>mode</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;dict&quot;</span></code></p>
+<li><p><strong>name</strong> of aspect is technical identifier not visible for the user</p></li>
+<li><p><strong>title</strong> is visible title of aspect</p></li>
+<li><p><strong>source</strong> is name of the top dictionary of aspect data in annotated JSON <a class="reference internal" href="../glossary.html#term-Variant"><span class="xref std std-term">variant</span></a> record</p></li>
+<li><p><strong>field</strong> is <em>optional</em>, if presents it is sub-field of top data dictionary that contains aspect data</p></li>
+<li><p><strong>mode</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;dict&quot;</span></code></p>
 <blockquote>
 <div><p>Almost all aspects have mode <code class="docutils literal notranslate"><span class="pre">dict</span></code> and correspond to table presentation of data.</p>
 <p>Most of them are single-valued tables, so have representation in two columns: one for name of field, another for value. For this aspects the option <strong>col_groups</strong> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.
@@ -143,7 +104,7 @@ For this case of aspect top data handler must be a dictionary, and each name/val
 <p>Some aspects have multi-column representation, for these items the option <strong>col_groups</strong> is an instance of <code class="docutils literal notranslate"><span class="pre">ColGroupsH</span></code> class. This instance defines one or many groups of columns in table. Each group is defined by name (identifier) and title (visible for users, might be empty).</p>
 <p>Note that representation model does not make distinction between tables with stable count of columns and dynamical one (when count can vary between different variants).</p>
 <ul>
-<li><p class="first">Definition of ColGroupsH without option <strong>single_group_col</strong> corresponds to case when aspect top data handler must be a dictionary with fields named as names of column groups. Values of these fields must be empty (undefined), or lists. And each entry of this list corresponds to a column in the table.</p>
+<li><p>Definition of ColGroupsH without option <strong>single_group_col</strong> corresponds to case when aspect top data handler must be a dictionary with fields named as names of column groups. Values of these fields must be empty (undefined), or lists. And each entry of this list corresponds to a column in the table.</p>
 <blockquote>
 <div><p><em>Examples</em>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AspectH</span><span class="p">(</span><span class="s2">&quot;view_transcripts&quot;</span><span class="p">,</span> <span class="s2">&quot;Transcripts&quot;</span><span class="p">,</span> <span class="s2">&quot;_view&quot;</span><span class="p">,</span>
@@ -158,7 +119,7 @@ For this case of aspect top data handler must be a dictionary, and each name/val
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">If option <strong>single_group_col</strong> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, presentation table consists of fixed count of columns, and each column group contains only one column. In this case aspect top data handler, as in previous case, must be a dictionary with fields named as names of column groups. But values of these fields are not lists but dictionaries, and each of them corresponds to a column in the table.</p>
+<li><p>If option <strong>single_group_col</strong> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, presentation table consists of fixed count of columns, and each column group contains only one column. In this case aspect top data handler, as in previous case, must be a dictionary with fields named as names of column groups. But values of these fields are not lists but dictionaries, and each of them corresponds to a column in the table.</p>
 <blockquote>
 <div><p><em>Example</em> (simplified):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AspectH</span><span class="p">(</span><span class="s2">&quot;view_cohorts&quot;</span><span class="p">,</span> <span class="s2">&quot;Cohorts&quot;</span><span class="p">,</span> <span class="s2">&quot;_view&quot;</span><span class="p">,</span> <span class="n">field</span> <span class="o">=</span> <span class="s2">&quot;cohorts&quot;</span><span class="p">,</span>
@@ -170,7 +131,7 @@ For this case of aspect top data handler must be a dictionary, and each name/val
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>mode</strong> == <code class="docutils literal notranslate"><span class="pre">&quot;string&quot;</span></code></p>
+<li><p><strong>mode</strong> == <code class="docutils literal notranslate"><span class="pre">&quot;string&quot;</span></code></p>
 <blockquote>
 <div><p>The mode is needed to represent technical data in form of long text.</p>
 <p><em>Example</em></p>
@@ -180,38 +141,34 @@ For this case of aspect top data handler must be a dictionary, and each name/val
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="attribute-definition">
-<h2>Attribute definition<a class="headerlink" href="#attribute-definition" title="Permalink to this headline">¶</a></h2>
-<p>On creation of dataset all the data in <a class="reference internal" href="../glossary.html#term-annotated-json-file"><span class="xref std std-term">annotated JSON file</span></a> is parsed, checked and registered. So there is no strong need to register all the data attributes in annotated data: they will be automatically detected and added to the correspondent aspects. However, it is good practice to register all attributes implicitly for purposes of control and accuracy in presentation of data.</p>
+</section>
+<section id="attribute-definition">
+<h2>Attribute definition<a class="headerlink" href="#attribute-definition" title="Permalink to this heading">¶</a></h2>
+<p>On creation of dataset all the data in <a class="reference internal" href="../glossary.html#term-Annotated-JSON-file"><span class="xref std std-term">annotated JSON file</span></a> is parsed, checked and registered. So there is no strong need to register all the data attributes in annotated data: they will be automatically detected and added to the correspondent aspects. However, it is good practice to register all attributes implicitly for purposes of control and accuracy in presentation of data.</p>
 <p>Options of attribute definition</p>
 <ul>
-<li><p class="first"><strong>name</strong> is identifier of attribute, is equal to name of field in dictionary of the aspect in annotated data record</p>
+<li><p><strong>name</strong> is identifier of attribute, is equal to name of field in dictionary of the aspect in annotated data record</p>
 <blockquote>
 <div><p>In case of multi-column aspect, attribute value is fetched by this identifier for each of columns in correspondent dictionary in annotated JSON variant record. There is no difference if value is null or undefined: the correspondent cell in the table is shown as empty. If all values in row are empty, the row is being hidden.</p>
 </div></blockquote>
 </li>
 </ul>
 <ul id="attribute-kinds">
-<li><p class="first"><strong>kind</strong> should be one of the following strings:</p>
+<li><p><strong>kind</strong> should be one of the following strings:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">&quot;null&quot;,</span> <span class="pre">&quot;list&quot;,</span> <span class="pre">&quot;dict&quot;,</span> <span class="pre">&quot;empty&quot;,</span> <span class="pre">&quot;link&quot;,</span> <span class="pre">&quot;string&quot;,</span> <span class="pre">&quot;int&quot;,</span> <span class="pre">&quot;numeric&quot;,</span> <span class="pre">&quot;json&quot;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code> is recommended for all complex types of JSON objects</p>
 <p>There is also an exceptional kind: <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> - this attribute placeholder should be replaced but another attribute with runtime evaluation, see <a class="reference internal" href="view_tune_py.html"><span class="doc">Tuning viewing schema API</span></a> for details</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>title</strong> is <em>optional</em> visible (in left column of table) name of attribute, by default equals to <strong>name</strong></p>
-</li>
-<li><p class="first"><strong>is_seq</strong> is <em>optional boolean</em>, if set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, means that value of attribute is always list</p>
-</li>
-<li><p class="first"><strong>tooltip</strong> is <em>optional</em>, is present the user can see this text as tooltip (title in HTML terms) of attribute</p>
+<li><p><strong>title</strong> is <em>optional</em> visible (in left column of table) name of attribute, by default equals to <strong>name</strong></p></li>
+<li><p><strong>is_seq</strong> is <em>optional boolean</em>, if set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, means that value of attribute is always list</p></li>
+<li><p><strong>tooltip</strong> is <em>optional</em>, is present the user can see this text as tooltip (title in HTML terms) of attribute</p>
 <blockquote>
-<div><dl class="docutils">
-<dt><em>Examples</em>: ::</dt>
-<dd><p class="first">AttrH(“ref”, title = “Ref”)</p>
-<dl class="last docutils">
-<dt>AttrH(“genes”, title = “Gene(s)”, is_seq = True,</dt>
-<dd><p class="first last">tooltip = “Gene Symbol (Ensembl classification)”)</p>
+<div><dl>
+<dt><em>Examples</em>: ::</dt><dd><p>AttrH(&quot;ref&quot;, title = &quot;Ref&quot;)</p>
+<dl class="simple">
+<dt>AttrH(&quot;genes&quot;, title = &quot;Gene(s)&quot;, is_seq = True,</dt><dd><p>tooltip = &quot;Gene Symbol (Ensembl classification)&quot;)</p>
 </dd>
 </dl>
 </dd>
@@ -219,17 +176,61 @@ For this case of aspect top data handler must be a dictionary, and each name/val
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="code_config.html"><span class="doc">Code configuration layer overview</span></a></p>
 <p><a class="reference internal" href="view_tune_py.html"><span class="doc">Tuning viewing schema API</span></a></p>
 <p><a class="reference internal" href="ajson.html"><span class="doc">Annotated JSON file format overview</span></a></p>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Configuration of viewing schema API</a><ul>
+<li><a class="reference internal" href="#aspects-initialization">Aspects initialization</a></li>
+<li><a class="reference internal" href="#attribute-definition">Attribute definition</a></li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="solution_py.html"
+                          title="previous chapter">Configuration of solution pack API</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="view_tune_py.html"
+                          title="next chapter">Tuning viewing schema API</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/appcfg/view_schema_py.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -247,12 +248,13 @@ For this case of aspect top data handler must be a dictionary, and each name/val
           <a href="solution_py.html" title="Configuration of solution pack API"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >System configuration documentation</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >System configuration documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Configuration of viewing schema API</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

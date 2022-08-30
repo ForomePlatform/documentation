@@ -2,25 +2,28 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="English">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Filtration procedures &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Workspace page" href="ws_pg.html" />
     <link rel="prev" title="Variant data presentations and aspects" href="view_pre.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,25 +39,65 @@
           <a href="view_pre.html" title="Variant data presentations and aspects"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa Interface concepts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa Interface concepts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Filtration procedures</a></li> 
       </ul>
-    </div>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="filtration-procedures">
+<h1>Filtration procedures<a class="headerlink" href="#filtration-procedures" title="Permalink to this heading">¶</a></h1>
+<p>Filtration is the most important functionality of the system. A dataset contains many <a class="reference internal" href="../glossary.html#term-Variant"><span class="xref std std-term">variants</span></a> with a lot of associated data, and the system provides filtration tools to make effective selection of variants.</p>
+<p>There are two types of filtration tools, and both are based on <a class="reference internal" href="../glossary.html#term-Conditions"><span class="xref std std-term">conditions</span></a> applied to <a class="reference internal" href="../glossary.html#term-Filtering-property"><span class="xref std std-term">filtering properties</span></a> of variants.</p>
+<p>There is additional mechanism of <a class="reference internal" href="../glossary.html#term-Functions"><span class="xref std std-term">functions</span></a> which are aggregation information objects that are used in conditions like filtering properties if arguments of function is properly set.) See <a class="reference internal" href="../rest/func_ref.html"><span class="doc">Filtering functions</span></a> for details and reference.</p>
+<p>Thus conditions on filtering properties and functions are base atomic object of any filtration procedure, and any filtration procedure contains then and possibly join them somehow.</p>
+<p>Typed of filtration procedures:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../glossary.html#term-Filter"><span class="xref std std-term">Filter</span></a> is just sequence of (atomic) <a class="reference internal" href="../glossary.html#term-Conditions"><span class="xref std std-term">conditions</span></a>, and this sequence applies to <a class="reference internal" href="../glossary.html#term-Variant"><span class="xref std std-term">variants</span></a> one by one, in conjunctional way; so the result condition of filter is a join of (atomic) conditions by operator AND</p></li>
+<li><p><a class="reference internal" href="../glossary.html#term-Decision-tree"><span class="xref std std-term">Decision tree</span></a> is more advanced filtration tool. It allows to combine atomic conditions by all logical operators AND, OR and NOT and build essentially more complex (but good enough for reading and understanding) rules of selection. However, the base atomic  conditions used here are the same <a class="reference internal" href="../glossary.html#term-Conditions"><span class="xref std std-term">conditions</span></a> as above.</p></li>
+</ul>
+</div></blockquote>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="filters_reg.html"><span class="doc">Filtering regime</span></a></p>
+<p><a class="reference internal" href="prop_ux.html"><span class="doc">UX settings of filtration properties</span></a></p>
+<p><a class="reference internal" href="dtree_syntax.html"><span class="doc">Decision Tree Syntax Reference</span></a></p>
+<p><a class="reference internal" href="../rest/func_ref.html"><span class="doc">Filtering functions</span></a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Filtration procedures</a><ul>
 <li><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="view_pre.html"
-                        title="previous chapter">Variant data presentations and aspects</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="ws_pg.html"
-                        title="next chapter">Workspace page</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="view_pre.html"
+                          title="previous chapter">Variant data presentations and aspects</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="ws_pg.html"
+                          title="next chapter">Workspace page</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -63,49 +106,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="filtration-procedures">
-<h1>Filtration procedures<a class="headerlink" href="#filtration-procedures" title="Permalink to this headline">¶</a></h1>
-<p>Filtration is the most important functionality of the system. A dataset contains many <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a> with a lot of associated data, and the system provides filtration tools to make effective selection of variants.</p>
-<p>There are two types of filtration tools, and both are based on <a class="reference internal" href="../glossary.html#term-conditions"><span class="xref std std-term">conditions</span></a> applied to <a class="reference internal" href="../glossary.html#term-filtering-property"><span class="xref std std-term">filtering properties</span></a> of variants.</p>
-<p>There is additional mechanism of <a class="reference internal" href="../glossary.html#term-functions"><span class="xref std std-term">functions</span></a> which are aggregation information objects that are used in conditions like filtering properties if arguments of function is properly set.) See <a class="reference internal" href="../rest/func_ref.html"><span class="doc">Filtering functions</span></a> for details and reference.</p>
-<p>Thus conditions on filtering properties and functions are base atomic object of any filtration procedure, and any filtration procedure contains then and possibly join them somehow.</p>
-<p>Typed of filtration procedures:</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">Filter</span></a> is just sequence of (atomic) <a class="reference internal" href="../glossary.html#term-conditions"><span class="xref std std-term">conditions</span></a>, and this sequence applies to <a class="reference internal" href="../glossary.html#term-variant"><span class="xref std std-term">variants</span></a> one by one, in conjunctional way; so the result condition of filter is a join of (atomic) conditions by operator AND</li>
-<li><a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">Decision tree</span></a> is more advanced filtration tool. It allows to combine atomic conditions by all logical operators AND, OR and NOT and build essentially more complex (but good enough for reading and understanding) rules of selection. However, the base atomic  conditions used here are the same <a class="reference internal" href="../glossary.html#term-conditions"><span class="xref std std-term">conditions</span></a> as above.</li>
-</ul>
-</div></blockquote>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="filters_reg.html"><span class="doc">Filtering regime</span></a></p>
-<p><a class="reference internal" href="prop_ux.html"><span class="doc">UX settings of filtration properties</span></a></p>
-<p><a class="reference internal" href="dtree_syntax.html"><span class="doc">Decision Tree Syntax Reference</span></a></p>
-<p><a class="reference internal" href="../rest/func_ref.html"><span class="doc">Filtering functions</span></a></p>
-</div>
-</div>
-
-
-          </div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -123,12 +132,13 @@
           <a href="view_pre.html" title="Variant data presentations and aspects"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa Interface concepts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa Interface concepts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Filtration procedures</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

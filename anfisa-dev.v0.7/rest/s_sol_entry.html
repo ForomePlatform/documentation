@@ -2,25 +2,28 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="English">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Solution Entry descriptor &#8212; Anfisa Development&amp;Installation Documentation v.0.7 documentation</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Zone descriptor" href="s_zone.html" />
     <link rel="prev" title="Record descriptor" href="s_record.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,13 +39,72 @@
           <a href="s_record.html" title="Record descriptor"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa REST API</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Anfisa REST API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Solution Entry descriptor</a></li> 
       </ul>
-    </div>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="solution-entry-descriptor">
+<h1>Solution Entry descriptor<a class="headerlink" href="#solution-entry-descriptor" title="Permalink to this heading">¶</a></h1>
+<section id="format">
+<span id="index-0"></span><h2>Format<a class="headerlink" href="#format" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em>,</div>
+<div class="line-block">
+<div class="line">&quot;<strong>name</strong>&quot;: entry name, <em>string</em></div>
+<div class="line">&quot;<strong>rubric</strong>&quot;: <em>optional</em> entry rubric, <em>string</em></div>
+<div class="line">&quot;<strong>standard</strong>&quot;: entry is standard (pre-set), <em>boolean</em></div>
+<div class="line">&quot;<strong>eval-status</strong>&quot;: evaluation status of entry,</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;ok&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;runtime&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code></div>
+</div>
+<div class="line">&quot;<strong>upd-time</strong>: <em>optional</em> timestamp of last update of entry,</div>
+<div class="line-block">
+<div class="line"><em>string, time in ISO format</em></div>
+</div>
+<div class="line">&quot;<strong>upd-from</strong>: <em>optional</em> dataset name for last update of entry,</div>
+<div class="line-block">
+<div class="line"><em>string</em></div>
+</div>
+<div class="line">&quot;<strong>sol-version</strong>&quot;: indicator of stat for solution entries</div>
+<div class="line-block">
+<div class="line">of this kind, <em>string</em></div>
+</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
+</div>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>The descriptor contains information about information objects in aspect of <a class="reference internal" href="../glossary.html#term-Solution-item"><span class="xref std std-term">solution items</span></a>. Used in requests returning information about:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../glossary.html#term-Filter"><span class="xref std std-term">filters</span></a>: <a class="reference internal" href="ds_stat.html"><span class="doc">ds_stat</span></a></p></li>
+<li><p><a class="reference internal" href="../glossary.html#term-Decision-tree"><span class="xref std std-term">decision trees</span></a>: <a class="reference internal" href="dtree_set.html"><span class="doc">dtree_set</span></a></p></li>
+</ul>
+<p><strong>eval-status</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> corresponds to fully incorrect entry state (syntax errors for example), <code class="docutils literal notranslate"><span class="pre">&quot;runtime&quot;</span></code> corresponds to problems on entry evaluaton</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="ds_stat.html"><span class="doc">ds_stat</span></a></p>
+<p><a class="reference internal" href="dtree_set.html"><span class="doc">dtree_set</span></a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Solution Entry descriptor</a><ul>
 <li><a class="reference internal" href="#format">Format</a></li>
 <li><a class="reference internal" href="#description">Description</a></li>
@@ -51,12 +113,17 @@
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="s_record.html"
-                        title="previous chapter">Record descriptor</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="s_zone.html"
-                        title="next chapter">Zone descriptor</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="s_record.html"
+                          title="previous chapter">Record descriptor</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="s_zone.html"
+                          title="next chapter">Zone descriptor</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -65,73 +132,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="solution-entry-descriptor">
-<h1>Solution Entry descriptor<a class="headerlink" href="#solution-entry-descriptor" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="format">
-<span id="index-0"></span><h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em>,</div>
-<div class="line-block">
-<div class="line">“<strong>name</strong>”: entry name, <em>string</em></div>
-<div class="line">“<strong>rubric</strong>”: <em>optional</em> entry rubric, <em>string</em></div>
-<div class="line">“<strong>standard</strong>”: entry is standard (pre-set), <em>boolean</em></div>
-<div class="line">“<strong>eval-status</strong>”: evaluation status of entry,</div>
-<div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;ok&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;runtime&quot;</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code></div>
-</div>
-<div class="line">“<strong>upd-time</strong>: <em>optional</em> timestamp of last update of entry,</div>
-<div class="line-block">
-<div class="line"><em>string, time in ISO format</em></div>
-</div>
-<div class="line">“<strong>upd-from</strong>: <em>optional</em> dataset name for last update of entry,</div>
-<div class="line-block">
-<div class="line"><em>string</em></div>
-</div>
-<div class="line">“<strong>sol-version</strong>”: indicator of stat for solution entries</div>
-<div class="line-block">
-<div class="line">of this kind, <em>string</em></div>
-</div>
-</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
-</div>
-</div>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The descriptor contains information about information objects in aspect of <a class="reference internal" href="../glossary.html#term-solution-item"><span class="xref std std-term">solution items</span></a>. Used in requests returning information about:</p>
-<ul class="simple">
-<li><a class="reference internal" href="../glossary.html#term-filter"><span class="xref std std-term">filters</span></a>: <a class="reference internal" href="ds_stat.html"><span class="doc">ds_stat</span></a></li>
-<li><a class="reference internal" href="../glossary.html#term-decision-tree"><span class="xref std std-term">decision trees</span></a>: <a class="reference internal" href="dtree_set.html"><span class="doc">dtree_set</span></a></li>
-</ul>
-<p><strong>eval-status</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> corresponds to fully incorrect entry state (syntax errors for example), <code class="docutils literal notranslate"><span class="pre">&quot;runtime&quot;</span></code> corresponds to problems on entry evaluaton</p>
-</div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="ds_stat.html"><span class="doc">ds_stat</span></a></p>
-<p><a class="reference internal" href="dtree_set.html"><span class="doc">dtree_set</span></a></p>
-</div>
-</div>
-
-
-          </div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -149,12 +158,13 @@
           <a href="s_record.html" title="Record descriptor"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Anfisa Development&amp;Installation Documentation v.0.7 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa REST API</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Anfisa REST API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Solution Entry descriptor</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>
