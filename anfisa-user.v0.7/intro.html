@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Anfisa introduction &#8212; Anfisa User Documentation v.0.7 documentation</title>
+    <title>Introduction &#8212; Anfisa User Documentation v.0.7 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/pyramid.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -16,7 +16,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Annotation Sources" href="annotation_sources.html" />
+    <link rel="next" title="Managing data" href="managing_data.html" />
     <link rel="prev" title="Forome AnFiSA" href="index.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -33,13 +33,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="annotation_sources.html" title="Annotation Sources"
+          <a href="managing_data.html" title="Managing data"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Forome AnFiSA"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Anfisa introduction</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
       </ul>
     </div>  
 
@@ -48,12 +48,113 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="anfisa-introduction">
-<h1>Anfisa introduction<a class="headerlink" href="#anfisa-introduction" title="Permalink to this heading">¶</a></h1>
-<p>Genome sequencing is rapidly becoming routine in clinical practice and in everyday life. We have started building a community of clinicians, researchers and professional software developers from different countries and backgrounds to create the first community-built and fully open-source genomic analysis software platform - Forome. The Forome Genomics Platform is capable of simultaneously supporting both clinical and research workflows for all flavors of genetic data, thus providing functionality of an integrated development environment for clinical guidelines, and speeding up the adoption of genome sequencing into clinical practice.</p>
-<p>Forome includes a Variant Curation Tool Forome Anfisa (henceforth referred to as Anfisa) which is based on three simple ideas: using Multidimensional DBMS for genetic data, using curated decision trees for clinical rules and crowdsourcing of the most difficult cases.</p>
-<p>Anfisa is the first community-built and fully open-source variant analysis and curation tool, which is a part of Forome (Forum for Omics) - a Germline Genomics Analysis software platform being developed through establishing a community of clinicians, researchers and professional software developers. The key features of Forome are the support of both clinical and research workflows for all types of genetic data, including Mendelian analysis on a case-by-case basis and on cohorts of patients. The main idea of the project is to provide the ability to seamlessly transform research workflows into novel clinical protocols by building a notebook-like environment for designing clinical guidelines. We believe that Forome bridges a gap in the current ecosystem of genetic analysis software that we explain in the Discussion section.</p>
-<p>Describing a product that is built on the collaborative efforts of an extremely diverse team in sufficient detail and of consistent interest to both clinicians and information technology (IT) developers is a daunting task. We think that different sections of our paper might attract different readers. Sections describing Feature Engineering, User Experience, Application of the software and Approaches to Variant Curation are geared more towards clinicians with research interests; Architecture and Implementations subsections are primarily intended towards professional developers of IT solutions, while description of our compound heterozygous variant caller and the overview of the software ecosystem in this domain might be of interest to bioinformaticians.</p>
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<section id="define-the-challenge">
+<h2>Define the challenge<a class="headerlink" href="#define-the-challenge" title="Permalink to this heading">¶</a></h2>
+<p>Despite genomic sequencing rapidly transforming from being a bench-side tool to a routine procedure in a hospital,
+there is a noticeable lack of genomic analysis software that supports both clinical and research workflows
+as well as crowdsourcing.</p>
+<p>There are number of approaches are used to architect upstream genomics analysis pipelines, prior to
+variants identification.
+Downstream genomic sequencing analysis (variations annotation and interpretation) is less standardized
+and does not have a dominating set of tools and approaches.
+Furthermore, most existing software packages are not forward-compatible in regards to
+supporting ever-changing diagnostic rules adopted by the genetics community. Lastly, most of the software tools score
+low on explainability amongst clinicians.</p>
+<p>It would be fair to say, that the clinical community working with complex clinical cases
+such as undiagnosed diseases with unknown genetic etiology does not have an optimal set of supporting tools.
+If a healthcare organization wants to establish genetic services based on genomic sequencing,
+there is no ready-made IT solution that this organization can acquire.
+We believe that Forome project bridges a gap in the current ecosystem
+of genetic analysis software. See more at <a class="reference external" href="https://forome.org/">https://forome.org/</a></p>
+</section>
+<section id="anfisa-key-design-and-technology-points">
+<h2>AnFiSA key design and technology points<a class="headerlink" href="#anfisa-key-design-and-technology-points" title="Permalink to this heading">¶</a></h2>
+<p>Outside the fields of genetics and genomics, there is a thriving community
+that continuously produces open-source software for data analysis, and cumulatively covers
+virtually all aspects of data manipulation and exploration.
+AnFiSA is focused on applying to variant analysis challenge best existing data analysis practises
+instead of re-inventing the wheel.</p>
+<p>Anfisa is based on three simple ideas: using Multidimensional database management system for genetic data,
+using curated decision trees for clinical rules
+and crowdsourcing of the most difficult cases.</p>
+<p>These principles are translated into a variety of actionable design items:</p>
+<ul class="simple">
+<li><p>A platform that supports building and testing hypotheses in real-time without using programmable languages;</p></li>
+<li><p>Importance of real-time inspections of the results at each step of the data evaluation process;</p></li>
+<li><p>A platform that can be used as a computer aid for the clinicians;</p></li>
+<li><p>A highly responsive system which can deal with billions of genetic variants while providing a sub-minute response time;</p></li>
+<li><p>A two-tiered UI with a “red button” tier dedicated to application of existing guidelines and clinical protocols and a research tier supporting flexible research workflow and real-time processing of a patient’s whole genome;</p></li>
+<li><p>Visual tool that represents research hypotheses and workflow steps in a readable and editable way, while keeping track of any changes</p></li>
+</ul>
+<section id="genome-variations-as-a-multi-dimensional-data">
+<h3>Genome variations as a multi-dimensional data<a class="headerlink" href="#genome-variations-as-a-multi-dimensional-data" title="Permalink to this heading">¶</a></h3>
+<p>Genomic data are inherently multidimensional, i.e., every record is described by hundreds of
+properties coming from a variety of interconnected sources, with each property often having multiple and even
+inconsistent values often supported by contradicting evidence.
+This is where OnLine Analytical Processing (OLAP) is valuable.
+OLAP tools specifically focus on achieving the maximum performance for complex data querying,
+data aggregation and information retrieval.</p>
+<p>This approach is proven with other verticals like financial analysis, sales forecasting, etc.,
+but to the best of our knowledge has never been applied to the big data in genetics. Currently,
+AnFiSA relies on Apache Druid for backend OLAP support.</p>
+</section>
+<section id="pivoting-data-and-pivot-tables-visualization">
+<h3>Pivoting data and pivot tables visualization<a class="headerlink" href="#pivoting-data-and-pivot-tables-visualization" title="Permalink to this heading">¶</a></h3>
+<p>The main foundation of our development strategy was the realization that genetic data are massive,
+which makes it impossible to analyze individual records.
+However, the data are static, which means that they do not change in real time and require analytical
+rather than transactional processing. The volume of the data naturally leads to the idea
+of visualization with Pivot Tables.
+Pivot Tables show summary statistics and allow rearranging (or pivoting)
+to spot patterns and build more advanced data models.</p>
+<p>In AnFiSA, this idea is applied to the process of manual filtration of variants
+to identify candidate causative mutations when a user builds a filter by adding conditions one-by-one.
+As it is impossible to review individual records in a subset containing many thousands or millions of records,
+we instead display a pivot table, a widget visualizing the distribution of the properties of the records.
+AnFiSA does not make decisions for users - rather, it provides them with self-guided tools
+to navigate in the labyrinth of heterogeneous information.</p>
+</section>
+<section id="curated-decision-trees">
+<h3>Curated decision trees<a class="headerlink" href="#curated-decision-trees" title="Permalink to this heading">¶</a></h3>
+<p>Another key concept is representation of complex inclusion and exclusion criteria as a decision tree.</p>
+<p>A decision tree is a sequence of a logical functions, applied to initial variation set.
+At each branching point of a decision tree variants are split between three buckets:
+those that are excluded from further review,
+those that are unconditionally added to the resulting dataset
+and those that are left for continuation of processing by subsequent branching points.
+A result of application of a decision tree is a subset of candidate variants.
+A very simple example of the decision tree can be
+a shopping cart of an online shop.</p>
+<p>Data scientists customarily use computational notebooks to represent their algorithms.
+Decision trees fit naturally in the notebook interface, where a no-code visual representation
+of an algorithm is combined with a readable and self-documented script.
+AnFiSA follows the same approach to represent decision trees.</p>
+<p>Specific sets of decision rules may vary depending on the phenotype in question,
+whether the study is within a research or diagnostic setting, mode of inheritance or simply a
+preference of the individual researcher/clinician.
+At the same time, the process is highly repeatable
+and same sets of rules may be invoked in many similar situations.</p>
+<p>AnFiSA supports a number of pre-defined built-in decision trees.
+They are included in the distribution and are available in the codebase on GitHub.</p>
+</section>
+<section id="crowdsourcing">
+<h3>Crowdsourcing<a class="headerlink" href="#crowdsourcing" title="Permalink to this heading">¶</a></h3>
+<p>Finally, there is the idea of crowdsourcing for solving the most challenging clinical cases
+for patients with undiagnosed diseases. AnFiSA gives clinicians an option to create a secondary workspace,
+which includes only very limited and fully de-identified information and thus can be shared
+with outside researchers.</p>
+</section>
+</section>
+<section id="testing-data">
+<h2>Testing data<a class="headerlink" href="#testing-data" title="Permalink to this heading">¶</a></h2>
+<p>For software development, validation and testing we used data from benchmark variants from the
+whole genome of the openly-consented “Genome in a Bottle” Ashkenazi trio from the Personal Genome Project.
+The high-confidence benchmark variants have been provided by NIST version 4.2.
+The publicly available demo version of
+AnFiSA includes datasets based on these resources.</p>
+</section>
 </section>
 
 
@@ -64,14 +165,32 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#define-the-challenge">Define the challenge</a></li>
+<li><a class="reference internal" href="#anfisa-key-design-and-technology-points">AnFiSA key design and technology points</a><ul>
+<li><a class="reference internal" href="#genome-variations-as-a-multi-dimensional-data">Genome variations as a multi-dimensional data</a></li>
+<li><a class="reference internal" href="#pivoting-data-and-pivot-tables-visualization">Pivoting data and pivot tables visualization</a></li>
+<li><a class="reference internal" href="#curated-decision-trees">Curated decision trees</a></li>
+<li><a class="reference internal" href="#crowdsourcing">Crowdsourcing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing-data">Testing data</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="index.html"
                           title="previous chapter">Forome AnFiSA</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="annotation_sources.html"
-                          title="next chapter">Annotation Sources</a></p>
+    <p class="topless"><a href="managing_data.html"
+                          title="next chapter">Managing data</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -101,13 +220,13 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="annotation_sources.html" title="Annotation Sources"
+          <a href="managing_data.html" title="Managing data"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Forome AnFiSA"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Anfisa introduction</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

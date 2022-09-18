@@ -61,8 +61,11 @@
 <div><p><strong>Arguments</strong>:</p>
 <blockquote>
 <div><p><strong>ds</strong>: dataset name</p>
+<p><strong>entry</strong>: <em>optional</em> entry name</p>
 </div></blockquote>
-<p><strong>Return value</strong>: lists of solution items available in dataset</p>
+<p><strong>Return value</strong>:</p>
+<p>If <strong>entry</strong> is set returns <em>optional string</em>, kind of <a class="reference internal" href="../glossary.html#term-Solution-item"><span class="xref std std-term">solution item</span></a></p>
+<p>Otherwise: lists of solution items available in dataset</p>
 </div></blockquote>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em></div>
@@ -75,7 +78,7 @@
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>The request returns names of preset <a class="reference internal" href="../concepts/sol_pack.html"><span class="doc">Solution items</span></a> available for <a class="reference internal" href="../glossary.html#term-Dataset"><span class="xref std std-term">dataset</span></a></p>
+<p>In geneicic context (without <strong>entry</strong> in arguments) the request returns names of preset <a class="reference internal" href="../concepts/sol_pack.html"><span class="doc">Solution items</span></a> available for <a class="reference internal" href="../glossary.html#term-Dataset"><span class="xref std std-term">dataset</span></a></p>
 <p>Panel names are split to groups by unit/property names for which these panels are made. Key for group is</p>
 <p><code class="docutils literal notranslate"><span class="pre">panel/</span></code> <em>property</em></p>
 <p>(In current version all panels are made for <code class="docutils literal notranslate"><span class="pre">Symbol</span></code>, so return dictionary contains now only <code class="docutils literal notranslate"><span class="pre">&quot;panel/Symbol&quot;</span></code> entry)</p>
@@ -102,6 +105,7 @@
 </table>
 </div></blockquote>
 <p>The request might be used for experimental extensions of the system functionality and user interface.</p>
+<p>If <strong>entry</strong> is set, the requests returns kind of registered <a class="reference internal" href="../glossary.html#term-Solution-item"><span class="xref std std-term">solution item</span></a>, if any. The purpose of this call is discussed <a class="reference internal" href="../concepts/sol_work.html#sol-items-namespace"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>

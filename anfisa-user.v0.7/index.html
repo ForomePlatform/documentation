@@ -16,7 +16,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Anfisa introduction" href="intro.html" />
+    <link rel="next" title="Introduction" href="intro.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -32,7 +32,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="intro.html" title="Anfisa introduction"
+          <a href="intro.html" title="Introduction"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Forome AnFiSA</a></li> 
@@ -48,7 +48,7 @@
 <h1>Forome AnFiSA<a class="headerlink" href="#forome-anfisa" title="Permalink to this heading">¶</a></h1>
 <section id="forome-and-anfisa-overview">
 <h2>Forome and AnFiSa overview<a class="headerlink" href="#forome-and-anfisa-overview" title="Permalink to this heading">¶</a></h2>
-<p><strong>Forome</strong> (Forum for Omics) is an open community of renowned clinicians,
+<p><strong>Forome</strong> (Forum for Omics: <a class="reference external" href="https://forome.org/">https://forome.org/</a>) is an open community of renowned clinicians,
 researchers and professional software developers
 from different countries and backgrounds.
 The Forome project purpose is to create the first community-built and fully
@@ -63,14 +63,28 @@ open-source genomics analysis software platform, following the crowdsourcing str
 <p>Forome Genomics Platform supports both clinical and research workflows for all flavors of genetic data,
 including Mendelian analysis on a case-by-case basis and on cohorts of patients.
 It contains an integrated development environment for clinical rules, providing the ability to seamlessly
-transform research workflows into novel clinical protocols.
-See more at <a class="reference external" href="https://forome.org/">https://forome.org/</a></p>
-<p><strong>AnFiSA</strong> (Annotation and Filtration for Sequencing Analysis) is a Variant Analysis and Curation tool developed as a part of the Forome platform.
-AnFiSA provides to user an organized web-based interface for variant filtration, curation and interpretation.
+transform research workflows into novel clinical protocols.</p>
+<p><strong>AnFiSA</strong> (Annotation and Filtration for Sequencing Analysis) is a Variant Analysis and Curation tool
+developed as a part of the Forome platform. It was designed to be
+a specialized data warehouse for complex genomic data analysis,
+such as whole genome sequencing for patients with rare diseases.</p>
+<p>AnFiSA provides to user an organized web-based interface for variant filtration, curation and interpretation.
 It incorporates a novel framework for intuitive and visual application of inclusion and exclusion criteria to
-millions of records. AnFiSA keeps all data relevant to the annotation and curation processes
+millions of records.
+The AnFiSA platform is simple enough to be used by clinicians while at the same time capable of transforming
+research workflows into more formal clinical protocols.
+AnFiSA represents these protocols as human readable scripts in a notebook-like environment.</p>
+<p>In addition AnFiSA keeps all data relevant to the annotation and curation processes
 in the format straightforward for the review,
-ensuring results reproducibility and traceability.</p>
+ensuring results reproducibility and traceability.
+As a warehouse, AnFiSA stores annotations of all possible mutations in the human genome
+that are used to prioritize candidate pathogenic variants in an affected proband.
+It provides an easy and intuitive way
+to perform reanalysis of some of the cases based on the new versions
+of the knowledge sources or a new variant call file.</p>
+</section>
+<section id="anfisa-capabilities">
+<h2>AnFiSA capabilities<a class="headerlink" href="#anfisa-capabilities" title="Permalink to this heading">¶</a></h2>
 <p>Anfisa tool allows the following:</p>
 <ul class="simple">
 <li><p>Supporting analysis of whole genomes, exomes as well as gene panels.</p></li>
@@ -106,10 +120,19 @@ alignment and variant calling from different sources; including both short and l
 </section>
 <section id="user-guide-and-tutorial">
 <h2>User guide and tutorial<a class="headerlink" href="#user-guide-and-tutorial" title="Permalink to this heading">¶</a></h2>
+<p>Anfisa user guide describes all available Anfisa tool options, operators and fields providing insight
+into functional possibilities of the application.
+This user guide also includes step-by-step instructions for geneticists and clinicians who are involved
+in genetic variant’s analysis, annotations and curation.</p>
+<p>This guide is current as of Anfisa version v.0.7.</p>
 <p>To get familiar with AnFiSA capabilities, go through the following pages:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Anfisa introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_data.html">Managing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter_refiner.html">Filter refiner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_tree.html">Decision Tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="annotation_sources.html">Annotation Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="func_ref.html">Filtering functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dtree_syntax.html">Decision Tree Syntax Reference</a></li>
@@ -145,6 +168,7 @@ and research cohort analysis of purpura fulminans (PF) patients.</p>
     <ul>
 <li><a class="reference internal" href="#">Forome AnFiSA</a><ul>
 <li><a class="reference internal" href="#forome-and-anfisa-overview">Forome and AnFiSa overview</a></li>
+<li><a class="reference internal" href="#anfisa-capabilities">AnFiSA capabilities</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#user-guide-and-tutorial">User guide and tutorial</a></li>
 <li><a class="reference internal" href="#acknowledgment">Acknowledgment</a></li>
@@ -157,7 +181,7 @@ and research cohort analysis of purpura fulminans (PF) patients.</p>
   <div>
     <h4>Next topic</h4>
     <p class="topless"><a href="intro.html"
-                          title="next chapter">Anfisa introduction</a></p>
+                          title="next chapter">Introduction</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -187,7 +211,7 @@ and research cohort analysis of purpura fulminans (PF) patients.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="intro.html" title="Anfisa introduction"
+          <a href="intro.html" title="Introduction"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Forome AnFiSA</a></li> 

@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Filtering functions" href="func_ref.html" />
-    <link rel="prev" title="Anfisa introduction" href="intro.html" />
+    <link rel="prev" title="Decision Tree" href="decision_tree.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -36,7 +36,7 @@
           <a href="func_ref.html" title="Filtering functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="intro.html" title="Anfisa introduction"
+          <a href="decision_tree.html" title="Decision Tree"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Annotation Sources</a></li> 
@@ -50,7 +50,29 @@
             
   <section id="annotation-sources">
 <h1>Annotation Sources<a class="headerlink" href="#annotation-sources" title="Permalink to this heading">¶</a></h1>
+<p>As a warehouse, AnFiSA stores annotations of single nucleotide variants (SNP),
+insertions and deletions, copy number variantions (CNV) and structural variations (SV)
+in the human genome that are used to prioritize candidate pathogenic variants in an affected proband.
+Some of the annotations reflect technical information such as provenance and confidence information
+about the specific call (call annotations).
+Other annotations summarize genetic and biological evidence relevant to the potential effect
+of mutations on molecular function and phenotype (biological annotations). These annotations
+combine multiple inputs and consist of genomic, protein, and disease-specific information gathered
+from different public and proprietary sources.</p>
+<section id="brief-description-of-annotation-sources">
+<h2>Brief description of annotation sources<a class="headerlink" href="#brief-description-of-annotation-sources" title="Permalink to this heading">¶</a></h2>
+<p>AnFiSA relies on dbNSFP gnomAD, ENSEMBLE Variant Effect Predictor (VEP)
+and NCBI resources (e.g., ClinVar, MedGen and PubMed), OMIM, SpliceAI and HGMD as main annotation sources.
+Collectively, these sources provide information on phenotypic effects of genes and individual variants,
+allele frequencies, functional effect predictors (e.g., SIFT, PolyPhen),
+conservation scores (e.g. PhastCons and GERP).
+For ClinVar, in addition to the usual data for each variant including clinical significance,
+stars, review status, conflicts, etc., the user has an option to select a set of trusted submitters,
+in which case the clinical significance assigned by them will be provided as a separate category.
+By default, AnFiSA includes Laboratory of Molecular Medicine (LMM),
+GeneDx and Invitae as trusted sources by our team, though designation as trusted can be customized.</p>
 <p>Here is the list of sources used in annotation process in Anfisa System</p>
+</section>
 <section id="assemblies">
 <h2>Assemblies<a class="headerlink" href="#assemblies" title="Permalink to this heading">¶</a></h2>
 <section id="grch37-hg19">
@@ -68,14 +90,14 @@
 <li><p>File URL: <a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.39_GRCh38.p13">ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.39_GRCh38.p13</a></p></li>
 </ul>
 </section>
-</section>
 <section id="gencode-gtf">
-<h2>Gencode GTF<a class="headerlink" href="#gencode-gtf" title="Permalink to this heading">¶</a></h2>
+<h3>Gencode GTF<a class="headerlink" href="#gencode-gtf" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Project URL: <a class="reference external" href="https://www.gencodegenes.org/pages/data_format.html">https://www.gencodegenes.org/pages/data_format.html</a></p></li>
 <li><p>Downloads: <a class="reference external" href="https://useast.ensembl.org/info/data/ftp/index.html">https://useast.ensembl.org/info/data/ftp/index.html</a></p></li>
 <li><p>Direct Download URL: <a class="reference external" href="ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.chr.gtf.gz">ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.chr.gtf.gz</a></p></li>
 </ul>
+</section>
 </section>
 <section id="genome-aggregation-database-gnomad">
 <h2>Genome Aggregation Database (gnomAD)<a class="headerlink" href="#genome-aggregation-database-gnomad" title="Permalink to this heading">¶</a></h2>
@@ -168,12 +190,13 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Annotation Sources</a><ul>
+<li><a class="reference internal" href="#brief-description-of-annotation-sources">Brief description of annotation sources</a></li>
 <li><a class="reference internal" href="#assemblies">Assemblies</a><ul>
 <li><a class="reference internal" href="#grch37-hg19">GRCh37 (HG19)</a></li>
 <li><a class="reference internal" href="#grch38">GRCh38</a></li>
+<li><a class="reference internal" href="#gencode-gtf">Gencode GTF</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#gencode-gtf">Gencode GTF</a></li>
 <li><a class="reference internal" href="#genome-aggregation-database-gnomad">Genome Aggregation Database (gnomAD)</a></li>
 <li><a class="reference internal" href="#clinvar">ClinVar</a></li>
 <li><a class="reference internal" href="#spliceai">SpliceAI</a></li>
@@ -189,8 +212,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="intro.html"
-                          title="previous chapter">Anfisa introduction</a></p>
+    <p class="topless"><a href="decision_tree.html"
+                          title="previous chapter">Decision Tree</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -228,7 +251,7 @@
           <a href="func_ref.html" title="Filtering functions"
              >next</a> |</li>
         <li class="right" >
-          <a href="intro.html" title="Anfisa introduction"
+          <a href="decision_tree.html" title="Decision Tree"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Annotation Sources</a></li> 

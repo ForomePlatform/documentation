@@ -56,8 +56,15 @@
 <p>The complex is needed when nomenclature of symbols is too wide. Gene symbols is the base example of such a nomenclature, and the system iterprets it as &quot;dimension&quot; named as <code class="docutils literal notranslate"><span class="pre">Symbol</span></code>. There are plenty of reasons to select some of these symbols, form <a class="reference internal" href="../glossary.html#term-Symbol-panel"><span class="xref std std-term">symbol panel</span></a> and use these panels in <a class="reference internal" href="../glossary.html#term-Filtration"><span class="xref std std-term">filtration process</span></a>. So the system provides functionality for access and modification of symbol panels as <a class="reference internal" href="../glossary.html#term-Solution-item"><span class="xref std std-term">solution items</span></a>. And this is the background functionality of variery and panel complex support.</p>
 <p id="index-0"><a class="reference internal" href="../glossary.html#term-Variety-property"><span class="xref std std-term">Variery filtering unit</span></a>, is a special subtype of <a class="reference internal" href="../glossary.html#term-Enumerated-property"><span class="xref std std-term">enumerated unit</span></a> that collects statistics (see <a class="reference internal" href="status_report.html"><span class="doc">Status report mechanism (with delays)</span></a>) in a special restricted way. In contrast to the ordinary <a class="reference internal" href="../glossary.html#term-Enumerated-property"><span class="xref std std-term">enumerated property</span></a>, the statistics for this property does not include whole list of property values(symbols):</p>
 <blockquote>
+<div><ul>
+<li><p>only <a class="reference internal" href="../glossary.html#term-Active-symbols"><span class="xref std std-term">active symbols</span></a> are traced in complete form;</p>
+<blockquote>
 <div><ul class="simple">
-<li><p>only <a class="reference internal" href="../glossary.html#term-Active-symbols"><span class="xref std std-term">active symbols</span></a> are traced in complete form; active symbols form special hidden symbol panel, see details <a class="reference internal" href="sol_work.html#panels-as-sol-items"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>by default, active symbols form special hidden symbol panel, see details <a class="reference internal" href="sol_work.html#panels-as-sol-items"><span class="std std-ref">here</span></a></p></li>
+<li><p>active symbol list can be controlled manually with <a class="reference internal" href="../rest/s_stat_ctx.html"><span class="doc">ctx</span></a> argument</p></li>
+</ul>
+</div></blockquote>
+</li>
 <li><p>other symbols are traced only if they really present in the applied set (with positive count, ones with zero count are ignored), and only if the list of these symbols is short enough (up to 300 now)</p></li>
 </ul>
 </div></blockquote>
