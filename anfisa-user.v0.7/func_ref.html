@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="English">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
@@ -55,9 +55,9 @@
 <p>Functions are aggregated information items that can be used in filtration as well as filtering property. Difference between application of an enumerated property and application of a function is in parameters: the function requires proper settings for them.</p>
 <p>Up to now all functions behave as multiset property: even if result is <code class="docutils literal notranslate"><span class="pre">True</span></code> value, there is no reason to keep <code class="docutils literal notranslate"><span class="pre">False</span></code> value of rest of variants in dataset.</p>
 <p>The list and format of function parameters are specific for the function. Each parameter value must be data structure in JSON format, usually it means <em>string</em> or <em>int</em> value, but some complex functions require complex structures as parameters. The Front End application helps the user to fill it up in forms, however the formal definition of function call requires JSON-formatted parameters.</p>
-<p>Since work with functions is a complex one, there might be additional requirements for Front End application to provide support of necessary &quot;short cuts&quot;:</p>
+<p>Since work with functions is a complex one, there might be additional requirements for Front End application to provide support of necessary “short cuts”:</p>
 <ul class="simple">
-<li><p>function environment should be used to set &quot;standard&quot; configurations of function parameters;</p></li>
+<li><p>function environment should be used to set “standard” configurations of function parameters;</p></li>
 <li><p>in cases when list of function values is expected (for example if value is single <code class="docutils literal notranslate"><span class="pre">True</span></code>), these values should be pre-selected in interface without extra user click</p></li>
 </ul>
 <p>Most part of currently available functions implement functionality dealing with zygosity properties of variants. See <a class="reference internal" href="zygosity.html"><span class="doc">Notes on Zygosity</span></a> for explanations</p>

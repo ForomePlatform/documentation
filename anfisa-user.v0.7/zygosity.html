@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="English">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
@@ -51,7 +51,7 @@
 <h2>Definitions: case, samples<a class="headerlink" href="#definitions-case-samples" title="Permalink to this heading">¶</a></h2>
 <p>Dataset represents <strong>case</strong> i.e genomics information on one or many persons - <strong>samples</strong> - from the same family. Each sample in case is identified by <strong>id</strong>.</p>
 <p>Examples of id: <code class="docutils literal notranslate"><span class="pre">&quot;bgm9001a1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bgm9001u1&quot;</span></code></p>
-<p>Sample id starts with case id, then letter <code class="docutils literal notranslate"><span class="pre">a</span></code> (affected) or <code class="docutils literal notranslate"><span class="pre">u</span></code> (unaffected), and a number from 1 to upper. Id of proband always ends up with <code class="docutils literal notranslate"><span class="pre">&quot;a1&quot;</span></code> (in medical cases we proband is always &quot;affected&quot;).</p>
+<p>Sample id starts with case id, then letter <code class="docutils literal notranslate"><span class="pre">a</span></code> (affected) or <code class="docutils literal notranslate"><span class="pre">u</span></code> (unaffected), and a number from 1 to upper. Id of proband always ends up with <code class="docutils literal notranslate"><span class="pre">&quot;a1&quot;</span></code> (in medical cases we proband is always “affected”).</p>
 <p>The typical case is <strong>trio</strong>: samples are proband and two parents. Note that some tasks in below are formulated only in context of this scope.</p>
 </section>
 <section id="zygosity-states">
@@ -84,7 +84,7 @@ In the system the following 5 conditions are supported:</p>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em></div>
 <div class="line-block">
 <div class="line">&lt;zygosity condition constant&gt;: <code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list of</em> samples id <code class="docutils literal notranslate"><span class="pre">]</span></code></div>
-<div class="line">...</div>
+<div class="line">…</div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
 </div>
@@ -114,7 +114,7 @@ In the system the following 5 conditions are supported:</p>
 </section>
 <section id="zygosity-events-and-compound-requests">
 <span id="compound-request"></span><h2>Zygosity events and compound requests<a class="headerlink" href="#zygosity-events-and-compound-requests" title="Permalink to this heading">¶</a></h2>
-<p>Let us fix some diapason or diapasons of positions on chromosome as &quot;gene&quot; (see <a class="reference internal" href="#gene-aproximations"><span class="std std-ref">below</span></a> for details). Then for some fixed zygosity scenario it is possible to count how many variants with this scenario presents inside the &quot;gene&quot;. Let us call these variants as &quot;events&quot;.</p>
+<p>Let us fix some diapason or diapasons of positions on chromosome as “gene” (see <a class="reference internal" href="#gene-aproximations"><span class="std std-ref">below</span></a> for details). Then for some fixed zygosity scenario it is possible to count how many variants with this scenario presents inside the “gene”. Let us call these variants as “events”.</p>
 <blockquote>
 <div><p>We are ready to define <strong>compound request</strong> in the following form:</p>
 <div class="line-block">
@@ -125,13 +125,13 @@ In the system the following 5 conditions are supported:</p>
 <div class="line"><strong>[0]</strong>: minimal count of events, <strong>positive int</strong></div>
 <div class="line"><strong>[1]</strong>: <a class="reference internal" href="#zygosity-scenario"><span class="std std-ref">zygosity scenario</span></a></div>
 </div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, ...</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 </div></blockquote>
 <p>The result of compound request is not empty only if for all scenarios in the list there are not less than the defined count of events.</p>
-<p>Strongly speaking, a compound request applies to &quot;genes&quot;, and its result is either empty, or <em>list of lists</em> of variants that cause events. The current version of the system does not support so complex selection objects, so we interpret result of compound request as a joined plain list of variants.</p>
+<p>Strongly speaking, a compound request applies to “genes”, and its result is either empty, or <em>list of lists</em> of variants that cause events. The current version of the system does not support so complex selection objects, so we interpret result of compound request as a joined plain list of variants.</p>
 </section>
 <section id="compound-heterozygous-variants">
 <span id="compound-heterozygous"></span><h2>Compound heterozygous variants<a class="headerlink" href="#compound-heterozygous-variants" title="Permalink to this heading">¶</a></h2>
@@ -140,15 +140,15 @@ In the system the following 5 conditions are supported:</p>
 <div><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code></div>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">{“1”:</span> <span class="pre">{</span></code> <em>proband</em>, <em>proband's mother</em> <code class="docutils literal notranslate"><span class="pre">},</span> <span class="pre">“0”:</span> <span class="pre">{</span></code> <em>proband`s father</em> <code class="docutils literal notranslate"><span class="pre">}},</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">{“1”:</span> <span class="pre">{</span></code> <em>proband</em>, <em>proband's father</em> <code class="docutils literal notranslate"><span class="pre">},</span> <span class="pre">“0”:</span> <span class="pre">{</span></code> <em>proband`s mother</em> <code class="docutils literal notranslate"><span class="pre">}}</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">{“1”:</span> <span class="pre">{</span></code> <em>proband</em>, <em>proband’s mother</em> <code class="docutils literal notranslate"><span class="pre">},</span> <span class="pre">“0”:</span> <span class="pre">{</span></code> <em>proband`s father</em> <code class="docutils literal notranslate"><span class="pre">}},</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">{“1”:</span> <span class="pre">{</span></code> <em>proband</em>, <em>proband’s father</em> <code class="docutils literal notranslate"><span class="pre">},</span> <span class="pre">“0”:</span> <span class="pre">{</span></code> <em>proband`s mother</em> <code class="docutils literal notranslate"><span class="pre">}}</span></code></div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 </div></blockquote>
 <p>Comments.</p>
 <ul class="simple">
-<li><p>The main idea of request: let us consider case when only proband is affected. It might happen that on some &quot;gene&quot; each parent has (different) dangerous variant in heterozygous state. These variants have no effect because second copy of gene are not broken. But proband has both copies of &quot;gene&quot; broken: one copy is broken by one of dangerous variants, ans second copy - by another one.</p></li>
+<li><p>The main idea of request: let us consider case when only proband is affected. It might happen that on some “gene” each parent has (different) dangerous variant in heterozygous state. These variants have no effect because second copy of gene are not broken. But proband has both copies of “gene” broken: one copy is broken by one of dangerous variants, ans second copy - by another one.</p></li>
 <li><p>From informational point of view, the detection of compound events is a clear tasks. In practice however there are serious difficulties to prepare proper setup for this detection. Results of the procedure might be good only if most part of benign variants are filtered out before the detection process. It is a matter of experiments, so the system provides extended functionality for this special kind of experimental activity.</p></li>
 </ul>
 </section>

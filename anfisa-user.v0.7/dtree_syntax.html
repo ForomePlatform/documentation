@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="English">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
@@ -54,13 +54,13 @@
 <p>Decision tree is an algorithm of filtration that allows to build complex procedure of variants selection.</p>
 <section id="decision-tree-logic">
 <h2>Decision tree logic<a class="headerlink" href="#decision-tree-logic" title="Permalink to this heading">¶</a></h2>
-<p>A Decision Tree consists of a sequence of branching points. A result of application of any Decision Tree is a set that we will call &quot;final selection&quot;. The process starts with a set consisting of all of the variants (in a whole genome of patient family members or a cohort of patients). This set &quot;travels&quot; through a tree trunk. At each branching point a subset of variants is removed from the set and is either excluded from further consideration (thrown away) or unconditionally included in the final selection. Variants that have been neither excluded or included continue their &quot;travel&quot;.</p>
+<p>A Decision Tree consists of a sequence of branching points. A result of application of any Decision Tree is a set that we will call “final selection”. The process starts with a set consisting of all of the variants (in a whole genome of patient family members or a cohort of patients). This set “travels” through a tree trunk. At each branching point a subset of variants is removed from the set and is either excluded from further consideration (thrown away) or unconditionally included in the final selection. Variants that have been neither excluded or included continue their “travel”.</p>
 <ul class="simple">
 <li><p>Initially we have the whole set of items (variants) as working selection.</p></li>
 <li><dl class="simple">
 <dt>At each branching point:</dt><dd><ul>
 <li><p>If-instruction selects some subset of working selection;</p></li>
-<li><p>Return-instruction determines whether the selected subset should be included in the &quot;final selection&quot; (return <code class="docutils literal notranslate"><span class="pre">True</span></code>) or excluded (return <code class="docutils literal notranslate"><span class="pre">False</span></code>):</p></li>
+<li><p>Return-instruction determines whether the selected subset should be included in the “final selection” (return <code class="docutils literal notranslate"><span class="pre">True</span></code>) or excluded (return <code class="docutils literal notranslate"><span class="pre">False</span></code>):</p></li>
 </ul>
 </dd>
 </dl>
@@ -74,8 +74,8 @@
 </div>
 <blockquote>
 <div><ul class="simple">
-<li><p>after If-instruction the selection set is (probably) reduced, and next instruction is applied to this reduced set; next instruction is one more If-instruction, or...</p></li>
-<li><p>final instruction in code is always Return-instruction that determines what should be done to the rest of working selection: to include it in the &quot;final selection&quot; (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or to exclude it (<code class="docutils literal notranslate"><span class="pre">False</span></code>):</p></li>
+<li><p>after If-instruction the selection set is (probably) reduced, and next instruction is applied to this reduced set; next instruction is one more If-instruction, or…</p></li>
+<li><p>final instruction in code is always Return-instruction that determines what should be done to the rest of working selection: to include it in the “final selection” (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or to exclude it (<code class="docutils literal notranslate"><span class="pre">False</span></code>):</p></li>
 </ul>
 </div></blockquote>
 <div class="line-block">
@@ -92,12 +92,12 @@
 <p>There are three levels of details in description of Decision Tree Python dialect:</p>
 <ul>
 <li><p><strong>neccessary level</strong>: the dialect deals with very restricted subset of Python, so only small amount of Python constructions are allowed in it; below is complete description of this subset</p></li>
-<li><p><strong>good practice level</strong>: some constructs discussed below are recommended as &quot;good practice&quot;; similar constructs that are not considered good practices could be refactored to their &quot;good practice&quot; analogues in the process of interactive changes of a decision tree</p></li>
-<li><p><strong>simplification level</strong>: since the dialect of Python is very &quot;thin&quot;, for purposes of easy typing and reading it supports the following &quot;simplifications&quot;:</p>
+<li><p><strong>good practice level</strong>: some constructs discussed below are recommended as “good practice”; similar constructs that are not considered good practices could be refactored to their “good practice” analogues in the process of interactive changes of a decision tree</p></li>
+<li><p><strong>simplification level</strong>: since the dialect of Python is very “thin”, for purposes of easy typing and reading it supports the following “simplifications”:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>string constants</strong> can be typed without quote symbols <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code> if they are correct Python identifiers or constants <code class="docutils literal notranslate"><span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">None</span></code></p></li>
-<li><p><strong>lists vs. sets</strong>: in case when code refers list objects with <code class="docutils literal notranslate"><span class="pre">[]</span></code> parentheses, it is good practice to use set notation with <code class="docutils literal notranslate"><span class="pre">{}</span></code>; indeed in most cases, order of elements in a &quot;list&quot; is irrelevant, while <code class="docutils literal notranslate"><span class="pre">{}</span></code> are more readable</p></li>
+<li><p><strong>lists vs. sets</strong>: in case when code refers list objects with <code class="docutils literal notranslate"><span class="pre">[]</span></code> parentheses, it is good practice to use set notation with <code class="docutils literal notranslate"><span class="pre">{}</span></code>; indeed in most cases, order of elements in a “list” is irrelevant, while <code class="docutils literal notranslate"><span class="pre">{}</span></code> are more readable</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -183,10 +183,10 @@
 <li><p>operator <strong>in</strong> is supported for all enumerated properties, including status (single-value) and multiset (multi-value) properties.</p>
 <blockquote>
 <div><p>For status property its semantic is simple and intuitive.</p>
-<p>In case of multiset property this notation is more sophisticated: the condition is positive when intersection of two sets is nonempty, i.e. at least one value of the property matches at least one value in the given set; it can be &quot;explained&quot; by a way that object representing filtering property redefines operator <strong>in</strong> from the left</p>
+<p>In case of multiset property this notation is more sophisticated: the condition is positive when intersection of two sets is nonempty, i.e. at least one value of the property matches at least one value in the given set; it can be “explained” by a way that object representing filtering property redefines operator <strong>in</strong> from the left</p>
 </div></blockquote>
 </li>
-<li><p>in case of <strong>AND</strong> join mode interpretation of <strong>all()</strong> pseudo-function is even more sophisticated: it can be &quot;explained&quot; if result of <strong>all()</strong> redefines&quot; <strong>in</strong> operation in a very specific way from the right.</p></li>
+<li><p>in case of <strong>AND</strong> join mode interpretation of <strong>all()</strong> pseudo-function is even more sophisticated: it can be “explained” if result of <strong>all()</strong> redefines” <strong>in</strong> operation in a very specific way from the right.</p></li>
 <li><p>in terms of Decision Tree there is no strong need for <strong>NOT</strong> join mode, because operator <code class="docutils literal notranslate"><span class="pre">not</span></code> is supported outside atomic conditions</p></li>
 </ul>
 </div></blockquote>
@@ -197,7 +197,7 @@
 <blockquote>
 <div><p><em>function_name</em> (<em>parameters</em>)</p>
 </div></blockquote>
-<p>Syntax for parameters is Python standard. Since all values of the parameters must be JSON objects (however, with a change of JS constants <code class="docutils literal notranslate"><span class="pre">true/false/null</span></code> to Python counterparts <code class="docutils literal notranslate"><span class="pre">True/False/None</span></code>), there should be no problems in setting parameters up. (&quot;Simplifications&quot; are also acceptable for parameters).</p>
+<p>Syntax for parameters is Python standard. Since all values of the parameters must be JSON objects (however, with a change of JS constants <code class="docutils literal notranslate"><span class="pre">true/false/null</span></code> to Python counterparts <code class="docutils literal notranslate"><span class="pre">True/False/None</span></code>), there should be no problems in setting parameters up. (“Simplifications” are also acceptable for parameters).</p>
 <p>See <a class="reference internal" href="func_ref.html"><span class="doc">Filtering functions</span></a> for reference of available functions and their parameters.</p>
 </section>
 <section id="property-and-function-identifiers">
@@ -211,7 +211,7 @@
 <p>The following objects are explicated from the code of decision tree:</p>
 <ul class="simple">
 <li><p><strong>Points</strong> correspond to instruction in code; each If- or Return- instruction corresponds to a point with state of selection set: either working one or pre-final. The user needs to know how many items (variants) are in these sets, and moreover has possibility to study distribution of values for filtering properties of items in these sets.</p></li>
-<li><p><strong>Atomic conditions</strong> are &quot;atomic&quot; fragments of condition in If instructions. There can be many atomic conditions in one If instruction. It is important functionalify of the system to locate them and provide their modifications.</p></li>
+<li><p><strong>Atomic conditions</strong> are “atomic” fragments of condition in If instructions. There can be many atomic conditions in one If instruction. It is important functionalify of the system to locate them and provide their modifications.</p></li>
 <li><p><strong>State labels</strong> can be defined in code by Label instructions. They are used with complex functions. This functionalify requires high level of qualification and attendacy of the user, however it might be very important in practice.</p></li>
 </ul>
 <p>A decision tree can be modified in either of two ways:</p>
