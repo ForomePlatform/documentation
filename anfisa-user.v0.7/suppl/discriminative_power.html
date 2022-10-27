@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Discriminative Power specification &#8212; Anfisa User Documentation v.0.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Annotation Sources" href="annotation_sources.html" />
+    <link rel="prev" title="Pre-defined filters" href="predefined_filters.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="annotation_sources.html" title="Annotation Sources"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="predefined_filters.html" title="Pre-defined filters"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Discriminative Power specification</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="discriminative-power-specification">
+<span id="discriminative-power"></span><h1>Discriminative Power specification<a class="headerlink" href="#discriminative-power-specification" title="Permalink to this heading">¶</a></h1>
+<p>This document describes an algorithm of Discriminative Power calculation.</p>
+<section id="formulation-of-the-problem">
+<h2>Formulation of the problem<a class="headerlink" href="#formulation-of-the-problem" title="Permalink to this heading">¶</a></h2>
+<p>As was said in the filters description, the <strong>Discriminative power</strong> is a special numeric characteristic
+use to indicate the “Effectivity” of a filter.
+This means that “Effective” filter can split the current set of variants
+on the the most strongly differing groups, e.g. with loss maximum of “entropy”.</p>
+<p>As a possibility, we can use here evaluation of plain proper entropy, but it is not so helpful if the set of
+variants is wide (up to millions). So we evaluate some entropy-like product instead of proper entropy,
+and below is the description of the procedure.</p>
+</section>
+<section id="procedure-of-evaluation">
+<h2>Procedure of evaluation<a class="headerlink" href="#procedure-of-evaluation" title="Permalink to this heading">¶</a></h2>
+<p>For each property we start from property status data, and form list of numeric (positive integer) values,
+one integer for each of “choices”:</p>
+<ul class="simple">
+<li><p>For numeric property we have histogram of values, use this as “list of choices”</p></li>
+<li><dl class="simple">
+<dt>For enumerated property we have count of each value - use this as base list for “list of choices”, and take in account “total count”, that equals to the filtered-counts of variants (or transcripts, in some cases)</dt><dd><ul>
+<li><p>For status property the sum of values in the base list equals to the total count, the base list is the final</p></li>
+<li><p>If the sum of values in the base list is less than total count, append the difference to the base list, otherwise use the base one as it</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Note</strong>: The procedure is rough, so we ignore (up to now) specifics of multivalued enumerated properties with wide overlap.
+With use of “list of choices” we evaluate Discriminative Power by the following procedure (in JavaScript language):</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Discriminative power calculation</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">entropyReport</span><span class="p">(</span><span class="nx">counts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">counts</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">counts</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">sum_e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">counts</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">counts</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="nx">cnt</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="nx">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">counts</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="nx">total</span><span class="w"></span>
+<span class="w">            </span><span class="nx">sum_e</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="nx">quote</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">log2</span><span class="p">(</span><span class="nx">quote</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">norm_e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum_e</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">log2</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">divisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reduceTotal</span><span class="p">(</span><span class="nx">counts</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">norm_e</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">divisor</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="nx">pp</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="cm">/*************************************/</span><span class="w"></span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">reduceTotal</span><span class="p">(</span><span class="nx">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// for N &lt; 10; easy to select</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.02</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">25</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// for N &lt; 25; still possible to view all values together on one page</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">15</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">125</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// for N &lt; 125; easy to scroll</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">25</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">625</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// for N &lt; 625; still possible to scroll</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">125</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3125</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// for N &lt; 3125; difficult to scroll, exact N no longer matters</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">9</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">625</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// for N &gt;= 3125; visual selection</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">21.5</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Discriminative Power specification</a><ul>
+<li><a class="reference internal" href="#formulation-of-the-problem">Formulation of the problem</a></li>
+<li><a class="reference internal" href="#procedure-of-evaluation">Procedure of evaluation</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="predefined_filters.html"
+                          title="previous chapter">Pre-defined filters</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="annotation_sources.html"
+                          title="next chapter">Annotation Sources</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/suppl/discriminative_power.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="annotation_sources.html" title="Annotation Sources"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="predefined_filters.html" title="Pre-defined filters"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Discriminative Power specification</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    </div>
+  </body>
+</html>

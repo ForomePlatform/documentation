@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Derived Dataset &#8212; Anfisa User Documentation v.0.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analysis examples" href="analysis_examples.html" />
+    <link rel="prev" title="Filter dashboard" href="filter_dashboard.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="analysis_examples.html" title="Analysis examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="filter_dashboard.html" title="Filter dashboard"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Derived Dataset</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="derived-dataset">
+<span id="id1"></span><h1>Derived Dataset<a class="headerlink" href="#derived-dataset" title="Permalink to this heading">¶</a></h1>
+<section id="derived-dataset-selection">
+<h2>Derived dataset selection<a class="headerlink" href="#derived-dataset-selection" title="Permalink to this heading">¶</a></h2>
+<p>To pen derived dataset, just select one of the primary datasets,
+the select option “Use existing candidate set”.
+After selecting the candidate set one will see all information regarding the selected set:
+General information, annotation sources and code of decision tree/filters used to produce this dataset</p>
+<a class="reference internal image-reference" href="_images/dataset-derived_info.png"><img alt="Derived dataset information" src="_images/dataset-derived_info.png" style="width: 800px;" /></a>
+<p>On the right panel one can add dataset description and decide, what to do with the dataset.
+One can continue to filter variations by Filter refiner/decision tree.
+Alternatively, if the dataset is small enough, one can directly view variations
+by selection option “View all variants”.</p>
+</section>
+<section id="variations-table">
+<h2>Variations table<a class="headerlink" href="#variations-table" title="Permalink to this heading">¶</a></h2>
+<p>The main scree of the derived dataset exploration is the variations table.</p>
+<p>The left part of the screen contains the list of all variations in the dataset,
+including gene name and exact variation description. The right part of the screen contain detailed
+description of selected variation.</p>
+<a class="reference internal image-reference" href="_images/derived-dataset_variations-table.png"><img alt="Variations table window" src="_images/derived-dataset_variations-table.png" style="width: 800px;" /></a>
+<section id="table-controls">
+<h3>Table controls<a class="headerlink" href="#table-controls" title="Permalink to this heading">¶</a></h3>
+<p>The action “<strong>Edit filters</strong>” switches interface to variations filtering via filter refiner
+or decision tree. Both options works the same way both for primary and for derived datasets.</p>
+<p>The actions “<strong>Select filter preset</strong>” is used to perform a quick filtering of variations.
+One can choose from list of previously saved filter presets.</p>
+<p>Actions “Add gene”, “<strong>Add gene list</strong>”, “<strong>Add samples</strong>”, “<strong>Add tags</strong>” are used to set additional quick filters
+by the corresponding properties. One can use this quick filters to narrow down variations list.</p>
+</section>
+<section id="variants-list-and-classification">
+<h3>Variants list and classification<a class="headerlink" href="#variants-list-and-classification" title="Permalink to this heading">¶</a></h3>
+<p>The left part of the screen contains the list of all variations, according to the current filter settings.
+By default the table contains gene symbol and variant.
+By clicking on the variation one can see the variation details in the right panel.</p>
+<p>The color and symbol on the variation record indicates the result of semi-automate variant classification
+based on a transparent decision model.</p>
+<p>Visual labels represent the variant functional impact:</p>
+<ul class="simple">
+<li><p>Crosses for variants leading to loss-of-function</p></li>
+<li><p>Circles for the variants which do not implicitly disrupt function of the protein coding genes</p></li>
+</ul>
+<p>The pathogenicity of the variants is coded by color:</p>
+<ul class="simple">
+<li><p>Benign variants are colored green,</p></li>
+<li><p>However, in case of loss-of-function, benign variants are colored yellow
+despite being classified as not damaging due to nature of the variant consequence.</p></li>
+<li><p>Variants of uncertain significance are colored yellow,</p></li>
+<li><p>Pathogenic variants are colored red.</p></li>
+<li><p>Sequence variants which are not listed in HGMD and ClinVar and do not have in-silico predictions
+are displayed as gray circles.</p></li>
+</ul>
+<p>More detailed description of variant classification algorithm is here: <a class="reference internal" href="suppl/variants_classification.html#variants-classification-algorithm"><span class="std std-ref">Variants Classification algorithm</span></a></p>
+</section>
+</section>
+<section id="variation-details">
+<h2>Variation details<a class="headerlink" href="#variation-details" title="Permalink to this heading">¶</a></h2>
+<p>The right panel of the screen contains the details of the selected variation.
+Buttons on the top of the details page controls the variation selection and tagging.
+One can choose variations by pressing Up/Down buttons, and add tag and text notes for the variation.</p>
+<section id="variations-tagging">
+<h3>Variations tagging<a class="headerlink" href="#variations-tagging" title="Permalink to this heading">¶</a></h3>
+<p>To add the variations tag just press the “<strong>Add tag</strong>” button. Here one can select tag from list of
+pre-defined tags or create a custom tag.
+All assigned tags are shown next to the “<strong>Add tag</strong>” button.</p>
+<a class="reference internal image-reference" href="_images/derived-dataset_variation-tags.png"><img alt="Variation tagging properties" src="_images/derived-dataset_variation-tags.png" style="width: 800px;" /></a>
+</section>
+<section id="variation-properties">
+<h3>Variation properties<a class="headerlink" href="#variation-properties" title="Permalink to this heading">¶</a></h3>
+<p>All variation properties are separated in several groups. One property group (<em>“General”</em> by default)
+is expanded and its content is visible.
+Other groups are collapsed and presented on bottom of the right panel.
+One can switch between groups by clicking on the group name.</p>
+<p>For expanded group user can see all properties of the selected variation.
+All properties are not editable. However, for some groups there are interactive links to external resources.
+For example, “<strong>Open IGV</strong>” for “<strong>General</strong>” group and “<strong>gnomAD browser</strong>” for gnomAD group.</p>
+<p>At each step user can export the resulting variations table to Excel/CSV file using
+<strong>Export report</strong> function (Located on top of the screen next to user picture).</p>
+<p><strong>Next</strong>: <a class="reference internal" href="analysis_examples.html#analysis-examples"><span class="std std-ref">Analysis examples</span></a></p>
+<p><a class="reference internal" href="index.html#toc"><span class="std std-ref">Table of contents</span></a></p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Derived Dataset</a><ul>
+<li><a class="reference internal" href="#derived-dataset-selection">Derived dataset selection</a></li>
+<li><a class="reference internal" href="#variations-table">Variations table</a><ul>
+<li><a class="reference internal" href="#table-controls">Table controls</a></li>
+<li><a class="reference internal" href="#variants-list-and-classification">Variants list and classification</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variation-details">Variation details</a><ul>
+<li><a class="reference internal" href="#variations-tagging">Variations tagging</a></li>
+<li><a class="reference internal" href="#variation-properties">Variation properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="filter_dashboard.html"
+                          title="previous chapter">Filter dashboard</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="analysis_examples.html"
+                          title="next chapter">Analysis examples</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/derived_dataset.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="analysis_examples.html" title="Analysis examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="filter_dashboard.html" title="Filter dashboard"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Derived Dataset</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    </div>
+  </body>
+</html>

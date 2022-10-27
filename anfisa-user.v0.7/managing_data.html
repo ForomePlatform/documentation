@@ -49,7 +49,7 @@
           <div class="body" role="main">
             
   <section id="managing-data">
-<h1>Managing data<a class="headerlink" href="#managing-data" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1>Managing data<a class="headerlink" href="#managing-data" title="Permalink to this heading">¶</a></h1>
 <section id="preparing-data-for-anfisa">
 <h2>Preparing data for AnFiSA<a class="headerlink" href="#preparing-data-for-anfisa" title="Permalink to this heading">¶</a></h2>
 <p>Anfisa works in tight connection with Forome annotation pipeline,
@@ -62,7 +62,22 @@ However, at the moment the installation and running of this pipeline can be tric
 For quick check of AnFiSA capabilities we recooment using bild-in sample data set.</p>
 <p>If you want to make a quick try of AnFisa with your own dataset
 you can contact <strong>Forome</strong> and ask for assistance with data processing.</p>
-<p>Uplodaing data to Anfisa described in Anfisa Setup and Administration Guide</p>
+<p>Uploading data to Anfisa described in Anfisa Setup and Administration Guide.</p>
+<section id="notes-regarding-calling-de-novo-variants">
+<h3>Notes regarding calling de novo variants<a class="headerlink" href="#notes-regarding-calling-de-novo-variants" title="Permalink to this heading">¶</a></h3>
+<p>The specificity of calling de novo variants by standard GATK callers such as Haplotype caller
+is unacceptably low to be useful in clinical practice.
+In many cases, this is not a serious limitation, as de novo events are rare
+and if the analysis is driven by phenotypic features and focused on established disease genes,
+few de novo variants will pass initial filtering.</p>
+<p>However, AnFiSA is designed to be used to evaluate patients with undiagnosed diseases,
+where de novo mutation is often a viable hypothesis.
+Analyzing such patients requires the use of specialized variant callers.
+In our practice, we used <a class="reference external" href="https://academic.oup.com/bioinformatics/article/35/7/1174/5087716">NovoCaller</a>
+and <a class="reference external" href="https://github.com/jandrewrfarrell/RUFUS">Rufus</a>.
+Calling de novo variants is a part of the upstream analysis and hence beyond the topic of this guide.
+Nevertheless, the curation algorithms we have developed rely on the annotations produced by these callers.</p>
+</section>
 </section>
 <section id="anfisa-datasets">
 <h2>AnFiSA datasets<a class="headerlink" href="#anfisa-datasets" title="Permalink to this heading">¶</a></h2>
@@ -72,6 +87,8 @@ or a whole genome (WGS) sequencing data and can encompass up to 10 million varia
 <p>The Anfisa users can generate secondary datasets by applying decision trees on primary XL datasets.
 Secondary datasets are present as workspaces and contain smaller number of variants (up to 10000).
 Workspace allows users to view, explore, tag, annotate and review the variants in it.</p>
+<p><strong>Next</strong>: <a class="reference internal" href="workspace.html#workspace"><span class="std std-ref">Workspace</span></a></p>
+<p><a class="reference internal" href="index.html#toc"><span class="std std-ref">Table of contents</span></a></p>
 </section>
 </section>
 
@@ -86,7 +103,10 @@ Workspace allows users to view, explore, tag, annotate and review the variants i
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Managing data</a><ul>
-<li><a class="reference internal" href="#preparing-data-for-anfisa">Preparing data for AnFiSA</a></li>
+<li><a class="reference internal" href="#preparing-data-for-anfisa">Preparing data for AnFiSA</a><ul>
+<li><a class="reference internal" href="#notes-regarding-calling-de-novo-variants">Notes regarding calling de novo variants</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#anfisa-datasets">AnFiSA datasets</a></li>
 </ul>
 </li>

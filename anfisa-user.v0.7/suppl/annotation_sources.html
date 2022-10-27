@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Annotation Sources &#8212; Anfisa User Documentation v.0.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Filtering functions" href="func_ref.html" />
+    <link rel="prev" title="Discriminative Power specification" href="discriminative_power.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="func_ref.html" title="Filtering functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="discriminative_power.html" title="Discriminative Power specification"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Annotation Sources</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="annotation-sources">
+<span id="id1"></span><h1>Annotation Sources<a class="headerlink" href="#annotation-sources" title="Permalink to this heading">¶</a></h1>
+<p>As a warehouse, AnFiSA stores annotations of single nucleotide variants (SNP),
+insertions and deletions, copy number variantions (CNV) and structural variations (SV)
+in the human genome that are used to prioritize candidate pathogenic variants in an affected proband.
+Some of the annotations reflect technical information such as provenance and confidence information
+about the specific call (call annotations).
+Other annotations summarize genetic and biological evidence relevant to the potential effect
+of mutations on molecular function and phenotype (biological annotations). These annotations
+combine multiple inputs and consist of genomic, protein, and disease-specific information gathered
+from different public and proprietary sources.</p>
+<section id="brief-description-of-annotation-sources">
+<h2>Brief description of annotation sources<a class="headerlink" href="#brief-description-of-annotation-sources" title="Permalink to this heading">¶</a></h2>
+<p>AnFiSA relies on dbNSFP gnomAD, ENSEMBLE Variant Effect Predictor (VEP)
+and NCBI resources (e.g., ClinVar, MedGen and PubMed), OMIM, SpliceAI and HGMD as main annotation sources.
+Collectively, these sources provide information on phenotypic effects of genes and individual variants,
+allele frequencies, functional effect predictors (e.g., SIFT, PolyPhen),
+conservation scores (e.g. PhastCons and GERP).
+For ClinVar, in addition to the usual data for each variant including clinical significance,
+stars, review status, conflicts, etc., the user has an option to select a set of trusted submitters,
+in which case the clinical significance assigned by them will be provided as a separate category.
+By default, AnFiSA includes Laboratory of Molecular Medicine (LMM),
+GeneDx and Invitae as trusted sources by our team, though designation as trusted can be customized.</p>
+<p>Here is the list of sources used in annotation process in Anfisa System</p>
+</section>
+<section id="assemblies">
+<h2>Assemblies<a class="headerlink" href="#assemblies" title="Permalink to this heading">¶</a></h2>
+<section id="grch37-hg19">
+<h3>GRCh37 (HG19)<a class="headerlink" href="#grch37-hg19" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.13/">https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.13/</a></p></li>
+<li><p>File URL: <a class="reference external" href="http://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.25_GRCh37.p13/GCF_000001405.25_GRCh37.p13_genomic.fna.gz">http://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.25_GRCh37.p13/GCF_000001405.25_GRCh37.p13_genomic.fna.gz</a></p></li>
+</ul>
+</section>
+<section id="grch38">
+<h3>GRCh38<a class="headerlink" href="#grch38" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Version: patch 13</p></li>
+<li><p>Project URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.39">https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.39</a></p></li>
+<li><p>File URL: <a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.39_GRCh38.p13">ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.39_GRCh38.p13</a></p></li>
+</ul>
+</section>
+<section id="gencode-gtf">
+<h3>Gencode GTF<a class="headerlink" href="#gencode-gtf" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="https://www.gencodegenes.org/pages/data_format.html">https://www.gencodegenes.org/pages/data_format.html</a></p></li>
+<li><p>Downloads: <a class="reference external" href="https://useast.ensembl.org/info/data/ftp/index.html">https://useast.ensembl.org/info/data/ftp/index.html</a></p></li>
+<li><p>Direct Download URL: <a class="reference external" href="ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.chr.gtf.gz">ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.chr.gtf.gz</a></p></li>
+</ul>
+</section>
+</section>
+<section id="genome-aggregation-database-gnomad">
+<h2>Genome Aggregation Database (gnomAD)<a class="headerlink" href="#genome-aggregation-database-gnomad" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Version: 2.1.1</p></li>
+<li><p>URL: <a class="reference external" href="https://gnomad.broadinstitute.org/">https://gnomad.broadinstitute.org/</a></p></li>
+<li><p>Download URL: <a class="reference external" href="https://gnomad.broadinstitute.org/downloads">https://gnomad.broadinstitute.org/downloads</a></p></li>
+</ul>
+</section>
+<section id="clinvar">
+<h2>ClinVar<a class="headerlink" href="#clinvar" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/clinvar/">https://www.ncbi.nlm.nih.gov/clinvar/</a></p></li>
+<li><p>CSV File URL (contains data): <a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz">https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz</a></p></li>
+<li><p>XML File URL (contains data and metadata): <a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/">https://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/</a></p></li>
+</ul>
+</section>
+<section id="spliceai">
+<h2>SpliceAI<a class="headerlink" href="#spliceai" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>GitHub URL:</p>
+<blockquote>
+<div><p>Download URL (requires free registration): <a class="reference external" href="https://basespace.illumina.com/analyses/194103939/files/236418325?projectId=66029966">https://basespace.illumina.com/analyses/194103939/files/236418325?projectId=66029966</a></p>
+</div></blockquote>
+</li>
+<li><p>Version: v1pre3</p></li>
+<li><p>Files:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>spliceai_scores.masked.snv.hg38.vcf.gz</p></li>
+<li><p>spliceai_scores.masked.indel.hg38.vcf.gz</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://github.com/Illumina/SpliceAI">https://github.com/Illumina/SpliceAI</a></p></li>
+</ul>
+</section>
+<section id="dbnsfp">
+<h2>dbNSFP<a class="headerlink" href="#dbnsfp" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Project URL: <a class="reference external" href="https://sites.google.com/site/jpopgen/dbNSFP">https://sites.google.com/site/jpopgen/dbNSFP</a></p></li>
+<li><p>File URL:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="ftp://dbnsfp:dbnsfp&#64;dbnsfp.softgenetics.com/dbNSFP4.0a.zip">ftp://dbnsfp:dbnsfp&#64;dbnsfp.softgenetics.com/dbNSFP4.0a.zip</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1BNLEdIc4CjCeOa7V7Z8n8P8RHqUaF5GZ/view?usp=sharing">https://drive.google.com/file/d/1BNLEdIc4CjCeOa7V7Z8n8P8RHqUaF5GZ/view?usp=sharing</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="dbsnp">
+<h2>dbSNP<a class="headerlink" href="#dbsnp" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/snp">https://www.ncbi.nlm.nih.gov/snp</a></p></li>
+</ul>
+</section>
+<section id="gtex">
+<h2>GTEx<a class="headerlink" href="#gtex" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="https://www.gtexportal.org/home/">https://www.gtexportal.org/home/</a></p></li>
+<li><p>Download URL: <a class="reference external" href="https://storage.googleapis.com/gtex_analysis_v8/rna_seq_data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz">https://storage.googleapis.com/gtex_analysis_v8/rna_seq_data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz</a></p></li>
+</ul>
+</section>
+<section id="pharmgkb-pharmacogenomics">
+<h2>PharmGKB (Pharmacogenomics)<a class="headerlink" href="#pharmgkb-pharmacogenomics" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="https://www.pharmgkb.org/">https://www.pharmgkb.org/</a></p></li>
+<li><p>Download URL: <a class="reference external" href="https://www.pharmgkb.org/downloads">https://www.pharmgkb.org/downloads</a></p></li>
+<li><p>File: Variant Annotations Help File (annotations.zip)</p></li>
+</ul>
+</section>
+<section id="gerp-scores">
+<h2>GERP Scores<a class="headerlink" href="#gerp-scores" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Project URL: <a class="reference external" href="http://mendel.stanford.edu/SidowLab/downloads/gerp/">http://mendel.stanford.edu/SidowLab/downloads/gerp/</a></p></li>
+<li><p>Download URL: <a class="reference external" href="http://mendel.stanford.edu/SidowLab/downloads/gerp/hg19.GERP_scores.tar.gz">http://mendel.stanford.edu/SidowLab/downloads/gerp/hg19.GERP_scores.tar.gz</a></p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Annotation Sources</a><ul>
+<li><a class="reference internal" href="#brief-description-of-annotation-sources">Brief description of annotation sources</a></li>
+<li><a class="reference internal" href="#assemblies">Assemblies</a><ul>
+<li><a class="reference internal" href="#grch37-hg19">GRCh37 (HG19)</a></li>
+<li><a class="reference internal" href="#grch38">GRCh38</a></li>
+<li><a class="reference internal" href="#gencode-gtf">Gencode GTF</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#genome-aggregation-database-gnomad">Genome Aggregation Database (gnomAD)</a></li>
+<li><a class="reference internal" href="#clinvar">ClinVar</a></li>
+<li><a class="reference internal" href="#spliceai">SpliceAI</a></li>
+<li><a class="reference internal" href="#dbnsfp">dbNSFP</a></li>
+<li><a class="reference internal" href="#dbsnp">dbSNP</a></li>
+<li><a class="reference internal" href="#gtex">GTEx</a></li>
+<li><a class="reference internal" href="#pharmgkb-pharmacogenomics">PharmGKB (Pharmacogenomics)</a></li>
+<li><a class="reference internal" href="#gerp-scores">GERP Scores</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="discriminative_power.html"
+                          title="previous chapter">Discriminative Power specification</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="func_ref.html"
+                          title="next chapter">Filtering functions</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/suppl/annotation_sources.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="func_ref.html" title="Filtering functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="discriminative_power.html" title="Discriminative Power specification"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Anfisa User Documentation v.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Annotation Sources</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright (c) 2019-2022. Partners HealthCare and other members of Forome Association.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    </div>
+  </body>
+</html>
