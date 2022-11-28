@@ -46,39 +46,69 @@
             
   <section id="notes-on-zygosity">
 <span id="zygosity-notes"></span><h1>Notes on Zygosity<a class="headerlink" href="#notes-on-zygosity" title="Permalink to this heading">¶</a></h1>
-<p>Below we use JSON-format notation for definition of the system terms.</p>
-<section id="definitions-case-samples">
-<h2>Definitions: case, samples<a class="headerlink" href="#definitions-case-samples" title="Permalink to this heading">¶</a></h2>
-<p>Dataset represents <strong>case</strong> i.e genomics information on one or many persons - <strong>samples</strong> - from the same family. Each sample in case is identified by <strong>id</strong>.</p>
-<p>Examples of id: <code class="docutils literal notranslate"><span class="pre">&quot;bgm9001a1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bgm9001u1&quot;</span></code></p>
-<p>Sample id starts with case id, then letter <code class="docutils literal notranslate"><span class="pre">a</span></code> (affected) or <code class="docutils literal notranslate"><span class="pre">u</span></code> (unaffected), and a number from 1 to upper. Id of proband always ends up with <code class="docutils literal notranslate"><span class="pre">&quot;a1&quot;</span></code> (in medical cases we proband is always “affected”).</p>
-<p>The typical case is <strong>trio</strong>: samples are proband and two parents. Note that some tasks in below are formulated only in context of this scope.</p>
-</section>
+<p>One of the most complicated task for doctors working with genome data is to catch rare
+combinations of mutations which can lead to disease.
+This section covers AnFiSA functions specially designed to deal with such complicated events.</p>
+<section id="basic-information-regarding-zygosity">
+<h2>Basic information regarding zygosity<a class="headerlink" href="#basic-information-regarding-zygosity" title="Permalink to this heading">¶</a></h2>
+<p>Before we can proceed further, we nned to define some basic terms regarding zygosity.</p>
 <section id="zygosity-states">
-<h2>Zygosity states<a class="headerlink" href="#zygosity-states" title="Permalink to this heading">¶</a></h2>
+<h3>Zygosity states<a class="headerlink" href="#zygosity-states" title="Permalink to this heading">¶</a></h3>
 <p>Most of chromosomes for human are pairwise, so a mutation/variant applying to a sample has one of the following states:</p>
 <ul class="simple">
 <li><p>Zygosity 0: variant is absent</p></li>
 <li><p>Zygosity 1: variant is heterozygous, it presents on one chromosome copy</p></li>
 <li><p>Zygosity 2: variant is homozygous, it presents on both copies of chromosome</p></li>
 </ul>
-<p>Males have chromosomes X and Y in one copies, so a mutation/variant on these chromosomes for male sample has one of the following states:</p>
+<p>Males have chromosomes X and Y in one copies, so a mutation/variant on these chromosomes for male sample
+has one of the following states:</p>
 <ul class="simple">
 <li><p>Zygosity 0: variant is absent</p></li>
 <li><p>Zygosity 2: variant is hemozygous, it does present on single copy of chromosome</p></li>
 </ul>
-<p><em>Attention</em>: in hemozygous state a variant presents in one copy, however it is more convenient to define zygosity number as 2, since it is essentially more similar to homozygous case than to heterozygous one.</p>
+<p><em>Attention</em>: in hemozygous state a variant presents in one copy, however it is more convenient to define
+zygosity number as 2, since it is essentially more similar to homozygous case than to heterozygous one.</p>
 </section>
-<section id="zygosity-conditions">
-<h2>Zygosity conditions<a class="headerlink" href="#zygosity-conditions" title="Permalink to this heading">¶</a></h2>
-<p>We need to define meaningful conditions for zygosity number for variants.
-In the system the following 5 conditions are supported:</p>
-<p><code class="docutils literal notranslate"><span class="pre">“2”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“2-1”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“1”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“1-0”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“0”</span></code></p>
-<p>Formally speaking, we can define one more meaningful constant: <code class="docutils literal notranslate"><span class="pre">&quot;0-2&quot;</span></code>, but let us interpret this case as we do not define condition at all: all variant are passed.</p>
+<section id="definitions-case-samples">
+<h3>Definitions: case, samples<a class="headerlink" href="#definitions-case-samples" title="Permalink to this heading">¶</a></h3>
+<p>Dataset in clinical disgnostics mostly represents a <strong>case</strong>
+i.e genomics information on one or many persons - <strong>samples</strong> from the same family.</p>
+<p>The typical case is <strong>trio</strong>: proband and two parents.
+Note that some tasks in below are formulated only in context of this scope.</p>
 </section>
-<section id="zygosity-scenario">
-<span id="id1"></span><h2>Zygosity scenario<a class="headerlink" href="#zygosity-scenario" title="Permalink to this heading">¶</a></h2>
-<p>Zygosity scenario is join of zygosity conditions for samples in case:</p>
+</section>
+<section id="compound-heterozygous-variants-problem">
+<h2>Compound heterozygous variants problem<a class="headerlink" href="#compound-heterozygous-variants-problem" title="Permalink to this heading">¶</a></h2>
+<p>The main idea of compound heterozygous variants is following.</p>
+<p>The parents of the proband had different heterozygous recessive mutations in the same gene.
+Each mutation in homozygous state breaks the gene function.
+However for both parents these mutations are harmless:
+both the patient’s mother and father had other normal copies of the DNA of this gene, and everything was normal.
+But in the patient, these two mutations converged,
+and we catch a situation where one of the mutations breaks one copy of the gene, and the other breaks the other.</p>
+<p>It is critically important for doctors to catch such pairs, but there are significant issues in their identification.
+The list of mutations from which such pairs should be selected should,
+on the one hand, be free of obviously non-problematic mutations, and,
+on the other hand, should be large enough so that such rare events as compound pairs would be taken into account.</p>
+<p>More formally: in the case of a trio, we need to find pairs of mutations that happened in the same gene,
+and such that the first has the first property, and the second the second:</p>
+<ul class="simple">
+<li><p>First mutation: <code class="docutils literal notranslate"><span class="pre">{&quot;1&quot;:</span> <span class="pre">{patient,</span> <span class="pre">dad},</span> <span class="pre">&quot;0&quot;:</span> <span class="pre">{mother}}</span></code></p></li>
+<li><p>Second mutation <code class="docutils literal notranslate"><span class="pre">{&quot;1&quot;:</span> <span class="pre">{patient,</span> <span class="pre">mom},</span> <span class="pre">&quot;0&quot;:</span> <span class="pre">{dad}}</span></code></p></li>
+</ul>
+</section>
+<section id="anfisa-support-of-complex-zygosity-scenarios">
+<h2>AnFiSA support of complex zygosity scenarios<a class="headerlink" href="#anfisa-support-of-complex-zygosity-scenarios" title="Permalink to this heading">¶</a></h2>
+<section id="case-ids-definition">
+<h3>Case IDs definition<a class="headerlink" href="#case-ids-definition" title="Permalink to this heading">¶</a></h3>
+<p>Each sample in case is identified by <strong>id</strong>.
+Examples of id: <code class="docutils literal notranslate"><span class="pre">&quot;bgm9001a1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bgm9001u1&quot;</span></code>
+Sample id starts with case id, then letter <code class="docutils literal notranslate"><span class="pre">a</span></code> (affected) or <code class="docutils literal notranslate"><span class="pre">u</span></code> (unaffected), and a number from 1 to upper.
+The proband always ends up with <code class="docutils literal notranslate"><span class="pre">&quot;a1&quot;</span></code> (in medical cases proband is always “affected”).</p>
+</section>
+<section id="zygosity-scenario-notation">
+<span id="zygosity-scenario"></span><h3>Zygosity scenario notation<a class="headerlink" href="#zygosity-scenario-notation" title="Permalink to this heading">¶</a></h3>
+<p>Zygosity scenario is join of zygosity conditions for samples in case. It is defined using following notation:</p>
 <blockquote>
 <div><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">{</span></code> <em>dictionary</em></div>
@@ -89,9 +119,19 @@ In the system the following 5 conditions are supported:</p>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">}</span></code></div>
 </div>
 </div></blockquote>
+<p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">{&quot;1&quot;:</span> <span class="pre">{patient,</span> <span class="pre">dad},</span> <span class="pre">&quot;0&quot;:</span> <span class="pre">{mother}}</span></code>.
+The variant is heterozygous in patient (proband) and its father. The patient’s mother doesn’t have a variation</p>
+</section>
+<section id="zygosity-conditions-in-anfisa">
+<span id="default-problem-group"></span><h3>Zygosity conditions in AnFiSA<a class="headerlink" href="#zygosity-conditions-in-anfisa" title="Permalink to this heading">¶</a></h3>
+<p>We need to define meaningful conditions for zygosity number for variants.
+In the system the following 5 conditions are supported:</p>
+<p><code class="docutils literal notranslate"><span class="pre">“2”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“2-1”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“1”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“1-0”</span></code>,    <code class="docutils literal notranslate"><span class="pre">“0”</span></code></p>
+<p>Formally speaking, we can define one more meaningful constant: <code class="docutils literal notranslate"><span class="pre">&quot;0-2&quot;</span></code>,
+but let us interpret this case as we do not define condition at all: all variant are passed.</p>
 </section>
 <section id="standard-zygosity-scenarios">
-<span id="id2"></span><h2>Standard zygosity scenarios<a class="headerlink" href="#standard-zygosity-scenarios" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h3>Standard zygosity scenarios<a class="headerlink" href="#standard-zygosity-scenarios" title="Permalink to this heading">¶</a></h3>
 <p>Let us consider split of samples in case on two groups: affected/unaffected.</p>
 <p>The following scenarios are important in practice:</p>
 <ul class="simple">
@@ -100,21 +140,63 @@ In the system the following 5 conditions are supported:</p>
 <li><p><strong>Compensational</strong>:                 <code class="docutils literal notranslate"><span class="pre">{“0”:</span></code> <em>affected</em>, <code class="docutils literal notranslate"><span class="pre">“2-1”:</span></code> <em>unaffected</em> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></li>
 </ul>
 <p>Comments:</p>
-<blockquote>
-<div><p><strong>Autosomal Dominant</strong> - probably bad: variant presents for all affected and is absent for all unaffected</p>
-<p><strong>Homozygous Recessive</strong> - variant probably breaks gene, but has no effect while there is second good (gene) copy</p>
-<p><strong>X-linked</strong> - variant probably bad, it affects all male samples and females in homozygous state</p>
-<p><strong>Compensational</strong> - variant is probably good, it fixes (screens) up illness caused by other facts</p>
-</div></blockquote>
-<p id="default-problem-group"><em>Notes</em>:</p>
+<ul class="simple">
+<li><p><strong>Autosomal Dominant</strong> - probably bad: variant presents for all affected and is absent for all unaffected</p></li>
+<li><p><strong>Homozygous Recessive</strong> - variant probably breaks gene, but has no effect while there is second good (gene) copy</p></li>
+<li><p><strong>X-linked</strong> - variant probably bad, it affects all male samples and females in homozygous state</p></li>
+<li><p><strong>Compensational</strong> - variant is probably good, it fixes (screens) up illness caused by other facts</p></li>
+</ul>
+<p>These scenarios are most important for specialists and AnFiSA ave capable to identify it.</p>
+<p><em>Notes</em>:</p>
 <ul class="simple">
 <li><p>we call group of affected samples as <strong>problem group</strong></p></li>
-<li><p>for a dataset the <strong>default problem group</strong> is preset by different letters <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">u</span></code> in id of samples; however it is good if the user can define problem group directly</p></li>
+<li><p>for a dataset the <strong>default problem group</strong> is preset by different letters <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">u</span></code> in id of samples;
+however it is good if the user can define problem group directly</p></li>
 </ul>
 </section>
+<section id="gene-approximations">
+<h3>Gene approximations<a class="headerlink" href="#gene-approximations" title="Permalink to this heading">¶</a></h3>
+<p>In the definition of compound heterozygotes given above,
+we used the not fully formalized concept of “gene”.
+AnFiSA supports three options to define, which is treated as <em>gene</em>:</p>
+<ol class="arabic simple">
+<li><p><em>Transcript</em>: “gene” refers to a known transcript encoding a specific protein.
+This is the most accurate interpretation of the word “gene”.
+Unfortunately not all transcripts are identified</p></li>
+<li><p><em>Gene</em>: “gene” means a gene, but defined at the level of one of the transcripts</p></li>
+<li><p><em>Rough</em>: a gene is simply a known region/regions on a chromosome,
+regions sometimes overlapping (more precisely, one region may be inside another).
+This is the most inaccurate and crude way of interpreting the “gene” potentially leading to false positives.
+However it is the most “complete” method providing a certain level of guarantee that all real results
+will not be weeded out</p></li>
+</ol>
+</section>
+</section>
+<section id="zygosity-related-functions-in-anfisa">
+<h2>Zygosity-related functions in AnFiSA<a class="headerlink" href="#zygosity-related-functions-in-anfisa" title="Permalink to this heading">¶</a></h2>
+<section id="inheritance-mode">
+<h3>Inheritance_mode()<a class="headerlink" href="#inheritance-mode" title="Permalink to this heading">¶</a></h3>
+<p>The function determines mutation type according to standard criteria for zygosity.</p>
+</section>
+<section id="custom-inheritance">
+<h3>Custom_Inheritance()<a class="headerlink" href="#custom-inheritance" title="Permalink to this heading">¶</a></h3>
+<p>The extended version of <em>Inheritance_mode()</em> for any zygosity scenarios.</p>
+</section>
+<section id="compound-heterozygous">
+<h3>Compound_Heterozygous()<a class="headerlink" href="#compound-heterozygous" title="Permalink to this heading">¶</a></h3>
+<p>Identifies the compound heterozygous variations <em>inside a trio</em>.
+The formal definition of compound heterozygous can be found here: <a class="reference internal" href="func_ref.html#func-ref"><span class="std std-ref">Filtering functions</span></a></p>
+</section>
+<section id="compound-request">
+<h3>Compound_Request()<a class="headerlink" href="#compound-request" title="Permalink to this heading">¶</a></h3>
+<p>The extension of <em>Compound_Heterozygous()</em> function to more complicated cases.</p>
+</section>
 <section id="zygosity-events-and-compound-requests">
-<span id="compound-request"></span><h2>Zygosity events and compound requests<a class="headerlink" href="#zygosity-events-and-compound-requests" title="Permalink to this heading">¶</a></h2>
-<p>Let us fix some diapason or diapasons of positions on chromosome as “gene” (see <a class="reference internal" href="#gene-aproximations"><span class="std std-ref">below</span></a> for details). Then for some fixed zygosity scenario it is possible to count how many variants with this scenario presents inside the “gene”. Let us call these variants as “events”.</p>
+<span id="id2"></span><h3>Zygosity events and compound requests<a class="headerlink" href="#zygosity-events-and-compound-requests" title="Permalink to this heading">¶</a></h3>
+<p>Let us fix some diapason or diapasons of positions on chromosome as “gene”
+(see <a class="reference internal" href="#id3"><span class="std std-ref">Approximations to gene locations</span></a> for details).
+Then for some fixed zygosity scenario it is possible to count how many variants with this scenario
+presents inside the “gene”. Let us call these variants as “events”.</p>
 <blockquote>
 <div><p>We are ready to define <strong>compound request</strong> in the following form:</p>
 <div class="line-block">
@@ -123,18 +205,19 @@ In the system the following 5 conditions are supported:</p>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[</span></code> <em>list</em></div>
 <div class="line-block">
 <div class="line"><strong>[0]</strong>: minimal count of events, <strong>positive int</strong></div>
-<div class="line"><strong>[1]</strong>: <a class="reference internal" href="#zygosity-scenario"><span class="std std-ref">zygosity scenario</span></a></div>
+<div class="line"><strong>[1]</strong>: <a class="reference internal" href="#zygosity-scenario"><span class="std std-ref">Zygosity scenario notation</span></a></div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code>, …</div>
 </div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">]</span></code></div>
 </div>
 </div></blockquote>
-<p>The result of compound request is not empty only if for all scenarios in the list there are not less than the defined count of events.</p>
-<p>Strongly speaking, a compound request applies to “genes”, and its result is either empty, or <em>list of lists</em> of variants that cause events. The current version of the system does not support so complex selection objects, so we interpret result of compound request as a joined plain list of variants.</p>
-</section>
-<section id="compound-heterozygous-variants">
-<span id="compound-heterozygous"></span><h2>Compound heterozygous variants<a class="headerlink" href="#compound-heterozygous-variants" title="Permalink to this heading">¶</a></h2>
+<p>The result of compound request is not empty only if for all scenarios in the list
+there are not less than the defined count of events.</p>
+<p>Strongly speaking, a compound request applies to “genes”, and its result is either empty,
+or <em>list of lists</em> of variants that cause events.
+The current version of the system does not support so complex selection objects,
+so we interpret result of compound request as a joined plain list of variants.</p>
 <p>The following compound request is important in practice. It applies to trio:</p>
 <blockquote>
 <div><div class="line-block">
@@ -148,12 +231,19 @@ In the system the following 5 conditions are supported:</p>
 </div></blockquote>
 <p>Comments.</p>
 <ul class="simple">
-<li><p>The main idea of request: let us consider case when only proband is affected. It might happen that on some “gene” each parent has (different) dangerous variant in heterozygous state. These variants have no effect because second copy of gene are not broken. But proband has both copies of “gene” broken: one copy is broken by one of dangerous variants, ans second copy - by another one.</p></li>
-<li><p>From informational point of view, the detection of compound events is a clear tasks. In practice however there are serious difficulties to prepare proper setup for this detection. Results of the procedure might be good only if most part of benign variants are filtered out before the detection process. It is a matter of experiments, so the system provides extended functionality for this special kind of experimental activity.</p></li>
+<li><p>The main idea of request: let us consider case when only proband is affected.
+It might happen that on some “gene” each parent has (different) dangerous variant in heterozygous state.
+These variants have no effect because second copy of gene are not broken.
+But proband has both copies of “gene” broken: one copy is broken by one of dangerous variants, ans second copy -
+by another one.</p></li>
+<li><p>From informational point of view, the detection of compound events is a clear tasks.
+In practice however there are serious difficulties to prepare proper setup for this detection.
+Results of the procedure might be good only if most part of benign variants are filtered out before the detection process.
+It is a matter of experiments, so the system provides extended functionality for this special kind of experimental activity.</p></li>
 </ul>
 </section>
 <section id="approximations-to-gene-locations">
-<span id="gene-aproximations"></span><h2>Approximations to gene locations<a class="headerlink" href="#approximations-to-gene-locations" title="Permalink to this heading">¶</a></h2>
+<span id="id3"></span><h3>Approximations to gene locations<a class="headerlink" href="#approximations-to-gene-locations" title="Permalink to this heading">¶</a></h3>
 <p>The system supports 3 variants of gene approximation:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;transcript&quot;</span></code>: shared transcript</p></li>
@@ -161,12 +251,90 @@ In the system the following 5 conditions are supported:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;rough&quot;</span></code>: non-intersecting transcripts</p></li>
 </ul>
 <p>The first two variants use transcript variants as a base filtering item, so they are applicable only in WS-datasets.</p>
-<p>In practice the first variant is most good for precision purposes. But it might be not so good in recall: not all transcripts are well studied and registered up to now. For recall purposes use <code class="docutils literal notranslate"><span class="pre">&quot;rough&quot;</span></code> approximation: it causes many false positive effects however it filters out variants that can not be found with first two approximation variants.</p>
+<p>In practice the first variant is most good for precision purposes. But it might be not so good in recall:
+not all transcripts are well studied and registered up to now. For recall purposes use <code class="docutils literal notranslate"><span class="pre">&quot;rough&quot;</span></code> approximation:
+it causes many false positive effects however it filters out variants that can not be found with first two
+approximation variants.</p>
+</section>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">¶</a></h2>
-<p>Detection for variants of standard scenarios and compound heterozygous variants are standard tasks in genomics, so it is important to support it in the most easy way.</p>
-<p>On another hand, the functionality based on direct definition of scenarios and/or compound requests is rather heavy for support and usage. But it is important, especially in complex cases, with many samples in case.</p>
+<p>Detection for variants of standard scenarios and compound heterozygous variants are standard tasks in genomics,
+so it is important to support it in the most easy way.</p>
+<p>On another hand, the functionality based on direct definition of scenarios and/or compound requests is rather
+heavy for support and usage. But it is important, especially in complex cases, with many samples in case.</p>
+<section id="notes-on-complexity">
+<h3>Notes on complexity<a class="headerlink" href="#notes-on-complexity" title="Permalink to this heading">¶</a></h3>
+<p>If we deal with cases containing larger number of samples,
+it becomes quite obvious that all the variety described above is not enough.
+Indeed, the cases discussed above are model examples “from textbooks”.
+It is customary for medical doctors to work with them, but they are not enough.</p>
+<p>Anfisa provides ways to work in these complex cases,
+but it is not surprising that they are really difficult at all stages:
+both for support in the interface and for the user to work with these features.</p>
+<p>But all this is extremely important, and therefore covered.</p>
+</section>
+</section>
+<section id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">¶</a></h2>
+<section id="formal-definition-of-compound-heterozygous">
+<h3>Formal Definition of Compound Heterozygous<a class="headerlink" href="#formal-definition-of-compound-heterozygous" title="Permalink to this heading">¶</a></h3>
+<p>We distinguish two variants of compound heterozygous variants (compound hets to be short):</p>
+<ul class="simple">
+<li><p>Compound on a gene</p></li>
+<li><p>Compound on a transcript</p></li>
+<li><p>Possibly, in the future we might look for variants compound on exons</p></li>
+</ul>
+<p>Further I am using the word “base” to denote either gene or transcript, depending on what kind of base is used.</p>
+<p>We divide all possible conditions on variants into two categories:
+<em>base</em> dependent (or parameterized on base)
+and base independent (i.e. dependent only on a position, ref and alt).
+This is mostly applicable when transcript is used as a base.</p>
+<p>A majority of base dependent conditions are aggregates on base, such as maximum or minimum of base-dependent data.</p>
+<p>Examples of the transcript independent conditions:</p>
+<ul class="simple">
+<li><p>Allele frequency in gnomAD</p></li>
+<li><p>Clinical Significance in ClinVar</p></li>
+</ul>
+<p>Examples of the transcript dependent conditions:</p>
+<ul class="simple">
+<li><p>Calculated Consequences (e.g. frameshift, missense, synonymous, 5_prime_UTR), this is usually the most severe consequences over all genes and transcripts that include the variant. When we calculate compound hets on transcript (parametrizing by transcript), we cannot aggregate over all transcripts, rather we are looking for variants that are both annotated as missense on the same transcript.</p></li>
+<li><p>Distance from exon/intron boundary. This is usually a minimum between the distances to exon over all transcripts.</p></li>
+</ul>
+<p>There is a special case, when instead of genomic coordinate we use exon number as a position.
+This is special because exon number is dependent on a transcript.</p>
+<p>A set of a priori conditions we will call an apriori filter.</p>
+<p>A pair of variants constitute a compound heterozygosity on a base if:</p>
+<ol class="arabic simple">
+<li><p>Exists a base (gene or transcript), such that it contains both variants</p></li>
+<li><p>Variants are in trans, i.e. one of the pair is inherited from the mother and another is from the father</p></li>
+<li><p>They both satisfy the apriori filter</p></li>
+<li><p>If any of the conditions in the apriori filter is base-dependent, then they both pass the filter in the same base.</p></li>
+</ol>
+<p><strong>Examples for #4</strong>:</p>
+<p>Suppose that an apriori filter includes a condition
+that variants must be missense or synonymous and suppose we have two variants v1 and v2.</p>
+<p><em>A</em>:</p>
+<p>There are two genes, g1 and g2, such that g2 is located inside an intron of g1.
+Variant v1 is located in an exon of g1 (and therefore not in g2) and variant v2 is located in an exon of g2
+(and therefore in the intron of g1).</p>
+<p>Both variants are annotated for the most severe consequences as missense.
+However, they do not constitute a compound het pair because for one of the variants,
+the missense annotation is related to g1 (and its transcript t1) and for the other
+it is related to g2 (and its transcript - t2).
+V2 should have intronic annotation for g1 and v1 is either not in g2 or might be up/downstream of it.
+These are not compound heterozygous regardless of whether gene or transcript is used as a base.</p>
+<p><em>B</em>:</p>
+<p>Both variants are in the same gene, g1.
+There are two transcripts of g1: t1 and t2 that overlay the region of both v1 and v2.
+In t1, v1 is within an exon and thus satisfy the condition that it are missense or synonymous,
+but v2 is in an intron of t1.
+In another transcript, t2, v2 is in exon and v1 is in 3_prime_UTR.</p>
+<p>In this case, if we select gene as the base, then this pair constitute a compound het.
+However, if we select transcript as a base, it does not.
+This is because, there exists a gene that both variants have most severe consequences
+being missense or synonymous in the same gene, but there is no single transcript for which that would be true.</p>
+</section>
 </section>
 </section>
 
@@ -181,15 +349,37 @@ In the system the following 5 conditions are supported:</p>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Notes on Zygosity</a><ul>
-<li><a class="reference internal" href="#definitions-case-samples">Definitions: case, samples</a></li>
+<li><a class="reference internal" href="#basic-information-regarding-zygosity">Basic information regarding zygosity</a><ul>
 <li><a class="reference internal" href="#zygosity-states">Zygosity states</a></li>
-<li><a class="reference internal" href="#zygosity-conditions">Zygosity conditions</a></li>
-<li><a class="reference internal" href="#zygosity-scenario">Zygosity scenario</a></li>
+<li><a class="reference internal" href="#definitions-case-samples">Definitions: case, samples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#compound-heterozygous-variants-problem">Compound heterozygous variants problem</a></li>
+<li><a class="reference internal" href="#anfisa-support-of-complex-zygosity-scenarios">AnFiSA support of complex zygosity scenarios</a><ul>
+<li><a class="reference internal" href="#case-ids-definition">Case IDs definition</a></li>
+<li><a class="reference internal" href="#zygosity-scenario-notation">Zygosity scenario notation</a></li>
+<li><a class="reference internal" href="#zygosity-conditions-in-anfisa">Zygosity conditions in AnFiSA</a></li>
 <li><a class="reference internal" href="#standard-zygosity-scenarios">Standard zygosity scenarios</a></li>
+<li><a class="reference internal" href="#gene-approximations">Gene approximations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#zygosity-related-functions-in-anfisa">Zygosity-related functions in AnFiSA</a><ul>
+<li><a class="reference internal" href="#inheritance-mode">Inheritance_mode()</a></li>
+<li><a class="reference internal" href="#custom-inheritance">Custom_Inheritance()</a></li>
+<li><a class="reference internal" href="#compound-heterozygous">Compound_Heterozygous()</a></li>
+<li><a class="reference internal" href="#compound-request">Compound_Request()</a></li>
 <li><a class="reference internal" href="#zygosity-events-and-compound-requests">Zygosity events and compound requests</a></li>
-<li><a class="reference internal" href="#compound-heterozygous-variants">Compound heterozygous variants</a></li>
 <li><a class="reference internal" href="#approximations-to-gene-locations">Approximations to gene locations</a></li>
-<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a><ul>
+<li><a class="reference internal" href="#notes-on-complexity">Notes on complexity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#appendix">Appendix</a><ul>
+<li><a class="reference internal" href="#formal-definition-of-compound-heterozygous">Formal Definition of Compound Heterozygous</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
