@@ -54,30 +54,30 @@
 <section id="formulation-of-the-problem">
 <h2>Formulation of the problem<a class="headerlink" href="#formulation-of-the-problem" title="Permalink to this heading">¶</a></h2>
 <p>As was said in the filters description, the <strong>Discriminative power</strong> is a special numeric characteristic
-use to indicate the “Effectivity” of a filter.
+used to indicate the “Effectivity” of a filter.
 This means that “Effective” filter can split the current set of variants
-on the the most strongly differing groups, e.g. with loss maximum of “entropy”.</p>
+on the most strongly differing groups, e.g. with the maximum loss of “entropy”.</p>
 <p>As a possibility, we can use here evaluation of plain proper entropy, but it is not so helpful if the set of
-variants is wide (up to millions). So we evaluate some entropy-like product instead of proper entropy,
+variants is wide (up to millions). So, we evaluate some entropy-like product instead of proper entropy,
 and below is the description of the procedure.</p>
 </section>
 <section id="procedure-of-evaluation">
 <h2>Procedure of evaluation<a class="headerlink" href="#procedure-of-evaluation" title="Permalink to this heading">¶</a></h2>
-<p>For each property we start from property status data, and form list of numeric (positive integer) values,
-one integer for each of “choices”:</p>
+<p>For each property, we start from property status data, and form list a of numeric (positive integer) values,
+one integer for each of the “choices”:</p>
 <ul class="simple">
-<li><p>For numeric property we have histogram of values, use this as “list of choices”</p></li>
+<li><p>For numeric property we have a histogram of values, use this as a “list of choices”</p></li>
 <li><dl class="simple">
-<dt>For enumerated property we have count of each value - use this as base list for “list of choices”, and take in account “total count”, that equals to the filtered-counts of variants (or transcripts, in some cases)</dt><dd><ul>
+<dt>For enumerated property we have a count of each value - use this as a base list for the “list of choices”, and take in account the “total count”, which equals to the filtered-counts of variants (or transcripts, in some cases)</dt><dd><ul>
 <li><p>For status property the sum of values in the base list equals to the total count, the base list is the final</p></li>
-<li><p>If the sum of values in the base list is less than total count, append the difference to the base list, otherwise use the base one as it</p></li>
+<li><p>If the sum of values in the base list is less than the total count, append the difference to the base list, otherwise use the base one as it</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<p><strong>Note</strong>: The procedure is rough, so we ignore (up to now) specifics of multivalued enumerated properties with wide overlap.
-With use of “list of choices” we evaluate Discriminative Power by the following procedure (in JavaScript language):</p>
+<p><strong>Note</strong>: The procedure is rough, so we ignore (up to now) the specifics of multivalued enumerated properties with wide overlap.
+With the use of the “list of choices” we evaluate Discriminative Power by the following procedure (in JavaScript language):</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Discriminative power calculation</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">entropyReport</span><span class="p">(</span><span class="nx">counts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>

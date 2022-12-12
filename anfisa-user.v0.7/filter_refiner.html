@@ -59,25 +59,25 @@ After this, the filter refiner window opens.</p>
 <p>The caption of the <strong>Filter Refiner</strong> window contains the set of controls.
 The left one displays the work mode: <strong>Filter Refiner</strong>.
 Next to it user can select and create filter presets.
-Finally, user can create a derived dataset for filtered ones.</p>
+Finally, the user can create a derived dataset for filtered ones.</p>
 </section>
 <section id="filters">
 <h2>Filters<a class="headerlink" href="#filters" title="Permalink to this heading">¶</a></h2>
-<p>Below the caption string there is a list of available filters.</p>
-<p>The Anfisa provides for the user the large set of available filters for almost all
-variation properties in initial VCF file.
-By clicking on the each filter user can see the filter settings and details.</p>
-<p>All list of available filters with descriptions are available here:
+<p>Below the caption string, there is a list of available filters.</p>
+<p>The Anfisa provides the user the large set of available filters for almost all
+variation properties in the initial VCF file.
+By clicking on each filter user can see the filter settings and details.</p>
+<p>Full list of available filters with descriptions are available here:
 <a class="reference internal" href="suppl/func_ref.html#func-ref"><span class="std std-ref">Filtering functions</span></a></p>
-<p>By operation mode all filters can be divided into two groups:</p>
+<p>By operation mode, all filters can be divided into two groups:</p>
 <ul class="simple">
 <li><p>Categorical</p></li>
 <li><p>Numeric</p></li>
 </ul>
 <section id="categorical-filters">
 <h3>Categorical filters<a class="headerlink" href="#categorical-filters" title="Permalink to this heading">¶</a></h3>
-<p>Categorical data entries are presented by list of filtering categories.
-On the filter details page AnFiSA shows histogram or pie chart of categories distribution.
+<p>Categorical data entries are presented by a list of filtering categories.
+On the filter details page, AnFiSA shows histogram or pie chart of categories distribution.
 User can select/deselect categories from the list.</p>
 <a class="reference internal image-reference" href="_images/filter-refinement_filter-zygosity.png"><img alt="Categorical filter example" src="_images/filter-refinement_filter-zygosity.png" style="width: 800px;" /></a>
 <p>Only variants from selected categories will go to subsequent analysis.
@@ -86,31 +86,31 @@ The <strong>Not Mode</strong> inverts the variations selection.</p>
 <section id="numeric-filters">
 <h3>Numeric filters<a class="headerlink" href="#numeric-filters" title="Permalink to this heading">¶</a></h3>
 <p>The numeric filters allows user to filter variations by the value of some numerical parameter.
-On the filter details page AnFiSA shows histogram of value distribution.
+On the filter details page, AnFiSA shows histogram of value distribution.
 The distribution histogram is displayed in linear or logarithmic scale.
-The display mode is pre-configured for filter and can’t be changed by user.</p>
+The display mode is pre-configured for the filter and can’t be changed by user.</p>
 <a class="reference internal image-reference" href="_images/filter-refinement_filter-AF.png"><img alt="Numeric filter example" src="_images/filter-refinement_filter-AF.png" style="width: 800px;" /></a>
-<p>User can select value range to pass visually on the histogram or by typing the numeric values,
+<p>User can select value range either visually on the histogram or by typing the numeric values,
 or by clicking on the histogram.
 The buttons “&lt;” and “&lt;=” next to data entry edits controls incluson/exclusion of the border values.</p>
 <p>The checkbox “<strong>Limited range</strong>” next to range selection forces user to choose parameter boundaries
-only inside the real parameter range for current data set.
-This option is select by default.
+only inside the real parameter range for the current data set.
+This option is selected by default.
 For individual dataset analysis there is no sense in unchecking this option.
 However, for building preset to process different data sets, user can unselect this checkbox
 and have more flexibility in region selection.</p>
 <p>Each numeric filter passes variations with the parameter value <em>inside</em> the specified range.
 In <strong>Filter Refiner</strong> mode there is no way to select variations <em>outside</em> the selected range.
-To do this, one can use <strong>Decision tree</strong>.</p>
+To do this, one can use the <strong>Decision tree</strong> functionality.</p>
 </section>
 <section id="filter-discriminative-power">
 <h3>Filter discriminative power<a class="headerlink" href="#filter-discriminative-power" title="Permalink to this heading">¶</a></h3>
 <p>In the context of Anfisa application there is a wide list of variant properties that can be used to reduce the number
-the set of selected variants.
+of selected variants.
 The <strong>Discriminative Power</strong> value is a special number used to help the user to notice the most “effective” properties
 from a long list.</p>
 <p>Here “Effectivity” of a filter means that with use of it one can split the current set of variants
-on the the most strongly differing groups (e.g. with loss maximum of “entropy”).
+on the most strongly differing groups (e.g. with loss maximum of “entropy”).
 So, the Discriminative Power in this context pure informational effectiveness,
 with no concerns of property meanings.
 The “effective” filter can separate variations into most differing groups, but this differentiation
@@ -128,14 +128,14 @@ This is a rough tool, however it might be helpful in work with a wide list of va
 </section>
 <section id="filter-chain-creation">
 <h2>Filter chain creation<a class="headerlink" href="#filter-chain-creation" title="Permalink to this heading">¶</a></h2>
-<p>After setting filtering options for the filter user applies it by pressing the <strong>Add condition</strong> button
+<p>After setting filtering options for the filter, user applies it by pressing the <strong>Add condition</strong> button
 on th filter details page.
-After pressing this button, new filter will be added to the list of filters on the right panel <strong>Results</strong>.</p>
+After pressing this button, the new filter will be added to the list of filters on the right panel <strong>Results</strong>.</p>
 <p>User can continue filtering process by adding new filters to the list.
-Anfisa allows to apply to a dataset combinations of filters,
+Anfisa allows to apply to a dataset combinations of filters
 and each additional filter operates on the result output of the previous filtering.
 The consequent application of different filters results only in conjunctions of the conditions.</p>
-<p>On the <strong>Results</strong> panel user can see all active filters, view and change filter settings.
+<p>On the <strong>Results</strong> panel, user can see all active filters, view and change filter settings.
 After filter settings change user need to press <strong>Save changes</strong> button to apply it.
 User can continue refinement process and add new filter to narrow the variations set.</p>
 <p>Also AnFiSA displays the number of variants passing filter chain next to the panel caption:
@@ -143,14 +143,14 @@ User can continue refinement process and add new filter to narrow the variations
 <a class="reference internal image-reference" href="_images/filter-refinement_filter-series.png"><img alt="Filter list" src="_images/filter-refinement_filter-series.png" style="width: 800px;" /></a>
 <p>User can delete an active filter by selecting pit and pressing the “Garbage bin” icon
 on the right of the <strong>Results</strong> panel.
-Or user can delete al filters by pressing the <strong>Clear All</strong> button.</p>
+Or user can delete all filters by pressing the <strong>Clear All</strong> button.</p>
 <section id="filtering-chain-functioning-notes">
 <h3>Filtering chain functioning notes<a class="headerlink" href="#filtering-chain-functioning-notes" title="Permalink to this heading">¶</a></h3>
 <p>Each new filter is applied to the <strong>already filtered</strong> variations set.
 Therefore adding each new filter will lead to narrowing of the variation set.
 To achieve more flexible filtering one should use <strong>Decision tree</strong> capability.</p>
-<p>All charts in the filter details panel also displays the statistics for variations filed by previous filters,
-no for original variations set.</p>
+<p>All charts in the filter details panel also displays the statistics for variations filtered by previous filters,
+not for original variations set.</p>
 </section>
 </section>
 <section id="functional-units-filtering-functions">
@@ -179,11 +179,12 @@ The description of filtering functions scientific applications can be found in
 <p>Most part of complex filtering functions (for example <em>Compound_Request()</em>) produce proper result
 only for valuable size of input data set.
 If input data contain to much variations the filtering results will not have
-any sense from scientific point of view. In this case AnFiSA stops calculation and returns an error message.
+any sense from the scientific point of view. In this case, AnFiSA stops calculation and returns an error message.
 This prevents user from making methodological errors in formally correct analysis.</p>
 <p><strong>The error message regarding too large data size is not just a technical limitation.
-In most cases it means that your results does not have a sense from scientific point of view.</strong></p>
-<p>The same logic works for several other types of analysis and filtering, and even for visual representation of the data.</p>
+In most cases, it means that your results does not have a sense from scientific point of view.</strong></p>
+<p>The same logic works for several other types of analysis and filtering,
+and even for the visual representation of the data.</p>
 </section>
 </section>
 <section id="presets">
@@ -196,7 +197,7 @@ To load a preset, user just needs to select a preset in a combo-box on the <stro
 </section>
 <section id="viewing-and-saving-filtration-result">
 <h2>Viewing and saving filtration result<a class="headerlink" href="#viewing-and-saving-filtration-result" title="Permalink to this heading">¶</a></h2>
-<p>At the each step of data processing user can view the filtering results by pressing the
+<p>At the each step of data processing, user can view the filtering results by pressing the
 <strong>View variants</strong> button next to <strong>Results</strong> panel caption.
 AnFiSA displays the variations table in a new modal window.
 The button is active only if there are
@@ -219,7 +220,7 @@ The variation properties are grouped by type in the collapsed boxes. User can ex
 <p>User can save the resulting set of the variations as a derived dataset by pressing the <strong>Create Derived DS</strong> button
 and providing dataset name. The derived datasets are described in the corresponding section of the manual.</p>
 <a class="reference internal image-reference" href="_images/filter-refinement_create-derived.png"><img alt="Derived dataset creation" src="_images/filter-refinement_create-derived.png" style="width: 800px;" /></a>
-<p>After creating a derived dataset user can open derived dataset, or continue refining data.</p>
+<p>After creating a derived dataset user can either open derived dataset, or continue refining data.</p>
 <p><strong>Next</strong>: <a class="reference internal" href="decision_tree.html#decision-tree"><span class="std std-ref">Decision Tree</span></a></p>
 <p><a class="reference internal" href="index.html#toc"><span class="std std-ref">Table of contents</span></a></p>
 </section>

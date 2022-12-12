@@ -50,14 +50,14 @@
             
   <section id="decision-tree">
 <span id="id1"></span><h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">¶</a></h1>
-<p>The Decision tree is an advances method of variations filtering.
+<p>The Decision tree is an advanced method of variations filtering.
 It allows very powerful and flexible way to refine variations set and create new derives sets.</p>
 <section id="how-decision-tree-works">
 <h2>How Decision Tree works<a class="headerlink" href="#how-decision-tree-works" title="Permalink to this heading">¶</a></h2>
 <p>On the first glance, the Decision Tree is very similar to <strong>Filter Refiner</strong> functionality.
-This if a sequence of a filtering steps, each of them filters variation by the specific condition,
-or group of conditions.
-Each filter separates variations in two groups:</p>
+This is a sequence of a filtering steps, each of them filters variation by the specific condition,
+or group of conditions.</p>
+<p>Each filter separates variations in two groups:</p>
 <ul class="simple">
 <li><p>Variations which pass filter</p></li>
 <li><p>Variations which not pass filter</p></li>
@@ -81,7 +81,7 @@ The overall logic is following:</p>
 <li><dl class="simple">
 <dt>For variations, <em>matching</em> step criteria user can choose one of the following actions:</dt><dd><ul>
 <li><p>Unconditionally include variations in the final selection</p></li>
-<li><p>Exclude variations from further consideration (thrown away)</p></li>
+<li><p>Exclude variations from further consideration (throw away)</p></li>
 </ul>
 </dd>
 </dl>
@@ -91,9 +91,9 @@ The overall logic is following:</p>
 </dl>
 </li>
 </ul>
-<p>A result of application of any Decision Tree is a set that we will call “Final selection”.</p>
+<p>A result of the application of any <strong>Decision Tree</strong> is a set that we will call “Final selection”.</p>
 <p>At the final step of decision tree we can decide what to do with rest of variations:
-add in to the final selection or trow away.</p>
+add in to the final selection or throw away.</p>
 <p>In fact, the <strong>Filter Refiner</strong> is just a simple version of a decision tree,
 where at each step we exclude variations, not passing the filter,
 and on the final step including all variations to final data set.</p>
@@ -114,7 +114,7 @@ From it user can:
 * <strong>Text editor</strong> – edit decision tree code
 * <strong>Create derived dataset</strong> – apply decision tree to the dataset and save results as a derived dataset.</p>
 <p>AnFiSA is distributed together with the set of pre-defined decision trees.
-The detailed description of these trees are located in separate section.</p>
+The detailed description of these trees are located in the separate section.</p>
 </section>
 <section id="filters-panel">
 <h3>Filters panel<a class="headerlink" href="#filters-panel" title="Permalink to this heading">¶</a></h3>
@@ -140,7 +140,7 @@ or by pressing the <strong>Add attribute</strong> button on the <strong>Results<
 <section id="decision-tree-panel-results">
 <h3>Decision tree panel (Results)<a class="headerlink" href="#decision-tree-panel-results" title="Permalink to this heading">¶</a></h3>
 <p>The <strong>Results</strong> panel contains active decision tree filters.
-Of the first glance it can look complicated, however underlying logic is rather straightforward</p>
+On the first glance it can look complicated, however underlying logic is rather straightforward.</p>
 <a class="reference internal image-reference" href="_images/decision-tree_results.png"><img alt="Decision tree results" src="_images/decision-tree_results.png" style="width: 800px;" /></a>
 <p>On top of the page none can see the statistic on the current decision tree:
 Total number of variations, number of accepted and rejected variations,
@@ -149,13 +149,13 @@ and two buttons to view results:</p>
 <li><p>View returned variations - variations passing decision tree</p></li>
 <li><p>View variations - all list of variations</p></li>
 </ul>
-<p>The <strong>Tree</strong> column shows graphical tree with list of tree steps.
+<p>The <strong>Tree</strong> column shows graphical tree with the list of tree steps.
 At the each step AnFiSa displays the number of variations before step.
-The arrow indicates number of variations which are included ijn the final dataset
+The arrow indicates number of variations which are included in the final dataset
 (green arrow) or excluded from subsequent analysis (purple arrow).</p>
 <p>The <strong>Algorithm</strong> column shows the step details for each step.</p>
 <p>The <strong>Include/Exclude</strong> radio buttons define action for variations passing filter:
-include into final dataset or exclude from calculation.</p>
+include into final dataset or exclude from the calculation.</p>
 <p>The icon “three vertical dots” allows to change decision tree:
 * Add steps before/after current
 * Negate the step – reverse the final result of step
