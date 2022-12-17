@@ -52,22 +52,22 @@
 <span id="func-ref"></span><h1>Filtering functions<a class="headerlink" href="#filtering-functions" title="Permalink to this heading">¶</a></h1>
 <section id="discussion">
 <h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">¶</a></h2>
-<p>Up to now all functions behave as multiset property: even if result is <code class="docutils literal notranslate"><span class="pre">True</span></code> value,
-there is no reason to keep <code class="docutils literal notranslate"><span class="pre">False</span></code> value of rest of variants in dataset.</p>
-<p>The list and format of function parameters are specific for the function.
-Each parameter value must be data structure in JSON format, usually it means <em>string</em> or <em>int</em> value,
+<p>Up to now all functions behave as multiset property: even if the result is <code class="docutils literal notranslate"><span class="pre">True</span></code> value,
+there is no reason to keep <code class="docutils literal notranslate"><span class="pre">False</span></code> value of the rest of variants in the dataset.</p>
+<p>The list and format of function parameters are specific to the function.
+Each parameter value must be a data structure in JSON format, usually it is just a single <em>string</em> or <em>int</em> value,
 but some complex functions require complex structures as parameters.
 The Front End application helps the user to fill it up in forms,
 however the formal definition of function call requires JSON-formatted parameters.</p>
 <p>Since work with functions is a complex one, there might be additional requirements for Front End application
-to provide support of necessary “short cuts”:</p>
+to provide support of necessary “shortcuts”:</p>
 <ul class="simple">
 <li><p>function environment should be used to set “standard” configurations of function parameters</p></li>
-<li><p>in cases when list of function values is expected (for example if value is single <code class="docutils literal notranslate"><span class="pre">True</span></code>),
-these values should be pre-selected in interface without extra user click</p></li>
+<li><p>in cases when the list of function values is expected (for example if value is single <code class="docutils literal notranslate"><span class="pre">True</span></code>),
+these values should be pre-selected in the interface without extra user click</p></li>
 </ul>
-<p>Most part of currently available functions implement functionality dealing with zygosity properties of variants.
-See <a class="reference internal" href="zygosity.html#zygosity-notes"><span class="std std-ref">Notes on Zygosity</span></a> for explanations</p>
+<p>Most part of the currently available functions implement functionality dealing with zygosity properties of variants.
+See <a class="reference internal" href="zygosity.html#zygosity-notes"><span class="std std-ref">Notes on Zygosity</span></a> for explanations.</p>
 <p>Examples are given in form of Python dialect used in <a class="reference internal" href="dtree_syntax.html#decision-tree-syntax"><span class="std std-ref">Decision tree syntax reference</span></a>.</p>
 </section>
 <section id="function-reference">
@@ -82,7 +82,7 @@ See <a class="reference internal" href="zygosity.html#zygosity-notes"><span clas
 </div></blockquote>
 <p><strong>Values</strong>: <code class="docutils literal notranslate"><span class="pre">[&quot;True&quot;]</span></code></p>
 </div></blockquote>
-<p>Function allows the user to define simple string representation for the following options:</p>
+<p>The function allows the user to define simple string representation for the following options:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>chromosome</p></li>
@@ -90,7 +90,7 @@ See <a class="reference internal" href="zygosity.html#zygosity-notes"><span clas
 <li><p><em>optional</em> gene or list of genes</p></li>
 </ul>
 </div></blockquote>
-<p>These options are put into string with <code class="docutils literal notranslate"><span class="pre">':`</span></code> as separator. (Separator for list of genes is <code class="docutils literal notranslate"><span class="pre">','</span></code>).</p>
+<p>These options are put into a string with <code class="docutils literal notranslate"><span class="pre">':`</span></code> as a separator. (Separator for list of genes is <code class="docutils literal notranslate"><span class="pre">','</span></code>).</p>
 <p><strong>Examples</strong>:</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GeneRegion</span><span class="p">(</span><span class="n">locus</span> <span class="o">=</span> <span class="s2">&quot;chr1:6424820&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="kc">True</span><span class="p">}</span>
@@ -113,7 +113,7 @@ See <a class="reference internal" href="zygosity.html#zygosity-notes"><span clas
 <div><p><code class="docutils literal notranslate"><span class="pre">[&quot;Homozygous</span> <span class="pre">Recessive&quot;,</span> <span class="pre">&quot;X-linked&quot;,</span> <span class="pre">&quot;Autosomal</span> <span class="pre">Dominant&quot;,</span> <span class="pre">&quot;Compensational&quot;]</span></code></p>
 </div></blockquote>
 </div></blockquote>
-<p>Function selects variants with <a class="reference internal" href="zygosity.html#standard-zygosity-scenarios"><span class="std std-ref">Standard zygosity scenarios</span></a> if problem group is defined.</p>
+<p>The function selects variants with <a class="reference internal" href="zygosity.html#standard-zygosity-scenarios"><span class="std std-ref">Standard zygosity scenarios</span></a> if the problem group is defined.</p>
 <p><strong>Examples</strong></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Inheritance_mode</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;Homozygous Recessive&quot;</span><span class="p">,</span> <span class="s2">&quot;X-linked&quot;</span><span class="p">}</span>
@@ -132,7 +132,7 @@ See <a class="reference internal" href="zygosity.html#zygosity-notes"><span clas
 <blockquote>
 <div><ul class="simple">
 <li><p>for fixed problem group variant sets of types <code class="docutils literal notranslate"><span class="pre">&quot;Homozygous</span> <span class="pre">Recessive&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;X-linked&quot;</span></code> never intersect;
-variants from chromosome X present in the first set only if there is no a male sample in case</p></li>
+variants from chromosome X present in the first set only if there is no male sample in case</p></li>
 <li><p>for different problem groups variant sets of type <code class="docutils literal notranslate"><span class="pre">&quot;Autosomal</span> <span class="pre">Dominant&quot;</span></code> never intersect;
 the same is true for type <code class="docutils literal notranslate"><span class="pre">&quot;Compensational&quot;</span></code></p></li>
 </ul>
@@ -172,20 +172,20 @@ the same is true for type <code class="docutils literal notranslate"><span class
 </dd>
 </dl>
 </div></blockquote>
-<p>The function detects <a class="reference internal" href="zygosity.html#id2"><span class="std std-ref">compound heterozygous</span></a> variants for all trio
+<p>The function detects <a class="reference internal" href="zygosity.html#id2"><span class="std std-ref">compound heterozygous</span></a> variants for all trios
 presenting in the case of dataset.
-Function is available only if (at least one, usually one) trio is included in case,
+The function is available only if (at least one, usually one) trio is included in the case,
 i.e. environment property <strong>trio-variants</strong> is nonempty.</p>
-<p>Special notation: if proband is subject of trio, <code class="docutils literal notranslate"><span class="pre">&quot;Proband&quot;</span></code> is used as identifier of trio,
-otherwise trio is identified by id of its subject.</p>
+<p>Special notation: if proband is subject of the trio, <code class="docutils literal notranslate"><span class="pre">&quot;Proband&quot;</span></code> is used as an identifier of the trio,
+otherwise trio is identified by the id of its subject.</p>
 <p>Default value for <strong>approx</strong> parameter is <code class="docutils literal notranslate"><span class="pre">&quot;transcript&quot;</span></code> for WS-datasets and <code class="docutils literal notranslate"><span class="pre">&quot;rough&quot;</span></code> for XL-datasets
 (only <code class="docutils literal notranslate"><span class="pre">&quot;rough&quot;</span></code> is available in XL-datasets).</p>
-<p>The parameter <strong>state</strong> can be either <code class="docutils literal notranslate"><span class="pre">null</span></code> or value from <strong>labels</strong> environment property.</p>
+<p>The parameter <strong>state</strong> can be either <code class="docutils literal notranslate"><span class="pre">null</span></code> or value from the <strong>labels</strong> environment property.</p>
 <p>In common context <strong>labels</strong> is empty, and <strong>state</strong> parameter can be only <code class="docutils literal notranslate"><span class="pre">null</span></code> or undefined.
-So the detection procedure is run on the current state of variants filtering process.</p>
-<p>Different situation can happen only in case of decision tree,
-and only if there is а definition of label in code <em>before</em> function evaluation.
-In this case detection procedure is run on labeled state of filtering process.</p>
+So the detection procedure is run on the current state of the variants filtering process.</p>
+<p>Different situation can happen only in case of the decision tree,
+and only if there is а definition of the label in code <em>before</em> function evaluation.
+In this case detection procedure is run on the labeled state of the filtering process.</p>
 <p><strong>Examples</strong></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Compound_Heterozygous</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span><span class="n">Proband</span><span class="p">}</span>
